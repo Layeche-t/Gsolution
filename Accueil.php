@@ -114,6 +114,8 @@
 
 			<!--pied de page -->
 			<?php include 'footer.php';?>
+
+
 			
 		</section>
 		
@@ -124,7 +126,7 @@
 	</div>
 
 
-
+<!-- Layeche -->
 
 </body>
 </html>
