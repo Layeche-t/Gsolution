@@ -1,0 +1,11 @@
+
+body{
+    background-image: url("https://img.aws.la-croix.com/2020/11/14/1201124592/president-Donald-Trump-roseraie-Maison-Blanche-Washington-13-novembre_0_1400_933.jpg");
+}
+
+div {
+    border: 1px solid black;
+    height: 600px;
+    width: 900px;
+
+}
