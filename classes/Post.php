@@ -1,7 +1,7 @@
 <?php
 
 // table
-class post
+class Post
 {
 
     private $id;
