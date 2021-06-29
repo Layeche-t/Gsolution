@@ -33,11 +33,10 @@ abstract class AbstractDataBase
         $field = array_keys($params);
         $value = array_values($params);
 
-        if (!$this->checkField($field[0], $table)) {
-            throw new Exception("Le champs " . $field[0] . " n'existe pas dans la table de destination! ");
-        }
+
         $sql = $this->bd->prepare("SELECT * FROM " . $table . " WHERE " . $field[0] . " = ? LIMIT 1");
         $sql->execute([$value[0]]);
+
         $result = $sql->fetch();
 
         return $result;
@@ -72,11 +71,6 @@ abstract class AbstractDataBase
     {
         $field = array_keys($params);
         $value = array_values($params);
-        foreach ($field as $item) {
-            if (!$this->checkField($item, $table)) {
-                throw new Exception("Le champs " . $item . " n'existe pas dans la table de destination! ");
-            }
-        }
 
         $len = count($field);
         $sql = "SELECT * FROM " . $table . " WHERE " . $field[0] . " = ?";
