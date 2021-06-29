@@ -37,7 +37,7 @@ abstract class AbstractDataBase
         $sql = $this->bd->prepare("SELECT * FROM " . $table . " WHERE " . $field[0] . " = ? LIMIT 1");
         $sql->execute([$value[0]]);
 
-        $result = $sql->fetch();
+        $result = $sql->fetchObject();
 
         return $result;
     }
@@ -135,9 +135,9 @@ abstract class AbstractDataBase
 
         try {
             $rq = $this->bd->prepare($sql);
+
+
             $rq->execute($params);
-            // return this id
-            return $this->bd->lastInsertId();
         } catch (Exception $e) {
             die('#17 Erreur lors du transfert des données : ' . $e);
         }
