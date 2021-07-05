@@ -1,4 +1,5 @@
 <?php
+
 include('../inc_config.php');
 
 abstract class AbstractDataBase
@@ -135,13 +136,13 @@ abstract class AbstractDataBase
 
         try {
             $rq = $this->bd->prepare($sql);
-
-
             $rq->execute($params);
+            return $this->bd->lastInsertId();
         } catch (Exception $e) {
             die('#17 Erreur lors du transfert des données : ' . $e);
         }
     }
+
 
 
     /**

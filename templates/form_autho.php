@@ -1,12 +1,21 @@
-<?php include 'header.php'; ?>
+<?php
+
+include 'header.php';
+require_once('../inc_config.php');
+
+?>
 
 <h1 class="titre-blog"> <span class="span-blog">CONNEXION</span></h1>
 
 <div class="contenaire-connexion">
 
     <form class="form-connexion" method="POST" action="../controllers/authontification.php">
-        <h1>Déja inscrit ! </h1>
+        <h1>Déja inscrit !</h1>
+
         <div class="social-container">
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'nok') : ?>
+                <div style="background-color: red;"><span>erreur </span></div>
+            <?php endif ?>
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>

@@ -103,8 +103,13 @@ class User extends AbstractDataBase
         return $this->createdAt;
     }
 
-    public function setcreatedAt(int $createdAt)
+    public function setcreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    public function SetUser(array $params, $table = self::TABLE)
+    {
+        return parent::set($params, $table);
     }
 }

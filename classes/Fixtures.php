@@ -9,9 +9,7 @@ class Fixtures  extends AbstractDataBase
     {
         $now = new DateTime();
         $this->set([
-            'firstname' => 'fateh',
-            'lastname' => 'tourki',
-            'password' => 'test',
+            'firstname' => 'fateh', 'lastname' => 'tourki', 'password' => 'test',
             'role' => 'user',
             'sexe' => 0,
             'email' => 'test@test.com'

@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html>
+<?php
+require_once('../inc_config.php');
 
-<head>
-    <meta charset="utf-8">
-    <title>G7solution</title>
-    <script src="https://kit.fontawesome.com/5da465d417.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-</head>
+if (!isset($_SESSION['user'])) {
+
+    header('Location: ../templates/form_autho.php');
+    exit;
+}
+
+?>
+
 
 <body>
     <div class="contenaire">

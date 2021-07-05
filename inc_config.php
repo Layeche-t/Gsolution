@@ -1,5 +1,9 @@
 
 <?php
+// start session
+if (!isset($_SESSION)) {
+    session_start();
+}
 // connexion base de données 
 try {
     global $bdd;
@@ -14,5 +18,7 @@ spl_autoload_register(function ($className) {
     $file = 'classes/' . $className . '.php';
     include $file;
 });
+
+
 
 ?>
