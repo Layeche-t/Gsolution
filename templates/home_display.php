@@ -117,17 +117,4 @@ if (!isset($_SESSION['user'])) {
 
             <!--pied de page -->
             <?php include 'footer.php'; ?>
-
-
-
         </section>
-
-
-
-
-
-    </div>
-
-</body>
-
-</html>
