@@ -5,8 +5,8 @@
 			<h2 class="titre-bloc1"><a class="titre-bloc1-a">Certifications</a></h2>
 
 			<div class="logos">
-				<img class="qualiopi1" src="../images/qualiopi.png">
-				<img class="qualiopi2" src="../images/data.jpg">
+				<img class="qualiopi1" src="../pictures/qualiopi.png">
+				<img class="qualiopi2" src="../pictures/data.jpg">
 			</div>
 
 			<h2 class="nos-offres">Nos offres</h2>

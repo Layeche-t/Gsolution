@@ -12,8 +12,8 @@
 	<div class="contenaire">
 		<!--en-tête-->
 		<header>
-			<img class="logo" src="../images/logo.png">
-			<i class="fas fa-user "></i>
+			<img class="logo" src="../pictures/logo.png">
+			<i class="fas fa-user"></i>
 			<p> <a class="client" href="connexion.php">Espace client</a></p>
 		</header>
 
