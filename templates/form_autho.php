@@ -41,9 +41,4 @@ require_once('../inc_config.php');
 </div>
 <div class="info-connexion">
 
-</div>
-
-
-</div>
-
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
