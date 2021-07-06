@@ -5,7 +5,8 @@ $user = new User();
 
 if (isset($_POST['validation'])) {
 
-    $newUser = $user->SetUser($_POST);
+    $newPost = $user->SetUser($_POST);
+    header('Location: ../templates/backoffice.php');
+    exit;
+} else {
 }
-
-var_dump($newUser);

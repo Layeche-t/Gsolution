@@ -1,8 +1,10 @@
 <?php
 
 // table
-class Post
+class Post extends AbstractDataBase
 {
+
+    const TABLE = 'posts';
 
     private $id;
 
@@ -10,13 +12,18 @@ class Post
 
     private $source;
 
-    private $discription;
+    private $text;
 
     private $picture;
 
     private $createdAt;
 
     private $foring;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function getId()
     {
@@ -48,12 +55,12 @@ class Post
         $this->source = $source;
     }
 
-    public function getDiscription()
+    public function getText()
     {
         return $this->discription;
     }
 
-    public function setDiscription(string $discription)
+    public function setText(string $discription)
     {
         $this->discription = $discription;
     }
@@ -86,5 +93,10 @@ class Post
     public function setForinge(string $foring)
     {
         $this->foring = $foring;
+    }
+
+    public function SetUser(array $params, $table = self::TABLE)
+    {
+        return parent::set($params, $table);
     }
 }

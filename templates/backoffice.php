@@ -32,8 +32,11 @@
         </nav>
 
         <section>
-            <form method="POST" action="">
+            <form method="POST" action="../controllers/add_backOffice.php">
                 <h1 class="titre-section">Formation</h1>
+                <?php if (isset($_GET['error']) && $_GET['error'] == 'yes') : ?>
+                    <div class="yes"><span> Super vous avez réussi </span></div>
+                <?php endif ?>
 
                 <label class="label-titre">Entrez votre sujet</label>
                 <input class="choix-titre" type="text" name="titel">
@@ -43,7 +46,7 @@
 
                 <textarea name="text"></textarea>
 
-                <button value="">Valider</button>
+                <button value="" name="validation">Valider</button>
             </form>
         </section>
 
