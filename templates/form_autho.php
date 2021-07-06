@@ -12,10 +12,12 @@ require_once('../inc_config.php');
     <form class="form-connexion" method="POST" action="../controllers/authontification.php">
         <h1>Déja inscrit !</h1>
 
+        <!-- gestion des erreurs -->
+        <?php if (isset($_GET['error']) && $_GET['error'] == 'nok') : ?>
+            <div class="yes"><span> Email ou mot de passe incorrect </span></div>
+        <?php endif ?>
+
         <div class="social-container">
-            <?php if (isset($_GET['error']) && $_GET['error'] == 'nok') : ?>
-                <div style="background-color: red;"><span>erreur </span></div>
-            <?php endif ?>
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>

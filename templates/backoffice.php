@@ -32,17 +32,19 @@
         </nav>
 
         <section>
-            <h1 class="titre-section">Formation</h1>
+            <form method="POST" action="">
+                <h1 class="titre-section">Formation</h1>
 
-            <label class="label-titre">Entrez votre sujet</label>
-            <input class="choix-titre" type="" name="">
+                <label class="label-titre">Entrez votre sujet</label>
+                <input class="choix-titre" type="text" name="titel">
 
-            <label class="label-titre">Choisissez votre photo</label>
-            <input class="choix-titre" type="file" name="">
+                <label class="label-titre">Choisissez votre photo</label>
+                <input class="choix-titre" type="file" name="">
 
-            <textarea></textarea>
+                <textarea name="text"></textarea>
 
-            <button value="">Valider</button>
+                <button value="">Valider</button>
+            </form>
         </section>
 
         <footer>

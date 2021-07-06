@@ -1,7 +1,6 @@
 <?php
 require_once('../inc_config.php');
 
-$error = '';
 $user =  new User();
 
 

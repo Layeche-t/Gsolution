@@ -1,7 +1,7 @@
 body{
 	padding: 0px;
 	margin: 0px;
-	background-color: #white;
+	background-color: white;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -1095,3 +1095,5 @@ p.titre-evenement-vert{
   font-weight: bold;
   color: #7DBC52;
 }
+
+

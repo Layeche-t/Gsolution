@@ -53,7 +53,7 @@
 				<input type="checkbox" name=""> <span class="conditinos"> J'accepte les conditions générales et la politique de confidentialité </span>
 			</div>
 
-			<button class="retour-connexion" name="">ENREGISTRER</button>
+			<button class="retour-connexion" name="validation">ENREGISTRER</button>
 		</form>
 
 		<!-- seconde partie -->
