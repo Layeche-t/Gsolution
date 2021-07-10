@@ -1,13 +1,13 @@
-<?php
-require_once('../inc_config.php');
+<!-- <?php
+        require_once('../inc_config.php');
 
-if (!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user'])) {
 
-    header('Location: ../templates/form_autho.php');
-    exit;
-}
+            header('Location: ../templates/form_autho.php');
+            exit;
+        }
 
-?>
+        ?> -->
 
 
 <body>
@@ -18,7 +18,7 @@ if (!isset($_SESSION['user'])) {
 
         <!--Actualité-->
         <figure>
-            <img class="figure" src="images/coiffeur.jpeg">
+            <img class="figure" src="../pictures/coiffeur.jpeg">
             <figcaption class="titre">G7solution c'est le meilleur organisme de formation 20%</figcaption>
             <figcaption class="icons">
                 <i class="far fa-circle"></i>
@@ -43,22 +43,22 @@ if (!isset($_SESSION['user'])) {
             <h1 class="titre-section">Nos formations</h1>
             <div class="formations">
                 <div class="formations-section">
-                    <img class="image-formation" src="images/femme.jpg">
+                    <img class="image-formation" src="../images/femme.jpg">
                     <h1 class="titre-image">Femme</h1>
                     <div class="boite-decouvert">Je découvre</div>
                 </div>
                 <div class="formations-section">
-                    <img class="image-formation" src="images/femme.jpg">
+                    <img class="image-formation" src="../images/femme.jpg">
                     <h1 class="titre-image">Femme</h1>
                     <div class="boite-decouvert">Je découvre</div>
                 </div>
                 <div class="formations-section">
-                    <img class="image-formation" src="images/femme.jpg">
+                    <img class="image-formation" src="../images/femme.jpg">
                     <h1 class="titre-image">Femme</h1>
                     <div class="boite-decouvert">Je découvre</div>
                 </div>
                 <div class="formations-section">
-                    <img class="image-formation" src="images/femme.jpg">
+                    <img class="image-formation" src="../images/femme.jpg">
                     <h1 class="titre-image"> Femme </h1>
                     <div class="boite-decouvert">Je découvre</div>
                 </div>

@@ -5,6 +5,11 @@ include('../inc_config.php');
 abstract class AbstractDataBase
 {
 
+    /**
+     * @var PDO
+     */
+    private $bd;
+
     public function __construct()
     {
         $this->bd = $this->SetDb();
@@ -21,6 +26,7 @@ abstract class AbstractDataBase
 
         return $bdd;
     }
+    
     /**
      * Find row by field name and value, $params = ["field" => value], one param
      *
@@ -114,7 +120,7 @@ abstract class AbstractDataBase
     }
 
     /**
-     * Insert data in db , $params = ["field" => $value]
+     * Insert data in db , $params = ["field" => $value, $firld2 => $value2 ]
      *
      * @param array $params
      * @param string $table

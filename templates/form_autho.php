@@ -1,11 +1,17 @@
 <?php
-
-include 'header.php';
 require_once('../inc_config.php');
 
 ?>
 
+    <?php include 'header.php'; ?>
 <h1 class="titre-blog"> <span class="span-blog">CONNEXION</span></h1>
+
+<?php if (isset($_GET['success'])) : ?>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Attetion ! les mots de passes inserés sont ne sont pas identiques !  </strong>
+    </div>
+<?php endif; ?>
 
 <div class="contenaire-connexion">
 
@@ -34,7 +40,7 @@ require_once('../inc_config.php');
     <div class="infos-connexion">
         <h1 class="titre-visiteur">Cher visiteur,</h1>
         <p class="p-connexion">Vous n'êtes pas encore inscrit vous pouvez le faire en cliquant sur le bouton s'inscrire</p>
-        <button class="connexion-inscription"><a class="direction" href="formulaire_inscription.php"> S'inscrire </a></button>
+        <button class="connexion-inscription"><a class="direction" href="../templates/registrationForm.php"> S'inscrire </a></button>
     </div>
 
 
