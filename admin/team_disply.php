@@ -23,12 +23,14 @@
                 <!--Menu-->
                 <nav class="dashboard-nav-list">
 
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i>Accueil </a>
-                    <a href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> Slide</a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-archive"></i> Services </a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-graduation-cap"></i> Formations</a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-user-plus"></i> Equipe</a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-user-friends"></i> Utilisateurs</a>
+                    <a href="home.php" class="dashboard-nav-item"><i class="fas fa-home"></i>Accueil </a>
+                    <a href="slide_disply.php" class="dashboard-nav-item "><i class="fas fa-tachometer-alt"></i> Slide</a>
+                    <a href="service_disply.php" class="dashboard-nav-item"><i class="fas fa-archive"></i> Services </a>
+                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-graduation-cap"></i> Formations</a>
+                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-calendar-plus"></i> Planning</a>
+                    <a href="team_disply.php" class="dashboard-nav-item active"><i class="fas fa-user-plus"></i> Equipe</a>
+                    <a href="users_disply.php" class="dashboard-nav-item"><i class="fas fa-user-friends"></i> Utilisateurs</a>
 
                     <!-- Vertical bar -->
                     <div class="nav-item-divider"></div>
@@ -48,21 +50,23 @@
                         <div class='card'>
                             <!--titre du dashbord -->
                             <div class='card-header'>
-                                <h1>Slide</h1>
+                                <h1>L'Equipe</h1>
                             </div>
 
                             <!--contenu du tableau -->
                             <div class='card-body'>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <a href="slide_add.php"> <button type="button" class="btn btn-success btn-slide">Ajouter</button></a>
+                                    <a href="team_add.php"> <button type="button" class="btn btn-success btn-slide">Ajouter</button></a>
                                 </div>
                                 <table class="table">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Titre</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">NOM</th>
+                                            <th scope="col">PRENOM</th>
+                                            <th scope="col">FONCTION</th>
+                                            <th scope="col">ACTION</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -70,8 +74,9 @@
                                             <th scope="row">1</th>
                                             <td>Mark</td>
                                             <td>Otto</td>
+                                            <td>Agent</td>
                                             <td>
-                                                <a href="slide_modification.php"> <button type="button" class="btn btn-success">Modifier</button></a>
+                                                <a href="team_modification.php"> <button type="button" class="btn btn-success">Modifier</button></a>
                                                 <button type="button" class="btn btn-danger">Supprimer</button>
                                             </td>
                                         </tr>
@@ -79,8 +84,9 @@
                                             <th scope="row">2</th>
                                             <td>Jacob</td>
                                             <td>Thornton</td>
+                                            <td>Agent</td>
                                             <td>
-                                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
+                                                <a href="team_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
                                                 <button type="button" class="btn btn-danger">Supprimer</button>
                                             </td>
                                         </tr>
@@ -88,8 +94,9 @@
                                             <th scope="row">3</th>
                                             <td>Larry</td>
                                             <td>the Bird</td>
+                                            <td>Agent</td>
                                             <td>
-                                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
+                                                <a href="team_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
                                                 <button type="button" class="btn btn-danger">Supprimer</button>
                                             </td>
                                         </tr>

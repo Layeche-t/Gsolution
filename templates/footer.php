@@ -20,7 +20,7 @@
 	<div class="bloc2">
 		<h2 class="g7solution">G7solution</h2>
 		<h2 class="sous-text"><a href="#">Nous sommes</a></h2>
-		<h2 class="sous-text"><a href="equipe.php">L'équipe</a></h2>
+		<h2 class="sous-text"><a href="../templates/team.php">L'équipe</a></h2>
 		<h2 class="sous-text"><a href="#">Nos experts</a></h2>
 		<h2 class="sous-text"><a href="blog.php">Blog</a></h2>
 	</div>

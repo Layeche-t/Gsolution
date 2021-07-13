@@ -1,3 +1,13 @@
+<?php
+require_once('../inc_config.php');
+
+if (!isset($_SESSION['user'])) {
+    header('Location: ../admin/login_backOffice.php');
+    exit;
+}
+
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -23,12 +33,14 @@
                 <!--Menu-->
                 <nav class="dashboard-nav-list">
 
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i>Accueil </a>
-                    <a href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> Slide</a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-archive"></i> Services </a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-graduation-cap"></i> Formations</a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-user-plus"></i> Equipe</a>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-user-friends"></i> Utilisateurs</a>
+                    <a href="home.php" class="dashboard-nav-item active"><i class="fas fa-home"></i>Accueil </a>
+                    <a href="slide_disply.php" class="dashboard-nav-item "><i class="fas fa-tachometer-alt"></i> Slide</a>
+                    <a href="service_disply.php" class="dashboard-nav-item"><i class="fas fa-archive"></i> Services </a>
+                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-graduation-cap"></i> Formations</a>
+                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-calendar-plus"></i> Planning</a>
+                    <a href="team_disply.php" class="dashboard-nav-item"><i class="fas fa-user-plus"></i> Equipe</a>
+                    <a href="users_disply.php" class="dashboard-nav-item"><i class="fas fa-user-friends"></i> Utilisateurs</a>
 
                     <!-- Vertical bar -->
                     <div class="nav-item-divider"></div>
