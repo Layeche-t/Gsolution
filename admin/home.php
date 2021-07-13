@@ -1,13 +1,18 @@
 <?php
 require_once('../inc_config.php');
-
-
 ?>
+
+
 <?php include('inc_header.php'); ?>
+
             <div class='dashboard-app'>
                 <header class='dashboard-toolbar'>
                     <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
                 </header>
+
+
+
+
 
                 <!-- Le contenu du dashbord-->
                 <div class='dashboard-content'>
@@ -27,15 +32,15 @@ require_once('../inc_config.php');
                                     <thead class="table-dark">
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Titre</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Fatouh</th>
+                                            <th scope="col">Layeche</th>
+                                            <th scope="col">TORKI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>Mark</td>
+                                            <td>Je marche</td>
                                             <td>Otto</td>
                                             <td>
                                                 <a href="slide_modification.php"> <button type="button" class="btn btn-success">Modifier</button></a>
@@ -63,8 +68,13 @@ require_once('../inc_config.php');
                                     </tbody>
                                 </table>
 
+
+
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php include('inc_footer.php'); ?>
             </div>
+
+
