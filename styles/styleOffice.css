@@ -1,14 +1,4 @@
-.nav_color {
-    background-color: #e0ffd4;
-}
 
-.déconnexion{
-    margin: 0 0 0 1050px ;
-}
-
-.div-container {
-    border: 1px solid black;
-}
 
 *, *::before, *::after {
     -webkit-box-sizing: border-box;
@@ -96,7 +86,6 @@ h1, .h1 {
     -webkit-flex: 1 1 auto;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 1.25rem;
 }
 
 .card-header {
@@ -441,4 +430,29 @@ h1, .h1 {
     .dashboard-compact .dashboard-toolbar {
         left: 0;
     }
+}
+
+
+/* Personnel */
+
+.area-description {
+    margin: 20px 0px 0px 0px;
+    height: 100px;
+}
+
+.conteiner-slide{
+    margin: 20px 0px 0px 0px;
+    height: 200px;
+}
+
+.input-file{   
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+}
+
+.submit-validation {
+    margin: 20px 0px 0px 0px;
+    padding: 5px 20px;
+    background-color: #8393cc ;
+    
 }

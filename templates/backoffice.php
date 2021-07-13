@@ -1,3 +1,7 @@
+<?php
+require_once('../inc_config.php');
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -44,14 +48,41 @@
                     <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
                 </header>
 
+                <!-- Le contenu du dashbord-->
                 <div class='dashboard-content'>
                     <div class='container'>
                         <div class='card'>
+                            <!--titre du dashbord -->
                             <div class='card-header'>
-                                <h1>Welcome back Jim</h1>
+                                <h1>Slide</h1>
                             </div>
+
+
                             <div class='card-body'>
-                                <p>Your account type is: Administrator</p>
+                                <!-- le formuliare d'envoie -->
+                                <form action="">
+                                    <div class="input-group">
+                                        <span class="input-group-text">Entrez votre titre</span>
+                                        <input type="text" aria-label="First name" class="form-control">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*">
+                                    </div>
+
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control area-description" placeholder="Description.." id="floatingTextarea2"></textarea>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control conteiner-slide" placeholder="Description.." id="floatingTextarea2"></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn  submit-validation" type="submit">Valider</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
