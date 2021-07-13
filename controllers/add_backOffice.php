@@ -3,12 +3,12 @@ require_once('../inc_config.php');
 
 $post =  new Post();
 
-
 if (isset($_POST['validation'])) {
-    $newPost = $post->SetUser($_POST);
-    header('Location: ../templates/backoffice.php?error=yes');
-    exit;
-} else {
-    header('Location: ../templates/backoffice.php?error=oui');
+
+    unset($_POST['validation']);
+
+    $newPost = $post->SetPost($_POST);
+
+    header('Location: ../templates/backOffice.php?success');
     exit;
 }

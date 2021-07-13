@@ -95,7 +95,7 @@ class Post extends AbstractDataBase
         $this->foring = $foring;
     }
 
-    public function SetUser(array $params, $table = self::TABLE)
+    public function SetPost(array $params, $table = self::TABLE)
     {
         return parent::set($params, $table);
     }

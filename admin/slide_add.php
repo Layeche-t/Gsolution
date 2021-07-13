@@ -19,7 +19,6 @@ require_once('../inc_config.php');
 
 <body>
 
-
     <div class="container-fluid div-container">
         <div class='dashboard'>
             <div class="dashboard-nav">
@@ -54,33 +53,39 @@ require_once('../inc_config.php');
                         <div class='card'>
                             <!--titre du dashbord -->
                             <div class='card-header'>
-                                <h1>Slide</h1>
+                                <h1>Ajouter un Slide</h1>
+                                <?php if (isset($_GET['success'])) : ?>
+                                    <div class="alert alert-success" role="alert">
+                                        A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                    </div>
+                                <?php endif; ?>
+
                             </div>
 
 
                             <div class='card-body'>
                                 <!-- le formuliare d'envoie -->
-                                <form action="">
+                                <form action="../controllers/add_backOffice.php" method="POST">
                                     <div class="input-group">
                                         <span class="input-group-text">Entrez votre titre</span>
-                                        <input type="text" aria-label="First name" class="form-control">
+                                        <input type="text" aria-label="First name" class="form-control" name="titel" required>
                                     </div>
 
                                     <div class="input-group mb-3">
-                                        <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*">
+                                        <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture">
                                     </div>
 
 
                                     <div class="form-floating">
-                                        <textarea class="form-control area-description" placeholder="Description.." id="floatingTextarea2"></textarea>
+                                        <textarea class="form-control area-description" placeholder="Description.." id="floatingTextarea2" name="description" required></textarea>
                                     </div>
 
                                     <div class="form-floating">
-                                        <textarea class="form-control conteiner-slide" placeholder="Description.." id="floatingTextarea2"></textarea>
+                                        <textarea class="form-control conteiner-slide" placeholder="Tapez votre texte.." id="floatingTextarea2" name="text" required></textarea>
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn  submit-validation" type="submit">Valider</button>
+                                        <button class="btn  submit-validation" type="submit" name="validation">Valider</button>
                                     </div>
                                 </form>
                             </div>

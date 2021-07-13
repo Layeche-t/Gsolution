@@ -1,15 +1,14 @@
 <?php
 require_once('../inc_config.php');
-
 ?>
 
-    <?php include 'header.php'; ?>
+<?php include 'header.php'; ?>
 <h1 class="titre-blog"> <span class="span-blog">CONNEXION</span></h1>
 
 <?php if (isset($_GET['success'])) : ?>
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Attetion ! les mots de passes inserés sont ne sont pas identiques !  </strong>
+        <strong>Attetion ! les mots de passes inserés sont ne sont pas identiques ! </strong>
     </div>
 <?php endif; ?>
 
