@@ -1,5 +1,13 @@
 <?php
 require_once('../inc_config.php');
+
+$post = new Post();
+if (isset($_GET['id']) && $_GET['id'] != ''){
+    //
+    $slider = $post->findOneBy(['titel' => $_GET['id']], $post::TABLE);
+    // if not found redirect to home ! error id
+    var_dump($slider);die;
+}
 ?>
 
 <!doctype html>
@@ -68,7 +76,7 @@ require_once('../inc_config.php');
                                 <form action="../controllers/add_backOffice.php" method="POST">
                                     <div class="input-group">
                                         <span class="input-group-text">Entrez votre titre</span>
-                                        <input type="text" aria-label="First name" class="form-control" name="titel" required>
+                                        <input type="text" aria-label="First name" class="form-control" name="titel" value="<?= $slider->titel ?>" required>
                                     </div>
 
                                     <div class="input-group mb-3">
