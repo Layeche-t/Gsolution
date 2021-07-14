@@ -9,11 +9,6 @@ require_once('../inc_config.php');
                 <header class='dashboard-toolbar'>
                     <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
                 </header>
-
-
-
-
-
                 <!-- Le contenu du dashbord-->
                 <div class='dashboard-content'>
                     <div class='container'>
