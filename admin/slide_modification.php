@@ -5,11 +5,7 @@ $post = new Post();
 
 if (isset($_GET['id']) && $_GET['id'] != '')
 {
-    //
     $slider = $post->findOneBy(['id' => $_GET['id']], $post::TABLE);
-
-
-    // if not found redirect to home ! error i
 }
 ?>
 
@@ -65,15 +61,25 @@ if (isset($_GET['id']) && $_GET['id'] != '')
                             <!--titre du dashbord -->
                             <div class='card-header'>
                                 <h1>Modifier votre slide</h1>
+                                <?php if (isset($_GET['success'])) :?>
+                                <div class="alert alert-success" role="alert">
+                                    A simple success alert—check it out!
+                                </div>
+                                <?php endif;?>
                             </div>
 
 
                             <div class='card-body'>
                                 <!-- le formuliare d'envoie -->
-                                <form action="" method="POST">
+                                <form action="../controllers/update_backOffice.php" method="POST">
                                     <div class="input-group">
                                         <span class="input-group-text">Entrez votre titre</span>
                                         <input type="text" aria-label="First name" class="form-control" name="titel" value=<?= $slider->titel ?> required>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-text">La source de votre image</span>
+                                        <input type="text" aria-label="First name" class="form-control" name="source" value=<?= $slider->source ?> required>
                                     </div>
 
                                     <div class="form-floating">
@@ -85,6 +91,7 @@ if (isset($_GET['id']) && $_GET['id'] != '')
                                     </div>
 
                                     <div class="col-12">
+                                        <input type="text" aria-label="First name" class="form-control" name="id" value=<?= $slider->id ?> hidden>
                                         <button class="btn btn-success submit-modification" type="submit" name="modification">Modifier</button>
                                     </div>
                                 </form>

@@ -3,10 +3,14 @@
 require_once('../inc_config.php');
 $post = new Post();
 
-if (isset($_GET['id']) and $_GET['id'] != '') {
+$affichages= $post->findAll($post::TABLE);
 
-    $affichages= $post->findAll($post::TABLE);
+
+if (isset($_GET['id'])) {
+    $post->deleteById($_GET['id'], $post::TABLE);
+    header('Location: ../admin/slide_disply.php');
 }
+
 ?>
 
 <!-- import du header -->
@@ -27,7 +31,11 @@ if (isset($_GET['id']) and $_GET['id'] != '') {
                 <!--titre du dashbord -->
                 <div class='card-header'>
                     <h1>Le contenu de votre slide</h1>
-                    if (isset($_GET['id']) 
+                    <?php if (isset($_GET['success'])) :?>
+                    <div class="alert alert-success" role="alert">
+                        A simple success alert—check it out!
+                    </div>
+                    <?php endif ?>
 
 
 
@@ -59,16 +67,16 @@ if (isset($_GET['id']) and $_GET['id'] != '') {
 
                         <tbody>
 
-                        <?php foreach( (array) $affichages as $affichage) : ?>
+                        <?php foreach( $affichages as $affichage) : ?>
 
                         <tr>
                             <th scope="row"> <?= $affichage['id'] ?> </th>
                             <td> <?= $affichage['titel'] ?> </td>
                             <td> <?= $affichage['description'] ?> </td>
-                            <td> <?= $affichage['text'] ?> </td>
+                            <td> <?= $affichage['source'] ?> </td>
                             <td>
-                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
-                                <button type="button" class="btn btn-danger">Supprimer</button>
+                                <a href="slide_modification.php?id= <?=$affichage['id']?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                <a href="?id= <?=  $affichage['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
                             </td>
                         </tr>
 
