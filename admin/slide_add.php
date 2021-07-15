@@ -87,6 +87,7 @@ require_once('../inc_config.php');
                                     <div class="col-12">
                                         <button class="btn  submit-validation" type="submit" name="validation">Valider</button>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
