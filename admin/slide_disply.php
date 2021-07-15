@@ -1,7 +1,12 @@
 
 <?php
 require_once('../inc_config.php');
+$post = new Post();
 
+if (isset($_GET['id']) and $_GET['id'] != '') {
+
+    $affichages= $post->findAll($post::TABLE);
+}
 ?>
 
 <!-- import du header -->
@@ -22,14 +27,8 @@ require_once('../inc_config.php');
                 <!--titre du dashbord -->
                 <div class='card-header'>
                     <h1>Le contenu de votre slide</h1>
+                    if (isset($_GET['id']) 
 
-                    <!--gestion des erreurs-->
-                    <?php if (isset($_GET['success'])) : ?>
-                        <div class="alert alert-success" role="alert">
-                            Vos données sont inserées
-                        </div>
-                    <?php endif; ?>
-                </div>
 
 
 
@@ -41,45 +40,39 @@ require_once('../inc_config.php');
                     </div>
 
                     <!--contenu du tableau -->
+
+
+
+
+
                     <table class="table">
+
                         <thead class="table-dark">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Lalou</th>
-                            <th scope="col">Layeche</th>
-                            <th scope="col">TORKI</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Source de l'image</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
+
                         <tbody>
+
+                        <?php foreach( (array) $affichages as $affichage) : ?>
+
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Je marche</td>
-                            <td>Otto</td>
+                            <th scope="row"> <?= $affichage['id'] ?> </th>
+                            <td> <?= $affichage['titel'] ?> </td>
+                            <td> <?= $affichage['description'] ?> </td>
+                            <td> <?= $affichage['text'] ?> </td>
                             <td>
                                 <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
                                 <button type="button" class="btn btn-danger">Supprimer</button>
                             </td>
                         </tr>
 
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>
-                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
-                                <button type="button" class="btn btn-danger">Supprimer</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>
-                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
-                                <button type="button" class="btn btn-danger">Supprimer</button>
-                            </td>
-                        </tr>
+                       <?php endforeach ?>
                         </tbody>
                     </table>
                     <!-- fin du tableau -->
@@ -141,4 +134,3 @@ require_once('../inc_config.php');
 
 
 </div>
-
