@@ -2,11 +2,14 @@
 require_once('../inc_config.php');
 
 $post = new Post();
-if (isset($_GET['id']) && $_GET['id'] != ''){
+
+if (isset($_GET['id']) && $_GET['id'] != '')
+{
     //
-    $slider = $post->findOneBy(['titel' => $_GET['id']], $post::TABLE);
-    // if not found redirect to home ! error id
-    var_dump($slider);die;
+    $slider = $post->findOneBy(['id' => $_GET['id']], $post::TABLE);
+
+
+    // if not found redirect to home ! error i
 }
 ?>
 
@@ -62,34 +65,23 @@ if (isset($_GET['id']) && $_GET['id'] != ''){
                             <!--titre du dashbord -->
                             <div class='card-header'>
                                 <h1>Modifier votre slide</h1>
-                                <?php if (isset($_GET['success'])) : ?>
-                                    <div class="alert alert-success" role="alert">
-                                        A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-                                    </div>
-                                <?php endif; ?>
-
                             </div>
 
 
                             <div class='card-body'>
                                 <!-- le formuliare d'envoie -->
-                                <form action="../controllers/add_backOffice.php" method="POST">
+                                <form action="" method="POST">
                                     <div class="input-group">
                                         <span class="input-group-text">Entrez votre titre</span>
-                                        <input type="text" aria-label="First name" class="form-control" name="titel" value="<?= $slider->titel ?>" required>
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture">
-                                    </div>
-
-
-                                    <div class="form-floating">
-                                        <textarea class="form-control area-description" placeholder="Description.." id="floatingTextarea2" name="description" required></textarea>
+                                        <input type="text" aria-label="First name" class="form-control" name="titel" value=<?= $slider->titel ?> required>
                                     </div>
 
                                     <div class="form-floating">
-                                        <textarea class="form-control conteiner-slide" placeholder="Tapez votre texte.." id="floatingTextarea2" name="text" required></textarea>
+                                        <textarea class="form-control area-description"  id="floatingTextarea2" name="description"  required><?= $slider->description  ?></textarea>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control conteiner-slide"  id="floatingTextarea2" name="text"  required><?= $slider->text ?></textarea>
                                     </div>
 
                                     <div class="col-12">

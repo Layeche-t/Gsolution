@@ -1,6 +1,7 @@
 
 <?php
 require_once('../inc_config.php');
+
 ?>
 
 <!-- import du header -->
@@ -55,8 +56,8 @@ require_once('../inc_config.php');
                             <td>Je marche</td>
                             <td>Otto</td>
                             <td>
-                                    <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal" >Ajouter </button>
-                                    <button type="button" class="btn btn-danger">Supprimer</button>
+                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
+                                <button type="button" class="btn btn-danger">Supprimer</button>
                             </td>
                         </tr>
 
@@ -65,17 +66,18 @@ require_once('../inc_config.php');
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>
-                                <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal" >Ajouter </button>
+                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
                                 <button type="button" class="btn btn-danger">Supprimer</button>
                             </td>
                         </tr>
+
                         <tr>
                             <th scope="row">3</th>
                             <td>Larry</td>
                             <td>the Bird</td>
                             <td>
-                                <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal" >Ajouter </button>
-                                <button type="button" class="btn btn-dark submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal" >Supprimer </button>
+                                <a href="slide_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
+                                <button type="button" class="btn btn-danger">Supprimer</button>
                             </td>
                         </tr>
                         </tbody>
@@ -118,7 +120,7 @@ require_once('../inc_config.php');
                             <label for="message-text" class="col-form-label">Votre contenu : </label>
                             <textarea class="form-control" id="message-text" rows="5" cols="33" name="text" required></textarea>
                         </div>
-                        <!-- bouton d'envoie -->
+
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary" name="validation">Valider</button>
                         </div>
@@ -126,32 +128,7 @@ require_once('../inc_config.php');
                     </form>
                 </div>
 
-                <!-- modèle de suppression-->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Launch demo modal
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- bouton d'envoie -->
 
 
             </div>
