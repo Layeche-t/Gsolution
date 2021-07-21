@@ -5,13 +5,13 @@ require_once('../inc_config.php');
 //l'objet
 $post = new Post();
 
-//méthode select par
-$sliders = $post->findBy(['type' => 'slider'], 1000, $post::TABLE);
+//methode select par
+$sliders = $post->findBy(['type' => 'service'], 1000, $post::TABLE);
 
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
     $post->deleteById($_GET['id'], $post::TABLE);
-    header('Location: ../admin/slide_disply.php?delete');
+    header('Location: ../admin/services_disply.php?delete');
     exit();
 }
 ?>
@@ -31,19 +31,19 @@ if (isset($_GET['id'])) {
 
                 <!--titre du dashbord -->
                 <div class='card-header'>
-                    <h1>Le contenu de votre slide</h1>
+                    <h1>Le contenu de votre service</h1>
 
                     <!--success ajout-->
                     <?php if (isset($_GET['success'])) : ?>
                         <div class="alert alert-success" role="alert">
-                            Votre slide vient d'être ajouté
+                            Votre service vient d'être ajouté
                         </div>
                     <?php endif ?>
 
                     <!--success suppression-->
                     <?php if (isset($_GET['delete'])) : ?>
                         <div class="alert alert-success" role="alert">
-                            Votre slide vient d'être supprimé
+                            Votre service vient d'être supprimé
                         </div>
                     <?php endif ?>
 
@@ -61,7 +61,6 @@ if (isset($_GET['id'])) {
                                     <th scope="col">Id</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Source de l'image</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -78,9 +77,8 @@ if (isset($_GET['id'])) {
                                         <th scope="row"> <?= $num ?> </th>
                                         <td> <?= $slider['titel'] ?> </td>
                                         <td> <?= $slider['description'] ?> </td>
-                                        <td> <?= $slider['source'] ?> </td>
                                         <td>
-                                            <a href="slide_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <a href="services_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
                                             <a href="?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
                                         </td>
                                     </tr>
@@ -107,10 +105,10 @@ if (isset($_GET['id'])) {
 
                     <!-- formulaire d'envoie-->
                     <div class="modal-body">
-                        <form action="../template/admin/controllers/add_backOffice.php" method="POST" enctype="multipart/form-data">
+                        <form action="../controllers/add_services.php" method="POST" enctype="multipart/form-data">
 
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Entrez votre titre :</label>
+                                <label for="recipient-name" class="col-form-label">Entrez le titre de votre service :</label>
                                 <input type="text" class="form-control" id="recipient-name" name="titel" required>
                             </div>
 
@@ -119,15 +117,18 @@ if (isset($_GET['id'])) {
                             </div>
 
                             <div class="mb-3">
-                                <label for="message-text" class="col-form-label">La description : </label>
-                                <textarea class="form-control" id="message-text" name="description" required></textarea>
+                                <label for="recipient-name" class="col-form-label">Entrez la source de votre image :</label>
+                                <input type="text" class="form-control" id="recipient-name" name="titel" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Votre contenu : </label>
-                                <textarea class="form-control" id="message-text" rows="5" cols="33" name="text" required></textarea>
+                                <label for="message-text" class="col-form-label">La description : </label>
+                                <textarea class="form-control" id="message-text" rows="5" cols="33" name="description" required></textarea>
                             </div>
-                            <input name="type" value="slider" hidden>
+
+                            <!-- le type pour l'appel à la base de données -->
+                            <input name="type" value="service" hidden>
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary" name="validation">Valider</button>
                             </div>

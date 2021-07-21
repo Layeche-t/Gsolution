@@ -4,6 +4,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
 // connexion base de données 
 try {
     global $bdd;

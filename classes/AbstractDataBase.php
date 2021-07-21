@@ -26,7 +26,7 @@ abstract class AbstractDataBase
 
         return $bdd;
     }
-    
+
     /**
      * Find row by field name and value, $params = ["field" => value], one param
      *
@@ -44,9 +44,7 @@ abstract class AbstractDataBase
         $sql = $this->bd->prepare("SELECT * FROM " . $table . " WHERE " . $field[0] . " = ? LIMIT 1");
         $sql->execute([$value[0]]);
 
-        $result = $sql->fetchObject();
-
-        return $result;
+        return $sql->fetchObject();
     }
 
     /**
@@ -63,6 +61,19 @@ abstract class AbstractDataBase
         $results = $sql->fetchAll();
 
         return $results;
+    }
+
+    /**
+     * @param int $id
+     * @param string $table
+     * @return bool
+     */
+    public function deleteById(int $id, string $table)
+    {
+       $del = $this->bd->prepare(" DELETE FROM  ". $table. " WHERE id  = ? LIMIT 1");
+       $del->execute([$id]);
+
+        return true;
     }
 
     /**
@@ -84,7 +95,7 @@ abstract class AbstractDataBase
         for ($i = 1; $i < $len; $i++) {
             $sql .= " AND " . $field[$i] . " = ? ";
         }
-        $sql .= " LIMIT " . $limit;
+        $sql .= " ORDER BY id DESC LIMIT " . $limit;
         $req = $this->bd->prepare($sql);
         $req->execute($value);
 
@@ -101,7 +112,7 @@ abstract class AbstractDataBase
      */
     public function updateById(array $params, string $table)
     {
-        $sql = "UPDATE " . $table . " SET";
+        $sql = "UPDATE " . $table . "SET";
         $fields = array_keys($params);
         array_pop($fields);
 
@@ -150,7 +161,6 @@ abstract class AbstractDataBase
     }
 
 
-
     /**
      * To check if a field exist in  $table
      *
@@ -163,7 +173,7 @@ abstract class AbstractDataBase
         $rows = $this->bd->query("SHOW COLUMNS FROM" . $table);
         $results = $rows->fetchAll();
         foreach ($results as $result) {
-            if (in_array($field, (array) $result)) {
+            if (in_array($field, (array)$result)) {
                 return true;
             }
         }

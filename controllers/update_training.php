@@ -7,7 +7,7 @@ if (isset($_POST['modification'])) {
 
     unset($_POST['modification']);
 
-    $update = $post->updateById( $_POST, $post::TABLE);
-    header('Location: ../admin/slide_disply.php?success');
+    $update = $post->updateById($_POST, $post::TABLE);
+    header('Location: ../admin/training_disply.php?modif');
     exit();
 }

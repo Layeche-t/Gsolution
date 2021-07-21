@@ -1,16 +1,17 @@
 <?php
+
 //connxion à la base de données
 require_once('../inc_config.php');
 //l'objet
 $post = new Post();
 
 //méthode select par
-$sliders = $post->findBy(['type' => 'slider'], 1000, $post::TABLE);
+$trainings = $post->findBy(['type' => 'training'], 1000, $post::TABLE);
 
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
     $post->deleteById($_GET['id'], $post::TABLE);
-    header('Location: ../admin/slide_disply.php?delete');
+    header('Location: ../admin/training_disply.php?delete');
     exit();
 }
 ?>
@@ -30,21 +31,30 @@ if (isset($_GET['id'])) {
 
                 <!--titre du dashbord -->
                 <div class='card-header'>
-                    <h1>Le contenu de votre slide</h1>
+                    <h1>Le contenu de votre formation</h1>
 
                     <!--success ajout-->
                     <?php if (isset($_GET['success'])) : ?>
                         <div class="alert alert-success" role="alert">
-                            Votre slide vient d'être ajouté
+                            Votre formation vient d'être ajouté
                         </div>
                     <?php endif ?>
 
                     <!--success suppression-->
                     <?php if (isset($_GET['delete'])) : ?>
                         <div class="alert alert-success" role="alert">
-                            Votre slide vient d'être supprimé
+                            Votre formation vient d'être supprimé
                         </div>
                     <?php endif ?>
+
+                    <!--success modification-->
+                    <?php if (isset($_GET['modif'])) : ?>
+                        <div class="alert alert-success" role="alert">
+                            Votre formation vient d'être modifié
+                        </div>
+                    <?php endif ?>
+
+
 
                     <div class='card-body'>
                         <!-- bouton d'envoie (pop up) -->
@@ -58,9 +68,7 @@ if (isset($_GET['id'])) {
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Id</th>
-                                    <th scope="col">Titre</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Source de l'image</th>
+                                    <th scope="col">Titre de la formation</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -69,18 +77,16 @@ if (isset($_GET['id'])) {
                                 <!-- la boucle foreach pour l'affichage -->
                                 <?php
                                 $num = 0;
-                                foreach ($sliders as $slider) :
+                                foreach ($trainings as $training) :
                                     $num = $num + 1;
                                 ?>
 
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
-                                        <td> <?= $slider['titel'] ?> </td>
-                                        <td> <?= $slider['description'] ?> </td>
-                                        <td> <?= $slider['source'] ?> </td>
+                                        <td> <?= $training['titel'] ?> </td>
                                         <td>
-                                            <a href="slide_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                            <a href="training_modification.php?id= <?= $training['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <a href="?id= <?= $training['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
                                         </td>
                                     </tr>
 
@@ -106,32 +112,30 @@ if (isset($_GET['id'])) {
 
                     <!-- formulaire d'envoie-->
                     <div class="modal-body">
-                        <form action="../controllers/add_slider.php" method="POST" enctype="multipart/form-data">
+                        <form action="../controllers/add_training.php" method="POST" enctype="multipart/form-data">
 
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Entrez votre titre :</label>
+                                <label for="recipient-name" class="col-form-label">Entrez le titre de votre service :</label>
                                 <input type="text" class="form-control" id="recipient-name" name="titel" required>
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture" required>
+                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture">
                             </div>
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez la source de votre image :</label>
-                                <input type="text" class="form-control" id="recipient-name" name="titel" required>
+                                <input type="text" class="form-control" id="recipient-name" name="source" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">La description : </label>
-                                <textarea class="form-control" id="message-text" name="description" required></textarea>
+                                <textarea class="form-control" id="message-text" rows="5" cols="33" name="description" required></textarea>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Votre contenu : </label>
-                                <textarea class="form-control" id="message-text" rows="5" cols="33" name="text" required></textarea>
-                            </div>
-                            <input name="type" value="slider" hidden>
+                            <!-- le type pour l'appel à la base de données -->
+                            <input name="type" value="training" hidden>
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary" name="validation">Valider</button>
                             </div>

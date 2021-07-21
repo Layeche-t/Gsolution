@@ -23,7 +23,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
             <div class='card'>
                 <!--titre du dashbord -->
                 <div class='card-header'>
-                    <h1>Modifier votre slide</h1>
+                    <h1>Modifier votre formation</h1>
                     <?php if (isset($_GET['success'])) : ?>
                         <div class="alert alert-success" role="alert">
                             A simple success alert—check it out!
@@ -34,23 +34,14 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 
                 <div class='card-body'>
                     <!-- le formuliare d'envoie -->
-                    <form action="../controllers/update_backOffice.php" method="POST">
+                    <form action="../controllers/update_training.php" method="POST">
                         <div class="input-group">
                             <span class="input-group-text">Entrez votre titre</span>
-                            <input type="text" aria-label="First name" class="form-control" name="titel" value=<?= $slider->titel ?> required>
-                        </div>
-
-                        <div class="input-group">
-                            <span class="input-group-text">La source de votre image</span>
-                            <input type="text" aria-label="First name" class="form-control" name="source" value=<?= $slider->source ?> required>
+                            <input type="text" aria-label="First name" class="form-control" name="titel" value=<?= $slider->titel ?>>
                         </div>
 
                         <div class="form-floating">
-                            <textarea class="form-control area-description" id="floatingTextarea2" name="description" required><?= $slider->description  ?></textarea>
-                        </div>
-
-                        <div class="form-floating">
-                            <textarea class="form-control conteiner-slide" id="floatingTextarea2" name="text" required><?= $slider->text ?></textarea>
+                            <textarea class="form-control area-description" id="floatingTextarea2" name="description" rows="5" cols="33"><?= $slider->description  ?></textarea>
                         </div>
 
                         <div class="col-12">

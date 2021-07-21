@@ -4,7 +4,7 @@
 class Post extends AbstractDataBase
 {
 
-    const TABLE = 'posts';
+    const TABLE = ' posts ';
 
     private $id;
 
