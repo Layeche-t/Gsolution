@@ -70,8 +70,8 @@ abstract class AbstractDataBase
      */
     public function deleteById(int $id, string $table)
     {
-       $del = $this->bd->prepare(" DELETE FROM  ". $table. " WHERE id  = ? LIMIT 1");
-       $del->execute([$id]);
+        $del = $this->bd->prepare(" DELETE FROM  " . $table . " WHERE id  = ? LIMIT 1");
+        $del->execute([$id]);
 
         return true;
     }
@@ -112,7 +112,7 @@ abstract class AbstractDataBase
      */
     public function updateById(array $params, string $table)
     {
-        $sql = "UPDATE " . $table . "SET";
+        $sql = "UPDATE " . $table . " SET";
         $fields = array_keys($params);
         array_pop($fields);
 
@@ -121,6 +121,7 @@ abstract class AbstractDataBase
         }
         $sql = rtrim($sql, ',');
         $sql .= "WHERE id = ? LIMIT 1";
+
         try {
             $rq = $this->bd->prepare($sql);
             $rq->execute(array_values($params));

@@ -1,115 +1,156 @@
-<!doctype html>
-<html lang="fr">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/5da465d417.js" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../styles/styleOffice.css">
-    <title>BackOffice</title>
-</head>
+//connxion à la base de données
+require_once('../inc_config.php');
+//l'objet
+$user = new User();
 
-<body>
+//méthode select par
+$teams = $user->findBy(['role' => 'team'], 1000, $user::TABLE);
 
-    <div class="container-fluid div-container">
-        <div class='dashboard'>
-            <div class="dashboard-nav">
-                <header>
-                    <a href="#" class="brand-logo"><i class="fas fa-anchor"></i><span>Gilles</span></a>
-                </header>
-                <!--Menu-->
-                <nav class="dashboard-nav-list">
+//supprimer un élement du tableau
+if (isset($_GET['id'])) {
+    $post->deleteById($_GET['id'], $user::TABLE);
+    header('Location: ../admin/team_disply.php?delete');
+    exit();
+}
+?>
 
-                    <a href="home.php" class="dashboard-nav-item"><i class="fas fa-home"></i>Accueil </a>
-                    <a href="slide_disply.php" class="dashboard-nav-item "><i class="fas fa-tachometer-alt"></i> Slide</a>
-                    <a href="service_disply.php" class="dashboard-nav-item"><i class="fas fa-archive"></i> Services </a>
-                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-graduation-cap"></i> Formations</a>
-                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-blog"></i> Blog</a>
-                    <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-calendar-plus"></i> Planning</a>
-                    <a href="team_disply.php" class="dashboard-nav-item active"><i class="fas fa-user-plus"></i> Equipe</a>
-                    <a href="users_disply.php" class="dashboard-nav-item"><i class="fas fa-user-friends"></i> Utilisateurs</a>
+<!-- import du header -->
+<?php include('inc_header.php'); ?>
 
-                    <!-- Vertical bar -->
-                    <div class="nav-item-divider"></div>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Déconnexion </a>
-                </nav>
+<!-- Le contenu du dashbord-->
+<div class='dashboard-app'>
+    <header class='dashboard-toolbar'>
+        <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+    </header>
 
-                <!-- The heart of the dashboard -->
-            </div>
-            <div class='dashboard-app'>
-                <header class='dashboard-toolbar'>
-                    <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
-                </header>
+    <div class='dashboard-content'>
+        <div class='container'>
+            <div class='card'>
 
-                <!-- Le contenu du dashbord-->
-                <div class='dashboard-content'>
-                    <div class='container'>
-                        <div class='card'>
-                            <!--titre du dashbord -->
-                            <div class='card-header'>
-                                <h1>L'Equipe</h1>
-                            </div>
+                <!--titre du dashbord -->
+                <div class='card-header'>
+                    <h1>Votre équipe</h1>
 
-                            <!--contenu du tableau -->
-                            <div class='card-body'>
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <a href="team_add.php"> <button type="button" class="btn btn-success btn-slide">Ajouter</button></a>
-                                </div>
-                                <table class="table">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">NOM</th>
-                                            <th scope="col">PRENOM</th>
-                                            <th scope="col">FONCTION</th>
-                                            <th scope="col">ACTION</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>Agent</td>
-                                            <td>
-                                                <a href="team_modification.php"> <button type="button" class="btn btn-success">Modifier</button></a>
-                                                <button type="button" class="btn btn-danger">Supprimer</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>Agent</td>
-                                            <td>
-                                                <a href="team_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
-                                                <button type="button" class="btn btn-danger">Supprimer</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>Agent</td>
-                                            <td>
-                                                <a href="team_modification.php"><button type="button" class="btn btn-success">Modifier</button></a>
-                                                <button type="button" class="btn btn-danger">Supprimer</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
+                    <!--success ajout-->
+                    <?php if (isset($_GET['success'])) : ?>
+                        <div class="alert alert-success" role="alert">
+                            Un membre de votre équipe vient d'être ajouté
                         </div>
+                    <?php endif ?>
+
+                    <!--success suppression-->
+                    <?php if (isset($_GET['delete'])) : ?>
+                        <div class="alert alert-success" role="alert">
+                            Un membre de votre équipe vient d'être supprimé
+                        </div>
+                    <?php endif ?>
+
+                    <!--success modification-->
+                    <?php if (isset($_GET['modif'])) : ?>
+                        <div class="alert alert-success" role="alert">
+                            Un membre de votre équipe vient vient d'être modifié
+                        </div>
+                    <?php endif ?>
+
+
+
+                    <div class='card-body'>
+                        <!-- bouton d'envoie (pop up) -->
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
+                        </div>
+
+                        <!--contenu du tableau -->
+                        <table class="table">
+                            <!-- le header du tableau -->
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prénom</th>
+                                    <th scope="col">Fonction</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <!-- la boucle foreach pour l'affichage -->
+                                <?php
+                                $num = 0;
+                                foreach ($teams as $team) :
+                                    $num = $num + 1;
+                                ?>
+
+                                    <tr>
+                                        <th scope="row"> <?= $num ?> </th>
+                                        <td> <?= $team['firstname'] ?> </td>
+                                        <td> <?= $team['lastname'] ?> </td>
+                                        <td> <?= $team['function'] ?> </td>
+                                        <td>
+                                            <a href="team_modification.php?id= <?= $team['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <a href="?id= <?= $team['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                        </td>
+                                    </tr>
+
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                        <!-- fin du tableau -->
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
 
-</html>
+        <!-- pop up d'ajout -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--titre du formulaire -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nouveau membre</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- formulaire d'envoie-->
+                    <div class="modal-body">
+                        <form action="../controllers/add_team.php" method="POST" enctype="multipart/form-data">
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Nom :</label>
+                                <input type="text" class="form-control" id="recipient-name" name="firstname" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Prénom :</label>
+                                <input type="text" class="form-control" id="recipient-name" name="lastname" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Fonction :</label>
+                                <input type="text" class="form-control" id="recipient-name" name="function" required>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="image">
+                            </div>
+
+
+                            <!-- le type pour l'appel à la base de données -->
+                            <input name="role" value="team" hidden>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" name="validation">Valider</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+
+        <!--import du footer-->
+        <?php include('inc_footer.php'); ?>
+    </div>
