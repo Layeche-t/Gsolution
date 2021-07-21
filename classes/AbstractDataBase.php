@@ -92,6 +92,7 @@ abstract class AbstractDataBase
 
         $len = count($field);
         $sql = "SELECT * FROM " . $table . " WHERE " . $field[0] . " = ?";
+
         for ($i = 1; $i < $len; $i++) {
             $sql .= " AND " . $field[$i] . " = ? ";
         }
