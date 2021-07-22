@@ -1,9 +1,9 @@
 <?php
 require_once('../inc_config.php');
 
-if (!isset($_SESSION['admi'])) {
+if ($_SESSION['autoriser'] != 'oui') {
     header('Location: ../admin/login_backOffice.php');
-    exit;
+    exit();
 }
 ?>
 
@@ -20,6 +20,7 @@ if (!isset($_SESSION['admi'])) {
                 <!--titre du dashbord -->
                 <div class='card-header'>
                     <h1>Accueil</h1>
+
                 </div>
 
                 <!--contenu du tableau -->

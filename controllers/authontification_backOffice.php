@@ -1,7 +1,6 @@
 <?php
 require_once('../inc_config.php');
 
-
 $user =  new User();
 
 
@@ -25,8 +24,9 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
         exit;
     } else {
         // log off
-        $_SESSION['user']['id'] = $connexion->id;
-        $_SESSION['user']['email'] = $connexion->email;
+        $_SESSION['autoriser'] = 'oui';
+        $_SESSION['admi']['firstname'] = $connexion->firstname;
+        $_SESSION['admi']['lastname'] = $connexion->lastname;
 
         header('Location:../admin/home.php');
         exit;
