@@ -15,7 +15,7 @@
         <div class='dashboard'>
             <div class="dashboard-nav">
                 <header>
-                    <a href="#" class="brand-logo"><i class="fas fa-anchor"></i><span>Gilles</span></a>
+                    <a href="#" class="brand-logo"><i class="fas fa-anchor"></i><span> <?= $_SESSION['admi']['firstname'] ?></span></a>
                 </header>
                 <!--Menu-->
                 <nav class="dashboard-nav-list">
@@ -34,6 +34,6 @@
 
                     <!-- Vertical bar -->
                     <div class="nav-item-divider"></div>
-                    <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Déconnexion </a>
+                    <a href="deconnexion_backOffice.php" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Déconnexion </a>
                 </nav>
             </div>
