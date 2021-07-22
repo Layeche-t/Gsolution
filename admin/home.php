@@ -1,7 +1,11 @@
 <?php
 require_once('../inc_config.php');
-?>
 
+if (!isset($_SESSION['admi'])) {
+    header('Location: ../admin/login_backOffice.php');
+    exit;
+}
+?>
 
 <?php include('inc_header.php'); ?>
 
