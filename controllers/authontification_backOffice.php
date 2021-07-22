@@ -1,21 +1,37 @@
 <?php
 require_once('../inc_config.php');
 
-$userBackOffice =  new User();
 
-if (!empty($_POST) && !empty($_POST['email']) && !empty($_POST['password'])) {
+$user =  new User();
 
-    $connexion = $userBackOffice->findOneBy(['email' => $_POST['email']], $userBackOffice::TABLE);
 
-    if ($connexion->password === $_POST['password']) {
 
-        $_SESSION['admi']['id'] = $connexion->id;
-        $_SESSION['admi']['email'] = $connexion->email;
 
-        header('Location: ../admin/home.php');
-        exit();
+if (isset($_POST['email']) && $_POST['email'] != "") {
+    // check if email exists 
+    $connexion = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
+
+    if ($connexion->email != $_POST['email']) {
+        header('Location: ../admin/login_backOffice.php?error=K');
+        exit;
+    }
+    // if users password == instretd password => created new session
+    if ($connexion->password != $_POST['password']) {
+        header('Location: ../admin/login_backOffice.php?error=nok');
+        exit;
+    }
+    if (!$connexion->role['admin']) {
+        header('Location: ../admin/login_backOffice.php?error=role');
+        exit;
+    } else {
+
+        $_SESSION['user']['id'] = $connexion->id;
+        $_SESSION['user']['email'] = $connexion->email;
+
+        header('Location:../admin/home.php');
+        exit;
     }
 } else {
-    header('Location: ../admin/login_backOffice.php?errors=noConex');
-    exit();
+    header('Location: ../admin/login_backOffice.php?error=Ba');
+    exit;
 }

@@ -1,8 +1,7 @@
 <?php
 require_once('../inc_config.php');
 
-$admin =  new User();
-
+$user =  new User();
 
 
 
@@ -12,7 +11,7 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
     $check = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
 
     if (!$check) {
-        header('Location: ../admin/login_backOffice.php?error=nok');
+        header('Location: ../templates/form_autho.php?error=K');
         exit;
     }
     // if users password == instretd password => created new session
@@ -20,7 +19,13 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
         $_SESSION['user']['id'] = $check->id;
         $_SESSION['user']['email'] = $check->email;
 
-        header('Location:../admin/home.php');
+        header('Location:../templates/home_display.php');
+        exit;
+    } else {
+        header('Location: ../templates/form_autho.php?error=nok');
         exit;
     }
+} else {
+    header('Location: ../templates/form_autho.php?error=Ba');
+    exit;
 }
