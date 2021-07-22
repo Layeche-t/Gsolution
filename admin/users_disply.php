@@ -11,7 +11,7 @@ $teams = $user->findBy(['role' => 'trainee'],  1000, $user::TABLE);
 
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
-    $post->deleteById($_GET['id'], $user::TABLE);
+    $user->deleteById($_GET['id'], $user::TABLE);
     header('Location: ../admin/users_disply.php?delete');
     exit();
 }
