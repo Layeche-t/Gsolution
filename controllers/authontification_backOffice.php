@@ -6,7 +6,6 @@ $user =  new User();
 
 
 
-
 if (isset($_POST['email']) && $_POST['email'] != "") {
     // check if email exists 
     $connexion = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
@@ -15,16 +14,17 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
         header('Location: ../admin/login_backOffice.php?error=K');
         exit;
     }
-    // if users password == instretd password => created new session
+    // check if password exists
     if ($connexion->password != $_POST['password']) {
         header('Location: ../admin/login_backOffice.php?error=nok');
         exit;
     }
+    // check if role equal admin
     if (!$connexion->role['admin']) {
         header('Location: ../admin/login_backOffice.php?error=role');
         exit;
     } else {
-
+        // log off
         $_SESSION['user']['id'] = $connexion->id;
         $_SESSION['user']['email'] = $connexion->email;
 
