@@ -33,6 +33,63 @@ if (isset($_GET['id'])) {
                 <div class='card-header'>
                     <h1>Le contenu de votre formation</h1>
 
+                    <?php
+
+                    // récup nbr du tableau 
+                    $count = $bdd->query("SELECT count(id) AS fa FROM posts WHERE type = 'training' ");
+                    $count->setFetchMode(PDO::FETCH_ASSOC);
+                    $count->execute();
+                    $tcount = $count->fetchAll();
+
+
+                    //pagination 
+                    @$page = $_GET['page'];
+                    if (empty($page)) {
+                        $page = 1;
+                    }
+                    $nbr_element_par_page = 5;
+                    $nbr_page = ceil($tcount[0]['fa'] / $nbr_element_par_page);
+                    $debut = ($page - 1) * $nbr_element_par_page;
+
+
+                    // récup data
+                    $sel = $bdd->query("SELECT * FROM posts WHERE type= 'training' LIMIT $debut, $nbr_element_par_page");
+                    $sel->setFetchMode(PDO::FETCH_ASSOC);
+                    $sel->execute();
+                    $resultats = $sel->fetchAll();
+                    if (count($resultats) == 0) {
+                        header("Location: training_disply.php");
+                    }
+
+
+                    ?>
+
+                    <!-- pagination -->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#" tabindex="-1">Précédent</a>
+                            </li>
+
+                            <?php for ($i = 1; $i <= $nbr_page; $i++) : ?>
+                                <?php if ($page != $i) : ?>
+
+                                    <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
+
+                                <?php else : ?>
+                                    <li class="page-item active"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
+
+                                <?php endif ?>
+
+                            <?php endfor ?>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#">Suivant</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+
                     <!--success ajout-->
                     <?php if (isset($_GET['success'])) : ?>
                         <div class="alert alert-success" role="alert">
@@ -77,16 +134,16 @@ if (isset($_GET['id'])) {
                                 <!-- la boucle foreach pour l'affichage -->
                                 <?php
                                 $num = 0;
-                                foreach ($trainings as $training) :
+                                foreach ($resultats as $resultat) :
                                     $num = $num + 1;
                                 ?>
 
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
-                                        <td> <?= $training['titel'] ?> </td>
+                                        <td> <?= $resultat['titel'] ?> </td>
                                         <td>
-                                            <a href="training_modification.php?id= <?= $training['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $training['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                            <a href="training_modification.php?id= <?= $resultat['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <a href="?id= <?= $resultat['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
                                         </td>
                                     </tr>
 
@@ -141,6 +198,8 @@ if (isset($_GET['id'])) {
                             </div>
                         </form>
                     </div>
+
+
                 </div>
                 <!-- end -->
             </div>
