@@ -13,6 +13,11 @@ if (isset($_GET['id'])) {
     header('Location: ../admin/slide_disply.php?delete');
     exit();
 }
+if (isset($_SESSION['info'])){
+    unset($_SESSION['info']);
+}
+$_SESSION['info']['redirect'] = 'slide_disply';
+$_SESSION['info']['table'] = $post::TABLE;
 ?>
 
 <!-- import du header -->
@@ -106,7 +111,7 @@ if (isset($_GET['id'])) {
 
                     <!-- formulaire d'envoie-->
                     <div class="modal-body">
-                        <form action="../controllers/add_slider.php" method="POST" enctype="multipart/form-data">
+                        <form action="../controllers/add_blog.php" method="POST" enctype="multipart/form-data">
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez votre titre :</label>
@@ -140,6 +145,7 @@ if (isset($_GET['id'])) {
                 </div>
                 <!-- end -->
             </div>
+
         </div>
 
         <!--import du footer-->

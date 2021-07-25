@@ -14,8 +14,13 @@ if (isset($_GET['id'])) {
     header('Location: ../admin/services_disply.php?delete');
     exit();
 }
-?>
 
+if (isset($_SESSION['info'])){
+    unset($_SESSION['info']);
+}
+$_SESSION['info']['redirect'] = 'services_disply';
+$_SESSION['info']['table'] = $post::TABLE;
+?>
 <!-- import du header -->
 <?php include('inc_header.php'); ?>
 
@@ -105,7 +110,7 @@ if (isset($_GET['id'])) {
 
                     <!-- formulaire d'envoie-->
                     <div class="modal-body">
-                        <form action="../controllers/add_services.php" method="POST" enctype="multipart/form-data">
+                        <form action="../controllers/add_blog.php" method="POST" enctype="multipart/form-data">
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez le titre de votre service :</label>

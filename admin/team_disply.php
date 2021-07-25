@@ -10,10 +10,15 @@ $teams = $user->findBy(['role' => 'team'], 1000, $user::TABLE);
 
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
-    $post->deleteById($_GET['id'], $user::TABLE);
+    $user->deleteById($_GET['id'], $user::TABLE);
     header('Location: ../admin/team_disply.php?delete');
     exit();
 }
+if (isset($_SESSION['info'])){
+    unset($_SESSION['info']);
+}
+$_SESSION['info']['redirect'] = 'team_disply';
+$_SESSION['info']['table'] = $user::TABLE;
 ?>
 
 <!-- import du header -->

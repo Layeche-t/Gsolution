@@ -14,6 +14,11 @@ if (isset($_GET['id'])) {
     header('Location: ../admin/blog_disply.php?delete');
     exit();
 }
+if (isset($_SESSION['info'])){
+    unset($_SESSION['info']);
+}
+$_SESSION['info']['redirect'] = 'blog_disply';
+$_SESSION['info']['table'] = $post::TABLE;
 ?>
 
 <!-- import du header -->

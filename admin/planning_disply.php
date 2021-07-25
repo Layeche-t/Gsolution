@@ -3,6 +3,7 @@
 //connxion à la base de données
 require_once('../inc_config.php');
 //l'objet
+
 $post = new Post();
 
 //méthode select par
@@ -14,6 +15,12 @@ if (isset($_GET['id'])) {
     header('Location: ../admin/planning_disply.php?delete');
     exit();
 }
+if (isset($_SESSION['info'])){
+    unset($_SESSION['info']);
+}
+$_SESSION['info']['redirect'] = 'planning_disply';
+$_SESSION['info']['table'] = $post::TABLE;
+$_SESSION['info']['image'] = true;
 ?>
 
 <!-- import du header -->
