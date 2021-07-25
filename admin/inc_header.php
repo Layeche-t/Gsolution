@@ -34,6 +34,6 @@
 
                     <!-- Vertical bar -->
                     <div class="nav-item-divider"></div>
-                    <a href="deconnexion_backOffice.php" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Déconnexion </a>
+                    <a href="logout_backOffice.php" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Déconnexion </a>
                 </nav>
             </div>
