@@ -3,98 +3,76 @@
 include_once '../inc_config.php';
 
 $post = new Post();
-
 $blogs = $post->findBy(['type' => 'blog'], 1000, $post::TABLE);
 
-//count the number
-$count = $bdd->query("SELECT count(id) AS fa FROM posts WHERE type = 'blog' ");
-$count->setFetchMode(PDO::FETCH_ASSOC);
-$count->execute();
+// On détermine sur quelle page on se trouve
+if (isset($_GET['page']) && !empty($_GET['page'])) {
+	$currentPage = (int) strip_tags($_GET['page']);
+} else {
+	$currentPage = 1;
+}
 
-//le résultat dans un tableau
-$tcount = $count->fetchAll();
+// On prépare la requête pour le count
+$sql = "SELECT COUNT(id) AS nb_articles FROM `posts` WHERE type='blog'";
+$query = $bdd->prepare($sql);
+$query->execute();
+$result = $query->fetch();
+$nbArticles = (int) $result['nb_articles'];
+// On détermine le nombre d'articles par page
+$parPage = 6;
+// On calcule le nombre de pages total
+$pages = ceil($nbArticles / $parPage);
+// Calcul du 1er article de la page
+$premier = ($currentPage * $parPage) - $parPage;
 
+// récupération des données 
+$sql = "SELECT * FROM `posts` WHERE type='blog' LIMIT $premier, $parPage";
+$query = $bdd->prepare($sql);
+$query->execute();
+$articles = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
-//pagination 
-@$page = $_GET['page'];
-// if (empty($page)) {
-// 	$page = 1;
-// }
-
-$nbr_element_par_page = 6;
-$nbr_page = ceil($tcount[0]['fa'] / $nbr_element_par_page);
-$debut = ($page - 1) * $nbr_element_par_page;
-
-
-
-// récup data
-$sel = $bdd->query("SELECT * FROM posts WHERE type= 'blog' LIMIT $debut, $nbr_element_par_page");
-$sel->setFetchMode(PDO::FETCH_ASSOC);
-$sel->execute();
-
-$resultats = $sel->fetchAll();
-
-
-// if (count($resultats) == 0) {
-// 	header("Location: blog.php");
-// }
 ?>
 
-
-
-
-
-
-
+<!-- Header -->
 <?php include 'inc_header.php'; ?>
-
-
-
 
 
 <section class="mt-4" id="gallery">
 	<div class="container">
 		<div class="row">
-
+			<!-- Le titre de la page -->
 			<h1 class="card-title mb-3"> Blog </h1>
-
-			<?php foreach ($resultats as $resultat) : ?>
+			<!-- L'affichage des résultats par un foreach -->
+			<?php foreach ($articles as $article) : ?>
 
 				<div class="col-lg-4 mb-4">
 					<div class="card">
 						<img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
 						<div class="card-body">
-							<h5 class="card-title"> <?= $resultat['titel'] ?> </h5>
-							<p class="card-text"><?= $resultat['description'] ?></p>
-							<a href="" class="btn btn-outline-success btn-sm">Read More</a>
-							<a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+							<h5 class="card-title"> <?= $article['titel'] ?> </h5>
+							<p class="card-text"><?= $article['description'] ?></p>
+							<a href="" class="btn btn-outline-success btn-sm">Lire plus</a>
 						</div>
 					</div>
 				</div>
 			<?php endforeach ?>
 
 			<!-- pagination -->
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					<li class="page-item">
-						<a class="page-link" href="#" tabindex="-1">Précédent</a>
+			<nav>
+				<ul class="pagination">
+					<!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
+					<li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+						<a href="?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
 					</li>
-
-					<?php for ($i = 1; $i <= $nbr_page; $i++) : ?>
-						<?php if ($page != $i) : ?>
-
-							<li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
-
-						<?php else : ?>
-							<li class="page-item active"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
-
-						<?php endif ?>
-
+					<?php for ($page = 1; $page <= $pages; $page++) : ?>
+						<!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+						<li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+							<a href="?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+						</li>
 					<?php endfor ?>
-
-					<li class="page-item">
-						<a class="page-link" href="#">Suivant</a>
+					<!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+					<li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+						<a href="?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
 					</li>
 				</ul>
 			</nav>
