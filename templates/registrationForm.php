@@ -6,7 +6,7 @@ require_once('../inc_config.php');
 <body>
 
     <!--Header + menu-->
-    <?php include 'header.php'; ?>
+    <?php include 'inc_header.php'; ?>
 
     <!-- formulaire d'inscription -->
 
