@@ -5,6 +5,7 @@ include_once '../inc_config.php';
 $post = new Post();
 $blogs = $post->findBy(['type' => 'blog'], 1000, $post::TABLE);
 
+// pagination
 // On détermine sur quelle page on se trouve
 if (isset($_GET['page']) && !empty($_GET['page'])) {
 	$currentPage = (int) strip_tags($_GET['page']);
@@ -47,8 +48,11 @@ $articles = $query->fetchAll(PDO::FETCH_ASSOC);
 
 				<div class="col-lg-4 mb-4">
 					<div class="card">
-						<img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
-						<div class="card-body">
+						<?php
+						echo '<img src="../upload/"' . $article['picture'] . 'alt="Card image cap" class="card-img-top">';
+
+						?>
+						<div class="card " style="height: 15rem;">
 							<h5 class="card-title"> <?= $article['titel'] ?> </h5>
 							<p class="card-text"><?= $article['description'] ?></p>
 							<a href="" class="btn btn-outline-success btn-sm">Lire plus</a>
@@ -59,7 +63,7 @@ $articles = $query->fetchAll(PDO::FETCH_ASSOC);
 
 			<!-- pagination -->
 			<nav>
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
 					<!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
 					<li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
 						<a href="?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
