@@ -26,42 +26,25 @@ if ($_SESSION['autoriser'] != 'oui') {
                 <!--contenu du tableau -->
                 <div class='card-body'>
                     <div class="container mt-5 mb-3">
+
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="card  p-3 mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                            <div class="ms-2 c-details">
-                                                <h6 class="mb-0">Slide</h6> <span>Depuis 1 jour</span>
-                                            </div>
-                                        </div>
-                                        <div class="badge"> <span>Prodect</span> </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h3 class="heading">Slide<br>Designer-Singapore</h3>
-                                        <div class="mt-5">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Slider -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-dribbble"></i> </div>
+                                            <div class="icon">
+                                                <i class="fab fa-slideshare"></i>
+                                            </div>
                                             <div class="ms-2 c-details">
-                                                <h6 class="mb-0">Dribbble</h6> <span>4 days ago</span>
+                                                <h6 class="mb-0">Slider</h6>
+                                                <span>4 days ago</span>
                                             </div>
                                         </div>
                                         <div class="badge"> <span>Product</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Junior Product<br>Designer-Singapore</h3>
+                                        <h3 class="heading">Services<br>Designer-Singapore</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -71,19 +54,51 @@ if ($_SESSION['autoriser'] != 'oui') {
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Services -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-reddit"></i> </div>
+                                            <div class="icon">
+                                                <i class="fas fa-server"></i>
+                                            </div>
                                             <div class="ms-2 c-details">
-                                                <h6 class="mb-0">Reddit</h6> <span>2 days ago</span>
+                                                <h6 class="mb-0">Service</h6>
+                                                <span>4 days ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="badge"> <span>Product</span> </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <h3 class="heading">Services<br>Designer-Singapore</h3>
+                                        <div class="mt-5">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="mt-3"> <span class="text1">42 Applied <span class="text2">of 70 capacity</span></span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Formations -->
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="icon">
+                                                <i class="fas fa-graduation-cap"></i>
+                                            </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">Formations</h6>
+                                                <span>2 days ago</span>
                                             </div>
                                         </div>
                                         <div class="badge"> <span>Design</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Software Architect <br>Java - USA</h3>
+                                        <h3 class="heading">Formations <br>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -92,16 +107,129 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
+
+                            <!-- Blog -->
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+
+                                            <div class="icon">
+                                                <i class="fab fa-blogger"></i>
+                                            </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">Blog</h6>
+                                                <span>2 days ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="badge"> <span>Design</span> </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <h3 class="heading">Blog <br>Java - USA</h3>
+                                        <div class="mt-5">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Planning -->
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="icon">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">Planning</h6>
+                                                <span>2 days ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="badge"> <span>Design</span> </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <h3 class="heading">Planning <br>Java - USA</h3>
+                                        <div class="mt-5">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Equipe -->
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">Equipe</h6>
+                                                <span>2 days ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="badge"> <span>Design</span> </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <h3 class="heading">Equipe <br>Java - USA</h3>
+                                        <div class="mt-5">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Utilisateurs -->
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="icon">
+                                                <i class="fas fa-user-plus"></i>
+                                            </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">Utilisateurs</h6>
+                                                <span>2 days ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="badge"> <span>Design</span> </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <h3 class="heading">Utilisateurs <br>Java - USA</h3>
+                                        <div class="mt-5">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
                         </div>
                     </div>
 
 
 
                 </div>
+
             </div>
+
         </div>
     </div>
     <?php include('inc_footer.php'); ?>
