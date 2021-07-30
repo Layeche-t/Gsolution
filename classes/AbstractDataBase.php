@@ -103,6 +103,18 @@ abstract class AbstractDataBase
         return $req->fetchAll();
     }
 
+    public function slectCount(array $params, string $table)
+    {
+        $field = array_keys($params);
+        $value = array_values($params);
+
+
+        $sql = $this->bd->prepare("SELECT count(id) FROM " . $table . " WHERE " . $field[0] . " = ? ");
+        $sql->execute([$value[0]]);
+
+        return $sql->fetchObject();
+    }
+
 
     /**
      * Update row by field name and value, $params = ["field" => $value , ...,"id" => $id], id should be the last key in params []
