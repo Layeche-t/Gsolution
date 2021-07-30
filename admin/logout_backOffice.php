@@ -1,5 +1,5 @@
 <?php
 require_once('../inc_config.php');
 session_destroy();
-header('Location: admin/logout_backOffice.php');
+header('Location: admin/login_backOffice.php');
 exit();
