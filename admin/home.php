@@ -1,6 +1,16 @@
 <?php
 require_once('../inc_config.php');
 
+$sql = "SELECT 'type' FROM `posts` ";
+
+$query = $bdd->prepare($sql);
+$query->execute();
+$articles = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+
 if ($_SESSION['autoriser'] != 'oui') {
     header('Location: ../admin/login_backOffice.php');
     exit();
@@ -28,6 +38,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                     <div class="container mt-5 mb-3">
 
                         <div class="row">
+
                             <!-- Slider -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
@@ -41,10 +52,22 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>4 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Product</span> </div>
+                                        <div class="badge"> <span>Publicité</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Services<br>Designer-Singapore</h3>
+                                        <a href="slide_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Sliders</h3>
+                                        </a>
+
+
+                                        <h3>Simo </h3>
+
+
+
+
+
+
+
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -64,14 +87,18 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <i class="fas fa-server"></i>
                                             </div>
                                             <div class="ms-2 c-details">
-                                                <h6 class="mb-0">Service</h6>
+                                                <h6 class="mb-0">Services</h6>
                                                 <span>4 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Product</span> </div>
+                                        <div class="badge"> <span>Aide</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Services<br>Designer-Singapore</h3>
+                                        <a href="services_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Services </h3>
+                                        </a>
+
+                                        <h3>Designer-Singapore</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -95,10 +122,13 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Design</span> </div>
+                                        <div class="badge"> <span>Excellence</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Formations <br>Java - USA</h3>
+                                        <a href="services_backOffice.php" class="link-dashbord">
+                                            <h3 class="heading">Formations </h3>
+                                        </a>
+                                        <h3> - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -123,10 +153,15 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Design</span> </div>
+                                        <div class="badge"> <span>Informations</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Blog <br>Java - USA</h3>
+                                        <a href="blog_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Blog </h3>
+                                        </a>
+
+
+                                        <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -150,10 +185,15 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Design</span> </div>
+                                        <div class="badge"> <span>Organisation</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Planning <br>Java - USA</h3>
+
+                                        <a href="planning_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Planning </h3>
+                                        </a>
+
+                                        <h3> Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -177,10 +217,15 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Design</span> </div>
+                                        <div class="badge"> <span>Solidarité</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Equipe <br>Java - USA</h3>
+                                        <a href="team_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Equipe </h3>
+                                        </a>
+
+
+                                        <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -204,10 +249,13 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Design</span> </div>
+                                        <div class="badge"> <span>Dévloppement</span> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <h3 class="heading">Utilisateurs <br>Java - USA</h3>
+                                        <a href="users_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Utilisateurs </h3>
+                                        </a>
+                                        <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -217,7 +265,6 @@ if ($_SESSION['autoriser'] != 'oui') {
                                     </div>
                                 </div>
                             </div>
-
 
 
 
