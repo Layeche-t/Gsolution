@@ -46,15 +46,14 @@ $articles = $query->fetchAll(PDO::FETCH_ASSOC);
 			<!-- L'affichage des résultats par un foreach -->
 			<?php foreach ($articles as $article) : ?>
 
-				<div class="col-lg-4 mb-4">
+				<div class="col-md-4 mb-4">
 					<div class="card">
 						<?php
-						echo '<img src="../upload/"' . $article['picture'] . 'alt="Card image cap" class="card-img-top">';
-
+						echo  "<img src='../upload/" . $article['picture'] . "' width='355' height='300'\>";
 						?>
-						<div class="card " style="height: 15rem;">
-							<h5 class="card-title"> <?= $article['titel'] ?> </h5>
-							<p class="card-text"><?= $article['description'] ?></p>
+						<div class=" card " style=" height: 15rem;">
+							<h5 class="card-title "> <?= $article['titel'] ?> </h5>
+							<p class="card-text font-weight-bold"><?= $article['description'] ?></p>
 							<a href="" class="btn btn-outline-success btn-sm">Lire plus</a>
 						</div>
 					</div>
