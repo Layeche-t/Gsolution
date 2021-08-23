@@ -1,44 +1,44 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-<style>
-    .item {}
+<div class="container">
+    <div id="demo" class="carousel slide" data-ride="carousel">
 
-    .item:nth-child(odd) {
-        background-color: lightblue;
-    }
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
 
-    .item:nth-child(even) {
-        background-color: lightgreen;
-    }
-
-    .carousel-inner>.item>img {
-        margin: 0 auto;
-    }
-</style>
-<div id="myCarousel" class="carousel slide carousel1" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <div class="carousel-inner">
-        <div class="item active">
-            <img src="../upload/img_caroussel/trump.jpg" width="765" height="514">
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../pictures/femme.jpg" alt="Los Angeles" width="1100" height="500">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p>We had such a great time in LA!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../pictures/Kais.jpg" alt="Chicago" width="1100" height="500">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p>We had such a great time in LA!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../pictures/trump.jpg" alt="New York" width="1100" height="500">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p>We had such a great time in LA!</p>
+                </div>
+            </div>
         </div>
-        <div class="item">
-            <img src="../upload/img_caroussel/layeche.JPG" width="765" height="514">
-        </div>
-        <div class="item">
-            <img src="../upload/img_caroussel/Kais.jpg" width="765" height="514">
-        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
     </div>
-
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev" role="button">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next" role="button">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    </a>
 </div>
