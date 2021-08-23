@@ -1,0 +1,62 @@
+/* Header */
+
+div.container-general{
+    padding: 0px;
+    margin: 0px;
+}
+
+.div-logo{
+    background-color: #e0ffd4;
+}
+
+/* Navbar */
+
+.menu{
+    background-color: #edfce7;
+}
+
+.nav-color{
+    color: #147144;
+}
+
+
+p.text-client {
+    margin: 30px;
+}
+
+/* Slider */
+
+.counter-box {
+    display: block;
+    background:  #e0ffd4;;
+    padding: 40px 20px 37px;
+    text-align: center
+}
+
+.counter-box p {
+    margin: 5px 0 0;
+    padding: 0;
+    color: #3acf87;
+    font-size: 18px;
+    font-weight: 500
+}
+
+.counter-box i {
+    font-size: 60px;
+    margin: 0 0 15px;
+    color: #3acf87
+}
+
+.counter {
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+    color: #3acf87;
+    line-height: 28px
+}
+
+.counter-box:hover, .counter-box p:hover, .counter-box i:hover, .counter-box span:hover {
+    background: #3acf87;
+    color:white;
+    font-weight: bold;
+}
