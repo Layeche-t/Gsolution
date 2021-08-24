@@ -33,7 +33,8 @@ p.text-client {
     text-align: center
 }
 
-.counter-box p {
+/* Classe commune réalisation et opinion */
+.counter-box p, blockquote p {
     margin: 5px 0 0;
     padding: 0;
     color: #3acf87;
@@ -59,4 +60,13 @@ p.text-client {
     background: #3acf87;
     color:white;
     font-weight: bold;
+}
+
+/* Titel of page home display */
+.titel {
+    color: #147144; 
+}
+
+.carousel-opinion{
+    background-color: #e0ffd4;
 }
