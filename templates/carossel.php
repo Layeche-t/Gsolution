@@ -44,7 +44,6 @@ $sliders = $query->fetchAll(PDO::FETCH_ASSOC);
                 if ($i == 0) {
                     $actives = 'active';
                 }
-
             ?>
                 <div class="carousel-item <?= $actives; ?>">
                     <?php
