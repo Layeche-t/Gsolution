@@ -2,7 +2,7 @@
 require_once('../inc_config.php');
 ?>
 
-<?php include 'header.php'; ?>
+<?php include 'inc_header.php'; ?>
 <h1 class="titre-blog"> <span class="span-blog">CONNEXION</span></h1>
 
 <?php if (isset($_GET['success'])) : ?>
@@ -12,38 +12,31 @@ require_once('../inc_config.php');
     </div>
 <?php endif; ?>
 
-<div class="contenaire-connexion">
-
-    <form class="form-connexion" method="POST" action="../controllers/authontification.php">
-        <h1>Déja inscrit !</h1>
-
-        <!-- gestion des erreurs -->
-        <?php if (isset($_GET['error']) && $_GET['error'] == 'nok') : ?>
-            <div class="yes"><span> Email ou mot de passe incorrect </span></div>
-        <?php endif ?>
-
-        <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+<div class="container px-4 py-5 mx-auto">
+    <div class="card card0">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="card card1">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-10 my-5">
+                        <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/PSXxjNY.png"> </div>
+                        <h3 class="mb-5 text-center heading">Vous êtes déja inscrit</h3>
+                        <div class="form-group"> <label class="form-control-label text-muted">E-mail</label> <input type="text" id="email" name="email" placeholder="Votre e-mail" class="form-control"> </div>
+                        <div class="form-group"> <label class="form-control-label text-muted">Mot de passe</label> <input type="password" id="psw" name="psw" placeholder="Mot de passe" class="form-control"> </div>
+                        <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Connexion</button> </div>
+                        <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Mot de passe oblié</small></a> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card2">
+                <div class="my-auto mx-md-5 px-md-5 right">
+                    <h3 class="text-white">We are more than just a company</h3> <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+                </div>
+                <div class="bottom text-center mb-5">
+                    <p href="#" class="sm-text mx-auto mb-3">Don't have an account?<button class="btn btn-white ml-2">Create new</button></p>
+                </div>
+            </div>
         </div>
-
-        <p class="normal">Ou par votre compte</p>
-        <input class="input-connexion" type="text" name="email" placeholder="E-mail">
-        <input class="input-connexion" type="password" name="password" placeholder="Mot de passe">
-        <a class="mot-passe" href="#">Mot de passe oublié ? </a>
-        <button class="button-connexion" name="valider">Connexion</button>
-    </form>
-
-
-    <div class="infos-connexion">
-        <h1 class="titre-visiteur">Cher visiteur,</h1>
-        <p class="p-connexion">Vous n'êtes pas encore inscrit vous pouvez le faire en cliquant sur le bouton s'inscrire</p>
-        <button class="connexion-inscription"><a class="direction" href="../templates/registrationForm.php"> S'inscrire </a></button>
     </div>
-
-
 </div>
-<div class="info-connexion">
 
-    <?php include 'footer.php'; ?>
+<?php include 'inc_footer.php'; ?>
