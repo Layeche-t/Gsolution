@@ -1,37 +1,65 @@
+<?php
+include_once '../inc_config.php';
+
+$sql = "SELECT * FROM `posts` WHERE type='slider' LIMIT 3";
+
+$query = $bdd->prepare($sql);
+$query->execute();
+$sliders = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
+
+
+
+
 <div class="container">
+    <h3 class="mb-3 font-weight-bold titel">Actualités </h3>
     <div id="demo" class="carousel slide" data-ride="carousel">
 
         <!-- Indicators -->
         <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
+            <?php
+            $i = 0;
+            foreach ($sliders as $row) {
+                $actives = '';
+                if ($i == 0) {
+                    $actives = 'active';
+                }
+
+            ?>
+                <li data-target="#demo" data-slide-to="<?= $i; ?>" class="<?= $actives; ?>"></li>
+            <?php $i++;
+            } ?>
+
         </ul>
+
 
         <!-- The slideshow -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../pictures/femme.jpg" alt="Los Angeles" width="1100" height="500">
-                <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>We had such a great time in LA!</p>
+            <?php
+            $i = 0;
+            foreach ($sliders as $slider) {
+                $actives = '';
+                if ($i == 0) {
+                    $actives = 'active';
+                }
+
+            ?>
+                <div class="carousel-item <?= $actives; ?>">
+                    <?php
+                    echo  "<img src='../upload/" . $slider['picture'] . "' width='1100' height='500'\>";
+                    ?>
+
+                    <div class="carousel-caption">
+                        <h3><?= $slider['titel'] ?></h3>
+                        <p><?= $slider['description'] ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img src="../pictures/Kais.jpg" alt="Chicago" width="1100" height="500">
-                <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>We had such a great time in LA!</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="../pictures/trump.jpg" alt="New York" width="1100" height="500">
-                <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>We had such a great time in LA!</p>
-                </div>
-            </div>
+            <?php $i++;
+            } ?>
         </div>
+
 
         <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
