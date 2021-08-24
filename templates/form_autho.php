@@ -12,15 +12,15 @@ require_once('../inc_config.php');
     </div>
 <?php endif; ?>
 
-<div class="container px-4 py-5 mx-auto">
+<div class="container px-5 py-5 mx-auto">
     <div class="card card0">
         <div class="d-flex flex-lg-row flex-column-reverse">
             <div class="card card1">
                 <div class="row justify-content-center my-auto">
                     <div class="col-md-8 col-10 my-5">
-                        <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/PSXxjNY.png"> </div>
+                        <h2 class="mb-2 text-center font-weight-bold heading">Bienvenu !</h2>
                         <h3 class="mb-5 text-center heading">Vous êtes déja inscrit</h3>
-                        <div class="form-group"> <label class="form-control-label text-muted">E-mail</label> <input type="text" id="email" name="email" placeholder="Votre e-mail" class="form-control"> </div>
+                        <div class="form-group"> <label class="form-control-label text-muted ">E-mail</label> <input type="text" id="email" name="email" placeholder="Votre e-mail" class="form-control"> </div>
                         <div class="form-group"> <label class="form-control-label text-muted">Mot de passe</label> <input type="password" id="psw" name="psw" placeholder="Mot de passe" class="form-control"> </div>
                         <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Connexion</button> </div>
                         <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Mot de passe oblié</small></a> </div>
