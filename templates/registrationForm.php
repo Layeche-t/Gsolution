@@ -89,7 +89,7 @@ require_once('../inc_config.php');
                 </div>
 
                 <div class=" text-center mb-5">
-                    <p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous avez déja un compte ?<button class="btn btn-white ml-2">Se connecter </button></p>
+                    <p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous avez déja un compte ?<a href="form_autho.php"><button class="btn btn-white ml-2">Se connecter </button></a></p>
                 </div>
             </div>
         </div>
