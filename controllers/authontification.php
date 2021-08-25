@@ -11,7 +11,7 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
     $check = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
 
     if (!$check) {
-        header('Location: ../templates/form_autho.php?error=K');
+        header('Location: ../templates/form_autho.php?error=eml');
         exit;
     }
     // if users password == instretd password => created new session
@@ -22,10 +22,10 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
         header('Location:../templates/home_display.php');
         exit;
     } else {
-        header('Location: ../templates/form_autho.php?error=nok');
+        header('Location: ../templates/form_autho.php?error=mdp');
         exit;
     }
 } else {
-    header('Location: ../templates/form_autho.php?error=Ba');
+    header('Location: ../templates/form_autho.php?error=empty');
     exit;
 }
