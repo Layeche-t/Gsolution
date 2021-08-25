@@ -3,7 +3,7 @@ require_once('../inc_config.php');
 ?>
 
 <?php include 'inc_header.php'; ?>
-<h1 class="titre-blog"> <span class="span-blog">CONNEXION</span></h1>
+<h1 class="titel-pages font-weight-bold">Connexion</h1>
 
 <?php if (isset($_GET['success'])) : ?>
     <div class="alert">
@@ -23,16 +23,17 @@ require_once('../inc_config.php');
                         <div class="form-group"> <label class="form-control-label text-muted ">E-mail</label> <input type="text" id="email" name="email" placeholder="Votre e-mail" class="form-control"> </div>
                         <div class="form-group"> <label class="form-control-label text-muted">Mot de passe</label> <input type="password" id="psw" name="psw" placeholder="Mot de passe" class="form-control"> </div>
                         <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Connexion</button> </div>
-                        <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Mot de passe oblié</small></a> </div>
+                        <div class="row justify-content-center my-1"> <a href="#"><small class="text-body">Mot de passe oblié</small></a> </div>
                     </div>
                 </div>
             </div>
             <div class="card card2">
-                <div class="my-auto mx-md-5 px-md-5 right">
-                    <h3 class="text-white">We are more than just a company</h3> <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+                <div class="my-auto mx-md-5 px-md-2 right">
+                    <h3 class="text-body font-weight-bold">We are more than just a company</h3> <small class="text-body font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
                 </div>
-                <div class="bottom text-center mb-5">
-                    <p href="#" class="sm-text mx-auto mb-3">Don't have an account?<button class="btn btn-white ml-2">Create new</button></p>
+
+                <div class=" text-center mb-5">
+                    <p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous avez déja un compte ?<button class="btn btn-white ml-2">Créer un compte</button></p>
                 </div>
             </div>
         </div>
