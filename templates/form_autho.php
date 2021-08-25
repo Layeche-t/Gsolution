@@ -5,14 +5,29 @@ require_once('../inc_config.php');
 <?php include 'inc_header.php'; ?>
 <h1 class="titel-pages font-weight-bold">Connexion</h1>
 
-<?php if (isset($_GET['success'])) : ?>
-    <div class="alert">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Attetion ! les mots de passes inserés sont ne sont pas identiques ! </strong>
-    </div>
-<?php endif; ?>
+
 
 <div class="container px-5 py-5 mx-auto">
+    <!--  -->
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'eml') : ?>
+        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+            Votre email ou mot de passe incorrect !
+        </div>
+    <?php endif ?>
+    <!--  -->
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'mdp') : ?>
+        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+            Votre email ou mot de passe incorrect !
+        </div>
+    <?php endif ?>
+
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'empty') : ?>
+        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+            Merci de saisir vos données !
+        </div>
+    <?php endif ?>
+
+
     <div class="card card0">
         <div class="d-flex flex-lg-row flex-column-reverse">
             <div class="card card1">
@@ -20,9 +35,11 @@ require_once('../inc_config.php');
                     <div class="col-md-8 col-10 my-5">
                         <h2 class="mb-2 text-center font-weight-bold heading">Bienvenu !</h2>
                         <h3 class="mb-5 text-center heading">Vous êtes déja inscrit</h3>
-                        <div class="form-group"> <label class="form-control-label text-muted ">E-mail</label> <input type="text" id="email" name="email" placeholder="Votre e-mail" class="form-control"> </div>
-                        <div class="form-group"> <label class="form-control-label text-muted">Mot de passe</label> <input type="password" id="psw" name="psw" placeholder="Mot de passe" class="form-control"> </div>
-                        <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color">Connexion</button> </div>
+                        <form action="../controllers/authontification.php" method="POST">
+                            <div class="form-group"> <label class="form-control-label text-muted ">E-mail</label> <input type="text" name="email" placeholder="Votre e-mail" class="form-control"> </div>
+                            <div class="form-group"> <label class="form-control-label text-muted">Mot de passe</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control"> </div>
+                            <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" name="" type="submit">Connexion</button> </div>
+                        </form>
                         <div class="row justify-content-center my-1"> <a href="#"><small class="text-body">Mot de passe oblié</small></a> </div>
                     </div>
                 </div>
@@ -33,7 +50,7 @@ require_once('../inc_config.php');
                 </div>
 
                 <div class=" text-center mb-5">
-                    <p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous avez déja un compte ?<button class="btn btn-white ml-2">Créer un compte</button></p>
+                    <p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous n'avez pas de compte ?<a href="registrationForm.php"><button class="btn btn-white ml-2">Créer un compte</button></a></p>
                 </div>
             </div>
         </div>
