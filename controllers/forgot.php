@@ -21,7 +21,7 @@ if (isset($_POST['email'])) {
 
 
    
-    if () {
+    
         $update = $user->updateById(['password' => $_POST['password'], 'id' => $check->id], $user::TABLE);
         header('Location: ../templates/forgot_password.php?success');
         exit();
