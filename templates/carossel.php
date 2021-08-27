@@ -1,13 +1,8 @@
 <?php
 include_once '../inc_config.php';
 
-$sql = "SELECT * FROM `posts` WHERE type='slider' LIMIT 3";
-
-$query = $bdd->prepare($sql);
-$query->execute();
-$sliders = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
+$post = new Post();
+$sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
 ?>
 
 
