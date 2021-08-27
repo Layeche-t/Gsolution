@@ -12,21 +12,21 @@ if (isset($_POST['email'])) {
     $headers = 'Content=Type: text/plain; charest="utf-8"' . " ";
     // test if $_POST['email] exit in db 
     $check = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
-    
+
     if ($check) {
-        mail($_POST['email'], "Mot de passe oublié", $message); 
+        mail($_POST['email'], "Mot de passe oublié", $message);
     }
 
     // if  
 
 
-   
-    
-        $update = $user->updateById(['password' => $_POST['password'], 'id' => $check->id], $user::TABLE);
-        header('Location: ../templates/forgot_password.php?success');
-        exit();
-    }
+
+
+    $update = $user->updateById(['password' => $_POST['password'], 'id' => $check->id], $user::TABLE);
+    header('Location: ../templates/forgot_password.php?success');
+    exit();
 }
+
 
 header('Location: ../templates/forgot_password.php?error=no');
 exit();
