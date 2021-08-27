@@ -4,8 +4,10 @@ require_once('../inc_config.php');
 //l'objet
 $post = new Post();
 
+
+
 //méthode select par
-$sliders = $post->findBy(['type' => 'slider'], 1000, $post::TABLE);
+$sliders = $post->findBy(['type' => 'slider'], 100, $post::TABLE);
 
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
@@ -59,6 +61,17 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                         <!--contenu du tableau -->
                         <table class="table">
+                            <?php if (isset($_GET['error']) && $_GET['error'] == 'ext') : ?>
+                                <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                                    Vous pouvez importer que des fichiers en format 'png', 'jpg', 'jpeg' !
+                                </div>
+                            <?php endif ?>
+
+                            <?php if (isset($_GET['error']) && $_GET['error'] == 'siz') : ?>
+                                <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                                    Votre fichier dépasse la taille autorisée !
+                                </div>
+                            <?php endif ?>
                             <!-- le header du tableau -->
                             <thead class="table-dark">
                                 <tr>
@@ -81,7 +94,6 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         <th scope="row"> <?= $num ?> </th>
                                         <td> <?= $slider['titel'] ?> </td>
                                         <td> <?= $slider['description'] ?> </td>
-
                                         <td>
                                             <a href="slide_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
                                             <a href="?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
@@ -111,6 +123,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                     <!-- formulaire d'envoie-->
                     <div class="modal-body">
                         <form action="../controllers/add_blog.php" method="POST" enctype="multipart/form-data">
+
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez votre titre :</label>
