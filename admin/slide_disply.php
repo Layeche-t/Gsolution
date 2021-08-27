@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     header('Location: ../admin/slide_disply.php?delete');
     exit();
 }
-if (isset($_SESSION['info'])){
+if (isset($_SESSION['info'])) {
     unset($_SESSION['info']);
 }
 $_SESSION['info']['redirect'] = 'slide_disply';
@@ -65,7 +65,6 @@ $_SESSION['info']['table'] = $post::TABLE;
                                     <th scope="col">Id</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Source de l'image</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -82,7 +81,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         <th scope="row"> <?= $num ?> </th>
                                         <td> <?= $slider['titel'] ?> </td>
                                         <td> <?= $slider['description'] ?> </td>
-                                        <td> <?= $slider['source'] ?> </td>
+
                                         <td>
                                             <a href="slide_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
                                             <a href="?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
@@ -124,7 +123,7 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez la source de votre image :</label>
-                                <input type="text" class="form-control" id="recipient-name" name="titel" required>
+                                <input type="text" class="form-control" id="recipient-name" name="source" required>
                             </div>
 
                             <div class="mb-3">
