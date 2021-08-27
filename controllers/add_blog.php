@@ -1,28 +1,25 @@
 <?php
 require_once('../inc_config.php');
-$post =  new Post();
+
+$post = new Post();
+$fileManager = new FileManger();
 
 
-$tabExtension = explode('.', $_FILES['picture']['name']);
-$extension = strtolower(end($tabExtension));
-$extensionAutrosiee = ['png', 'jpg', 'jpeg'];
-$tailleMx = 50000;
-$uniqueName = uniqid('', true);
-$fileName = $uniqueName . '.' . $extension;
-$target_dir = '../upload/' . $fileName;
+//upload file
+if (isset($_SESSION['info']['image'])) {
+    $fileName = $fileManager->UploadImage($_FILES['picture']);
+}
 
 
-if (in_array($extension, $extensionAutrosiee) && $_FILES['picture']['size'] < $tailleMx && $_FILES['picture']['error'] == 0) {
+if (isset($_POST['validation'])) {
 
-    move_uploaded_file($_FILES['picture']['tmp_name'], $target_dir);
+    unset($_POST['validation']);
+    $fileName = $fileManager->UploadImage($_FILES['picture']);
+    $_POST['picture'] = $fileName;
+    $newPost = $post->set($_POST, $_SESSION['info']['table']);
 
-    if (isset($_POST['validation'])) {
 
-        unset($_POST['validation']);
-        $_POST['picture'] = $fileName;
-        $newPost = $post->SetPost($_POST);
+    header('Location: ../admin/' . $_SESSION['info']['redirect'] . '.php?success');
 
-        header('Location: ../admin/blog_disply.php?success');
-        exit;
-    }
+    exit;
 }
