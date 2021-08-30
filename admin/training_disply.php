@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-if (isset($_SESSION['info'])){
+if (isset($_SESSION['info'])) {
     unset($_SESSION['info']);
 }
 $_SESSION['info']['redirect'] = 'training_disply';
@@ -60,6 +60,7 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                     // récup data
                     $sel = $bdd->query("SELECT * FROM posts WHERE type= 'training' LIMIT $debut, $nbr_element_par_page");
+
                     $sel->setFetchMode(PDO::FETCH_ASSOC);
                     $sel->execute();
                     $resultats = $sel->fetchAll();
@@ -183,7 +184,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture">
+                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture" required>
                             </div>
 
                             <div class="mb-3">
