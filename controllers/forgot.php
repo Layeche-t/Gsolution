@@ -3,30 +3,38 @@ require_once('../inc_config.php');
 
 
 $user = new User();
+$now = new DateTime();
 
-if (isset($_POST['email'])) {
 
-    unset($_POST['envoyer']);
-    $password = uniqid();
-    $message = "Bonjour, voici votre nouveau mot de passe: $password";
-    $headers = 'Content=Type: text/plain; charest="utf-8"' . " ";
-    // test if $_POST['email] exit in db 
+if (isset($_POST['email']) && !empty($_POST['email'])) {
+
     $check = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
 
+
     if ($check) {
-        mail($_POST['email'], "Mot de passe oublié", $message);
+        $string = implode('', array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9')));
+        $token = substr(str_shuffle($string), 0, 10);
+        $_POST['newCreat'] = $now->format('Y-m-d H:i:s');
+        $update = $user->updateById(['pswResetToken' => $token, 'newCreat' => $_POST['newCreat'], 'id' => $check->id], $user::TABLE);
+
+        $link = 'localhost/Gsolution/templates/passwordChange.php?token=' . $token;
+        $to = $_POST['email'];
+        $subject = 'Réinitialisation de votre mot de passe';
+        $headers = [];
+        $headers[] = "MIME-Version: 1.0\r\n";
+        $headers[] = "Content-type: text/html; charset=iso-8859-1\r\n";
+        $message = "Bonjour, voici votre nouveau mot de passe : <a href=" . $link . "> $link </a>";
+
+
+        mail($to, $subject, $message, implode($headers));
+
+        header('Location: ../templates/forgot_password.php?success');
+        exit;
+    } else {
+        header('Location: ../templates/forgot_password.php?error=noc');
+        exit;
     }
-
-    // if  
-
-
-
-
-    $update = $user->updateById(['password' => $_POST['password'], 'id' => $check->id], $user::TABLE);
-    header('Location: ../templates/forgot_password.php?success');
-    exit();
+} else {
+    header('Location: ../templates/forgot_password.php?error=vid');
+    exit;
 }
-
-
-header('Location: ../templates/forgot_password.php?error=no');
-exit();
