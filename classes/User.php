@@ -108,6 +108,27 @@ class User extends AbstractDataBase
         $this->createdAt = $createdAt;
     }
 
+    public function getpswResetToken()
+    {
+        return $this->pswResetToken;
+    }
+
+    public function setpswResetToken(int $pswResetToken)
+    {
+        $this->pswResetToken = $pswResetToken;
+    }
+
+    public function getnewCreat()
+    {
+        return $this->newCreat;
+    }
+
+    public function setnewCreat(DateTime $newCreat)
+    {
+        $this->newCreat = $newCreat;
+    }
+
+
     public function SetUser(array $params, $table = self::TABLE)
     {
         return parent::set($params, $table);
