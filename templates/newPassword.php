@@ -20,27 +20,26 @@ include 'inc_header.php';
     <div class="row justify-content-center ">
         <div class="col-lg-7 col-md-10 px-0 color-forgot1 border">
             <h2 class="text-center font-weight-bold color-forgot card-header"> Changement de mot de passe </h2>
-            <?php if (isset($_GET['yes'])) : ?>
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'empwd') : ?>
                 <div class="alert alert-danger text-center font-weight-bold" role="alert">
-                    Yes
+                    Merci de remplir les données !
                 </div>
             <?php endif ?>
 
-
-            <?php if (isset($_GET['error']) && $_GET['error'] == 'notok') : ?>
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'noid') : ?>
                 <div class="alert alert-danger text-center font-weight-bold" role="alert">
-                    Aucun token n'a été trouvé !
+                    Les deux mots de passe ne sont pas indentiques !
+                </div>
+            <?php endif ?>
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'ntkn') : ?>
+                <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                    Aucun lien n'a été trouvé !
                 </div>
             <?php endif ?>
 
-            <?php if (isset($_GET['error']) && $_GET['error'] == 'vidtok') : ?>
-                <div class="alert alert-danger text-center font-weight-bold" role="alert">
-                    Aucun token n'a été spécifié !
-                </div>
-            <?php endif ?>
-
-            <form action="../controllers/newPassword.php" class=" mt-4" method="POST">
+            <form action="../controllers/password_change.php" class=" mt-4" method="POST">
                 <div class="card-body">
+                    <div class="form-group"> <input class="form-control" type="hidden" name="token" value="<?= @$_GET['token']; ?>"> <small class="form-text text-muted"></small> </div>
                     <div class="form-group"> <label for="email-for-pass">Entrez votre nouveau mot passe : </label> <input class="form-control" type="Password" name="newPassword" required=""><small class="form-text text-muted"></small> </div>
                     <div class="form-group"> <label for="email-for-pass">Confimez votre mot de passe : </label> <input class="form-control" type="password" name="confPassword" required=""><small class="form-text text-muted"></small> </div>
                 </div>
