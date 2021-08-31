@@ -14,6 +14,12 @@ require_once('../inc_config.php');
             Votre email ou mot de passe incorrect !
         </div>
     <?php endif ?>
+
+    <?php if (isset($_GET['secs'])) : ?>
+        <div class="alert alert-success text-center font-weight-bold" role="alert">
+            Votre mot de passe a été changé avec succès !
+        </div>
+    <?php endif ?>
     <!--  -->
     <?php if (isset($_GET['error']) && $_GET['error'] == 'mdp') : ?>
         <div class="alert alert-danger text-center font-weight-bold" role="alert">
@@ -40,7 +46,7 @@ require_once('../inc_config.php');
                             <div class="form-group"> <label class="form-control-label text-muted">Mot de passe</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control"> </div>
                             <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" name="" type="submit">Connexion</button> </div>
                         </form>
-                        <div class="row justify-content-center my-1"> <a href="#"><small class="text-body">Mot de passe oblié</small></a> </div>
+                        <div class="row justify-content-center my-1"> <a href="forgot_password.php"><small class="text-body">Mot de passe oblié</small></a> </div>
                     </div>
                 </div>
             </div>
