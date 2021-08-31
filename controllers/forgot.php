@@ -13,11 +13,13 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 
     if ($check) {
         $string = implode('', array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9')));
-        $token = substr(str_shuffle($string), 0, 10);
-        $_POST['newCreat'] = $now->format('Y-m-d H:i:s');
-        $update = $user->updateById(['pswResetToken' => $token, 'newCreat' => $_POST['newCreat'], 'id' => $check->id], $user::TABLE);
+        $mini = strtolower($string);
+        $token = substr(str_shuffle($mini), 0, 20);
 
-        $link = 'localhost/Gsolution/templates/passwordChange.php?token=' . $token;
+        $_POST['newCreat'] = $now->format('Y-m-d H:i:s');
+        $update = $user->updateById(['token' => $token, 'newCreat' => $_POST['newCreat'], 'id' => $check->id], $user::TABLE);
+
+        $link = "http://localhost/Gsolution/controllers/recover?token=$token";
         $to = $_POST['email'];
         $subject = 'Réinitialisation de votre mot de passe';
         $headers = [];
