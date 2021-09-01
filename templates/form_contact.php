@@ -1,78 +1,71 @@
 <!--Header + menu-->
 <?php include 'inc_header.php'; ?>
+<h1 class="titel-pages font-weight-bold">Créer un compte</h1>
+
 
 <!-- formulaire d'inscription -->
+<div class="container px-5 py-5 mx-auto">
 
-<h1 class="titre-blog"> <span class="span-blog">Contactez-nous</span></h1>
 
-<div class="card card0">
-	<div class="d-flex flex-lg-row flex-column-reverse">
-		<div class="card card1">
-			<div class="row justify-content-center my-auto">
-				<div class="col-md-9 col-10 my-5">
-					<h2 class="mb-2 text-center font-weight-bold heading">Bienvenu !</h2>
-					<h3 class="mb-5 text-center heading">Vous n'êtes pas encore inscrit</h3>
 
-					<form method="POST" action="../controllers/add.php">
 
-						<div class="my-3">
-							<label class="form-check-label py-1 mr-2 ml-2 "> Votre sexe </label>
-							<div class="form-check-inline py-1 px-2">
-								<input type="radio" class="form-check-input" name="sexe" value="0" checked> <label class="form-check-label">M
-								</label>
+	<div class="card card0">
+		<div class="d-flex flex-lg-row flex-column-reverse">
+			<div class="card card1">
+				<div class="row justify-content-center my-auto">
+					<div class="col-md-12 col-10 my-5">
+						<h2 class="mb-2 text-center font-weight-bold heading">Nous contacter !</h2>
+						<h3 class="mb-5 text-center heading ">Merci de compléter le formulaire</h3>
+						<?php if (isset($_GET['success'])) : ?>
+							<div class="alert alert-success" role="alert">
+								Les données sont bien été envoyés
 							</div>
-							<div class="form-check-inline">
-								<input type="radio" class="form-check-input" name="sexe" value="1"> <label class="form-check-label">F
-								</label>
+						<?php endif; ?>
+
+						<form method="POST" action="../controllers/contact.php">
+							<div class="form-group pr-5"> <label class="form-control-label  ">Nom</label> <input type="text" name="firstname" placeholder="Dupon" class="form-control" required> </div>
+							<div class="form-group pr-5"> <label class="form-control-label ">Prénom</label> <input type="text" name="lastname" placeholder="Michel" class="form-control" required> </div>
+							<div class="form-group pr-5"> <label class="form-control-label ">E-mail</label> <input type="email" name="email" placeholder="michel.dupon@gmail.com" class="form-control" required> </div>
+							<div class="form-group pr-5"> <label class="form-control-label ">Téléphone</label> <input type="tel" name="number" placeholder="06-22-30-30-30" class="form-control" required> </div>
+
+							<div class="input-group mt-5 mb-4 pr-5">
+								<div class="input-group-prepend">
+									<button class="btn btn-outline-secondary" type="button">Votre sujet</button>
+								</div>
+								<select name="subject" class="custom-select" aria-label="Example select with button addon" required>
+									<option value="Renseignement" selected>Renseignement</option>
+									<option value="Commande">Commande</option>
+									<option value="Réclamation">Réclamation</option>
+								</select>
 							</div>
-						</div>
-
-						<div class="my-3">
-							<label class="form-check-label py-1 mr-2 ml-2 "> Vous êtes ? </label>
-							<div class="form-check-inline py-1 ">
-								<input type="radio" class="form-check-input" name="role" value="stagaire" checked> <label class="form-check-label">Stagiaire
-								</label>
+							<div class="mb-3 pr-5">
+								<label for="exampleFormControlTextarea1" class="form-label ml-2">Message</label>
+								<textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="4" required></textarea>
 							</div>
-							<div class="form-check-inline">
-								<input type="radio" class="form-check-input" name="role" value="client"> <label class="form-check-label">Client
-								</label>
-							</div>
-						</div>
 
-
-						<div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" id="email" name="firstname" placeholder="Nom" class="form-control" required> </div>
-						<div class="form-group"> <label class="form-control-label ">Prénom</label> <input type="text" id="psw" name="lastname" placeholder="Prénom" class="form-control" required> </div>
-						<div class="form-group"> <label class="form-control-label ">E-mail</label> <input type="email" id="email" name="email" placeholder="E-mail" class="form-control" required> </div>
-						<div class="form-group"> <label class="form-control-label ">Mot de passe</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control" required> </div>
-						<div class="form-group"> <label class="form-control-label ">Confirmation de mot de passe</label> <input type="password" name="confirmPassword" placeholder="Mot de passe" class="form-control" required> </div>
-
-
-
-
-						<div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" type="submit" name="validation">Enregistrer</button> </div>
-						<div class="row justify-content-center my-1"> <a class="a-color" href="#">Lire les conditions générales</a> </div>
-					</form>
+							<div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" type="submit" name="validation">Envoyer</button> </div>
+							<div class="row justify-content-center my-1"> <a class="a-color" href="#">Lire les conditions générales</a> </div>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
 
 
-		<div class="card card2">
-			<div class="my-auto mx-md-5 px-md-2 right" style="margin: 0px;">
-				<h3 class="text-body font-weight-bold">We are more than just a company</h3> <small class="text-body font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
-			</div>
+			<div class="card card2">
+				<div class="my-auto mx-md-5 px-md-2 right" style="margin: 0px;">
+					<h3 class="text-body font-weight-bold">G7solution</h3>
+					<small class="font-weight-bold">Votre partenaire en conseil et formation, vous accompagne du diagnostic à la réalisation de vos projets de développement, compétences et ressources : G7 Solution !</small><br><br>
+					<small class="text-center font-weight-bold">Adresse : 32 rue Riquet / 53 rue de la Colombette 31000 Toulouse</small>
+					<small class="text-center font-weight-bold">Téléphone : 06 19 44 53 34</small><br>
+					<small class="font-weight-bold">Email : contact@g7solution.fr</small>
+				</div>
 
-			<div class=" text-center mb-5">
-				<p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous avez déja un compte ?<a href="form_autho.php"><button class="btn btn-white ml-2">Se connecter </button></a></p>
+				<div class=" text-center mb-5">
+					<p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous n'avez pas de compte ?<a href="form_autho.php"><button class="btn btn-white ml-2">S'inscrire </button></a></p>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
 <!-- Pied de page -->
 <?php include 'inc_footer.php'; ?>
-
-
-
-
-</body>
