@@ -16,8 +16,10 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
     }
     // if users password == instretd password => created new session
     if ($check->password === $_POST['password']) {
-        $_SESSION['user']['id'] = $check->id;
-        $_SESSION['user']['email'] = $check->email;
+        $_SESSION['access'] = "oui";
+        $_SESSION['id'] = $check->id;
+        $_SESSION['lastname'] = $check->lastname;
+
 
         header('Location:../templates/home_display.php');
         exit;
