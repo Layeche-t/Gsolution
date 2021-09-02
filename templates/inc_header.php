@@ -27,13 +27,27 @@
                 </div>
                 <div class=" nav-item dropdown col">
 
-                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action" id="navbardrop"><i class="fas fa-user"></i> Antonio Moreno</a>
-                    <div class="dropdown-menu">
-                        <a href="../templates/form_autho.php" class="dropdown-item"><i class="fa fa-user-o"></i>Connexion</a>
-                        <a href="../templates/registrationForm.php" class="dropdown-item"><i class="fa fa-calendar-o"></i>Inscription</a>
-                        <!-- <div class="divider dropdown-divider"></div>
-                        <a href="../templates/logout.php" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Déconnexion</a> -->
-                    </div>
+                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action" id="navbardrop"><i class="fas fa-user"></i>
+                        <?php
+                        if (isset($_SESSION['id']) && isset($_SESSION['lastname'])) {
+                            echo '<span>' . $_SESSION['lastname'] . '</span></a>';
+                            echo '<div class="dropdown-menu">';
+                            echo '<a href="../templates/myPersonalSpace" class="dropdown-item"><i class="fa fa-user-o"></i>Espace personel</a>';
+                            echo '<a href="../templates/myAccount" class="dropdown-item"><i class="fa fa-user-o"></i>Mon compte</a>';
+                            echo '<div class="divider dropdown-divider"></div>';
+                            echo '<a href="logout" class="dropdown-item"><i class="fa fa-user-o"></i>Déconnexion</a>';
+                            echo '</div>';
+                        } else {
+                            echo '<span> espace personel </span></a>';
+                        ?>
+                            <div class="dropdown-menu">
+                                <a href="../templates/form_autho.php" class="dropdown-item"><i class="fa fa-user-o"></i>Connexion</a>
+                                <a href="../templates/registrationForm.php" class="dropdown-item"><i class="fa fa-calendar-o"></i>Inscription</a>
+                                <div class="divider dropdown-divider"></div>
+                            </div>
+                        <?php } ?>
+
+
                 </div>
             </div>
 
