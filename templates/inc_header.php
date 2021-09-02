@@ -43,7 +43,6 @@
                             <div class="dropdown-menu">
                                 <a href="../templates/form_autho.php" class="dropdown-item"><i class="fa fa-user-o"></i>Connexion</a>
                                 <a href="../templates/registrationForm.php" class="dropdown-item"><i class="fa fa-calendar-o"></i>Inscription</a>
-                                <div class="divider dropdown-divider"></div>
                             </div>
                         <?php } ?>
 
