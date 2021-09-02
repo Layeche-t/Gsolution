@@ -25,15 +25,14 @@
                         <img src="../pictures/logo.png" alt="" width="300" height="100">
                     </a>
                 </div>
-                <div class="col border ">
+                <div class=" nav-item dropdown col">
 
                     <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action" id="navbardrop"><i class="fas fa-user"></i> Antonio Moreno</a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
-                        <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
-                        <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
-                        <div class="divider dropdown-divider"></div>
-                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a href="../templates/form_autho.php" class="dropdown-item"><i class="fa fa-user-o"></i>Connexion</a>
+                        <a href="../templates/registrationForm.php" class="dropdown-item"><i class="fa fa-calendar-o"></i>Inscription</a>
+                        <!-- <div class="divider dropdown-divider"></div>
+                        <a href="../templates/logout.php" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Déconnexion</a> -->
                     </div>
                 </div>
             </div>
