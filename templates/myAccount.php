@@ -8,7 +8,7 @@ require_once('../inc_config.php');
 $user = new User();
 
 if (isset($_SESSION['user']['id'])) {
-    $blogs = $user->findOneBy(['id' => $_SESSION['user']['id']], $user::TABLE);
+    $curentuser = $user->findOneBy(['id' => $_SESSION['user']['id']], $user::TABLE);
 }
 
 $_SESSION['info']['redirect'] = 'templates/myAccount';
@@ -68,7 +68,7 @@ include 'inc_header.php';
                 </li>
                 <li class="d-flex no-block card-body border-top ">
                     <i class="fas fa-user-cog mr-4 mt-3 icon-liste"></i>
-                    <div class="mt-3"> <span class="">Email d'utilisateur : <?= $_SESSION['user']['email']; ?> </span> </div>
+                    <div class="mt-3"> <span class="">Email d'utilisateur : <?= $curentuser->email; ?> </span> </div>
                     <div class="ml-auto">
                         <button type="button" class="btn btn-primary btn-circle m-1" data-toggle="modal" data-target="#exampleModal1">
                             <i class="fa fa-cog"></i>
@@ -77,7 +77,7 @@ include 'inc_header.php';
                 </li>
                 <li class="d-flex no-block card-body border-top ">
                     <i class="fas fa-unlock-alt mr-4 mt-3 icon-liste"></i>
-                    <div class="mt-3"> <span class="">Mot de passe : <?= $_SESSION['user']['password']; ?> </span> </div>
+                    <div class="mt-3"> <span class="">Mot de passe : <?= $curentuser->password; ?> </span> </div>
                     <div class="ml-auto">
                         <button type="button" class="btn btn-primary btn-circle m-1" data-toggle="modal" data-target="#exampleModal2">
                             <i class="fa fa-cog"></i>
@@ -101,9 +101,9 @@ include 'inc_header.php';
                     </div>
                     <div class="modal-body">
                         <form action="../controllers/update_users" method="POST">
-                            <div class="mt-1 text-center"> <span class="">Nom: <?= $_SESSION['user']['lastname']; ?> </span> </div>
-                            <div class="mt-1 text-center"> <span class="">Prénom: <?= $_SESSION['user']['firstname']; ?> </span> </div>
-                            <div class="mt-1 text-center"> <span class="">Statut: <?= $_SESSION['user']['role']; ?> </span> </div>
+                            <div class="mt-1 text-center"> <span class="">Nom: <?= $curentuser->lastname; ?> </span> </div>
+                            <div class="mt-1 text-center"> <span class="">Prénom: <?= $curentuser->firstname; ?> </span> </div>
+                            <div class="mt-1 text-center"> <span class="">Statut: <?= $curentuser->role;; ?> </span> </div>
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez votre nouveau nom :</label>
@@ -112,7 +112,7 @@ include 'inc_header.php';
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez votre nouveau prénom :</label>
                                 <input type="text" class="form-control" name="lastname" required>
-                                <input type="text" class="form-control" name="id" value=<?= $_SESSION['user']['id'] ?> hidden>
+                                <input type="text" class="form-control" name="id" value=<?= $curentuser->id; ?> hidden>
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -139,7 +139,7 @@ include 'inc_header.php';
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez votre nouvel email :</label>
                                 <input type="text" class="form-control" id="recipient-name" name="email" required>
-                                <input type="text" class="form-control" name="id" value=<?= $blogs->id; ?> hidden>
+                                <input type="text" class="form-control" name="id" value=<?= $curentuser->id; ?> hidden>
                                 <p class="text-center text-danger mt-2">Attetion votre ancien email ne sera plus valide</p>
                             </div>
                             <div class="modal-footer">
@@ -174,7 +174,7 @@ include 'inc_header.php';
 
                                 <label for="recipient-name" class="col-form-label">Confirmez votre mot de passe :</label>
                                 <input type="password" class="form-control" id="recipient-name" name="confpwd" required>
-                                <input type="text" class="form-control" name="id" value=<?= $blogs->id; ?> hidden>
+                                <input type="text" class="form-control" name="id" value=<?= $curentuser->id; ?> hidden>
                             </div>
 
                             <div class="modal-footer">
