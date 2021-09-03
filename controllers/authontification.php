@@ -15,10 +15,14 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
         exit;
     }
     // if users password == instretd password => created new session
-    if ($check->password === $_POST['password']) {
+    if ($check->password == $_POST['password']) {
         $_SESSION['access'] = "oui";
-        $_SESSION['id'] = $check->id;
-        $_SESSION['lastname'] = $check->lastname;
+        $_SESSION['user']['id'] = $check->id;
+        $_SESSION['user']['lastname'] = $check->lastname;
+        $_SESSION['user']['firstname'] = $check->firstname;
+        $_SESSION['user']['email'] = $check->email;
+        $_SESSION['user']['password'] = $check->password;
+        $_SESSION['user']['role'] = $check->role;
 
 
         header('Location:../templates/home_display.php');
