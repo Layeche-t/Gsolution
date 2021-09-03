@@ -31,6 +31,8 @@
                     <a href="team_disply.php" class="dashboard-nav-item"><i class="fas fa-user-plus"></i> Equipe</a>
                     <a href="users_disply.php" class="dashboard-nav-item"><i class="fas fa-user-friends"></i>
                         Utilisateurs</a>
+                    <a href="libraryDisplay.php" class="dashboard-nav-item"><i class="fas fa-photo-video"></i>
+                        bibliothèque </a>
 
                     <!-- Vertical bar -->
                     <div class="nav-item-divider"></div>
