@@ -29,11 +29,12 @@
 
                     <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action" id="navbardrop"><i class="fas fa-user"></i>
                         <?php
-                        if (isset($_SESSION['id']) && isset($_SESSION['lastname'])) {
-                            echo '<span>' . $_SESSION['lastname'] . '</span></a>';
+                        if (isset($_SESSION['user']['id']) && isset($_SESSION['user']['lastname'])) {
+
+                            echo '<span>' . $_SESSION['user']['lastname'] . '</span></a>';
                             echo '<div class="dropdown-menu">';
                             echo '<a href="../templates/myPersonalSpace" class="dropdown-item"><i class="fa fa-user-o"></i>Espace personel</a>';
-                            echo '<a href="../templates/myAccount" class="dropdown-item"><i class="fa fa-user-o"></i>Mon compte</a>';
+                            echo '<a href="../templates/myAccount?id=' . $_SESSION['user']['id'] . '" class="dropdown-item"><i class="fa fa-user-o"></i>Mon compte</a>';
                             echo '<div class="divider dropdown-divider"></div>';
                             echo '<a href="logout" class="dropdown-item"><i class="fa fa-user-o"></i>Déconnexion</a>';
                             echo '</div>';
