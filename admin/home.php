@@ -1,6 +1,40 @@
 <?php
 require_once('../inc_config.php');
 
+$post = new Post();
+
+$all = $post->findAll($post::TABLE);
+$countB = 0;
+$countSl = 0;
+$countP = 0;
+$countSr = 0;
+$countT = 0;
+$countTr = 0;
+$countU = 0;
+$countL = 0;
+
+foreach ($all as $case) {
+    if ($case['type'] == 'blog') {
+        $countB++;
+    }
+    if ($case['type'] == 'slider') {
+        $countS++;
+    }
+    if ($case['type'] == 'planning') {
+        $countP++;
+    }
+    if ($case['type'] == 'training') {
+        $countT++;
+    }
+    if ($case['type'] == 'services') {
+        $countSr++;
+    }
+    if ($case['type'] == 'library') {
+        $countL++;
+    }
+}
+
+
 $sql = "SELECT 'type' FROM `posts` ";
 
 $query = $bdd->prepare($sql);
@@ -72,7 +106,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1">42 Applied <span class="text2">of 70 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countS ?> Applied <span class="text2">of 70 capacity</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +137,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1">42 Applied <span class="text2">of 70 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countS ?><span class="text2">of 70 capacity</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +167,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countTr ?><span class="text2">of 70 capacity</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +200,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countB ?><span class="text2">of 70 capacity</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +232,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                             <div class="progress">
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countP ?><span class="text2">of 70 capacity</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -261,6 +295,36 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bibliothèque -->
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="icon">
+                                                <i class="fas fa-user-plus"></i>
+                                            </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">Bibliothèque</h6>
+                                                <span>2 days ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="badge"> <span>Dévloppement</span> </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <a href="users_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Bibliothèque </h3>
+                                        </a>
+                                        <h3>Java - USA</h3>
+                                        <div class="mt-5">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countL ?> <span class="text2">of 100 capacity</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
