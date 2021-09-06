@@ -72,6 +72,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                                     Votre fichier dépasse la taille autorisée !
                                 </div>
                             <?php endif ?>
+
                             <!-- le header du tableau -->
                             <thead class="table-dark">
                                 <tr>
@@ -96,7 +97,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         <td> <?= $slider['description'] ?> </td>
                                         <td>
                                             <a href="slide_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
                                         </td>
                                     </tr>
 
@@ -156,9 +157,36 @@ $_SESSION['info']['table'] = $post::TABLE;
                     </div>
                 </div>
                 <!-- end -->
-            </div>
 
+            </div>
         </div>
+
+
+        <!-- pop up d'ajout -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--titre du formulaire -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- formulaire d'envoie-->
+                    <div class="modal-body">
+                        <form action="../controllers/add_blog.php" method="POST" enctype="multipart/form-data">
+                            <div>
+                                <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
+                            </div>
+                            <div class="modal-footer text-center">
+                                <a href="?id= <?= $slider['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!--import du footer-->
         <?php include('inc_footer.php'); ?>
