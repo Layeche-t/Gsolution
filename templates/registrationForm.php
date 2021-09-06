@@ -2,6 +2,11 @@
 
 require_once('../inc_config.php');
 
+$post = new Post();
+
+$postFor =  $post->findBy(['type' => 'training'], 1000, $post::TABLE);
+
+
 ?>
 
 
@@ -26,7 +31,8 @@ require_once('../inc_config.php');
         <div class="d-flex flex-lg-row flex-column-reverse">
             <div class="card card1">
                 <div class="row justify-content-center my-auto">
-                    <div class="col-md-9 col-10 my-5">
+
+                    <div class="col-md-10 col-10 my-5">
                         <h2 class="mb-2 text-center font-weight-bold heading">Bienvenu !</h2>
                         <h3 class="mb-5 text-center heading">Vous n'êtes pas encore inscrit</h3>
 
@@ -51,7 +57,6 @@ require_once('../inc_config.php');
                                     <input type="radio" class="form-check-input" name="role" value="Partenaire" checked> <label class="form-check-label">Partenaire
                                     </label>
                                 </div>
-
                                 <div class="form-check-inline">
                                     <input id="exampleRadios1" type="radio" class="form-check-input" name="role" value="client"> <label class="form-check-label">Client
                                     </label>
@@ -60,22 +65,21 @@ require_once('../inc_config.php');
                                     <input id="showSelect" type="radio" class="form-check-input" name="role" value="Stagiaire" id="exampleRadios1"> <label class="form-check-label">Stagiaire
                                     </label>
                                 </div>
-
-                                <!-- list -->
-                                <div class="form-row div">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect2">Votre formation</label>
-                                        <select class="form-control" id="">
-                                            <option selected class="selected">Coiffure</option>
-                                            <option>Informatique</option>
-                                            <option>Ressources humaines</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- jquery -->
-                                <?php include 'testing.html'; ?>
-
                             </div>
+
+                            <!-- list -->
+                            <div class="form-group div">
+                                <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre formation</label>
+                                <select class="form-control" id="">
+                                    <?php foreach ($postFor as $training) : ?>
+                                        <option><?= $training['titel'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <!-- jquery -->
+                            <?php include 'showSelect.html'; ?>
+
 
                             <div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" name="firstname" placeholder="Nom" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Prénom</label> <input type="text" name="lastname" placeholder="Prénom" class="form-control" required> </div>
