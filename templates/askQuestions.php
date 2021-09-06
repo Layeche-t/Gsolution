@@ -1,57 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>G7solution</title>
-	<script src="https://kit.fontawesome.com/5da465d417.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
+<?php
+require_once('../inc_config.php');
+?>
+<!--Header + menu-->
+<?php include 'inc_header.php'; ?>
 
-<body>
-	<!--Header + menu-->
-		<?php include 'header.php';?>
+<h2 class="titel-pages font-weight-bold m mb-3">FAQ</h2>
 
-		<h1 class="titre-blog"> <span class="span-blog">FAQ</span></h1>
+<div class="container mt-4">
+	<div id="accordion" role="tablist">
 
-		<div class="contenair-faq">
-			<div class="questions">
-				<h1 class="titre-questions">Puis-je suivre ma commande ?</h1>
-				<p class="paragraphe-questions"> Oui, vous pouvez! Après avoir passé votre commande, vous recevrez une confirmation de commande par e-mail. Chaque commande démarre la production 24 heures après la passation de votre commande. Dans les 72 heures suivant votre commande, vous recevrez une date de livraison prévue. Lors de l'expédition de la commande, vous recevrez un autre e-mail avec le numéro de suivi et un lien pour suivre la commande en ligne avec le transporteur.</p>
-				
+		<!-- start -->
+		<div class="card ">
+			<div class="card-header color-forgot row" role="tab" id="headingOne">
+
+				<h5 class="mb-0 font-weight-bold col" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
+					Comment travailler au ministère de la Culture ?
+				</h5>
+
+
+				<i class="fas fa-plus-square col"></i>
+
 			</div>
 
-			<div class="questions">
-				<h1 class="titre-questions">Puis-je suivre ma commande ?</h1>
-				<p class="paragraphe-questions"> Oui, vous pouvez! Après avoir passé votre commande, vous recevrez une confirmation de commande par e-mail. Chaque commande démarre la production 24 heures après la passation de votre commande. Dans les 72 heures suivant votre commande, vous recevrez une date de livraison prévue. Lors de l'expédition de la commande, vous recevrez un autre e-mail avec le numéro de suivi et un lien pour suivre la commande en ligne avec le transporteur.</p>
-				
-			</div>
-
-			<div class="questions">
-				<h1 class="titre-questions">Puis-je suivre ma commande ?</h1>
-				<p class="paragraphe-questions"> Oui, vous pouvez! Après avoir passé votre commande, vous recevrez une confirmation de commande par e-mail. Chaque commande démarre la production 24 heures après la passation de votre commande. Dans les 72 heures suivant votre commande, vous recevrez une date de livraison prévue. Lors de l'expédition de la commande, vous recevrez un autre e-mail avec le numéro de suivi et un lien pour suivre la commande en ligne avec le transporteur.</p>
-			</div>
-
-			<div class="questions">
-				<h1 class="titre-questions">Puis-je suivre ma commande ?</h1>
-				<p class="paragraphe-questions"> Oui, vous pouvez! Après avoir passé votre commande, vous recevrez une confirmation de commande par e-mail. Chaque commande démarre la production 24 heures après la passation de votre commande. Dans les 72 heures suivant votre commande, vous recevrez une date de livraison prévue. Lors de l'expédition de la commande, vous recevrez un autre e-mail avec le numéro de suivi et un lien pour suivre la commande en ligne avec le transporteur.</p>
-			</div>
-
-			<div class="questions">
-				<h1 class="titre-questions">Puis-je suivre ma commande ?</h1>
-				<p class="paragraphe-questions"> Oui, vous pouvez! Après avoir passé votre commande, vous recevrez une confirmation de commande par e-mail. Chaque commande démarre la production 24 heures après la passation de votre commande. Dans les 72 heures suivant votre commande, vous recevrez une date de livraison prévue. Lors de l'expédition de la commande, vous recevrez un autre e-mail avec le numéro de suivi et un lien pour suivre la commande en ligne avec le transporteur.</p>
-			</div>
-
-			<div class="questions">
-				<h1 class="titre-questions">Puis-je suivre ma commande ?</h1>
-				<p class="paragraphe-questions"> Oui, vous pouvez! Après avoir passé votre commande, vous recevrez une confirmation de commande par e-mail. Chaque commande démarre la production 24 heures après la passation de votre commande. Dans les 72 heures suivant votre commande, vous recevrez une date de livraison prévue. Lors de l'expédition de la commande, vous recevrez un autre e-mail avec le numéro de suivi et un lien pour suivre la commande en ligne avec le transporteur.</p>
+			<div id="collapseOne" class="collapse show row" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+				<div class="card-body ">
+					Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+				</div>
 			</div>
 		</div>
 
+		<div class="card row">
+			<div class="card-header color-forgot" role="tab" id="headingTwo">
+				<h5 class="mb-0 font-weight-bold" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="true" aria-controls="collapseOne">
+					Comment accéder aux offres d'apprentissage dans la fonction publique ?
+				</h5>
+			</div>
+			<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+				<div class="card-body card-footer">
+					Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. </div>
+			</div>
+		</div>
 
-
-
-	<!--pied de page -->
-		<?php include 'footer.php';?>
+		<div class="card row">
+			<div class="card-header color-forgot" role="tab" id="headingThree">
+				<h5 class="mb-0 font-weight-bold" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="true" aria-controls="collapseOne">
+					Quelles sont les formations, diplômes et métiers de l'enseignement supérieur Culture ? </h5>
+			</div>
+			<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+				<div class="card-body card-footer font-weight-bold ">
+					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 </body>
+
 </html>
