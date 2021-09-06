@@ -8,16 +8,7 @@ require_once('../inc_config.php');
 <?php include 'inc_header.php'; ?>
 <h1 class="titel-pages font-weight-bold">Créer un compte</h1>
 
-
-
-
-
 <div class="container px-5 py-5 mx-auto">
-    <?php if (isset($_GET['success'])) : ?>
-        <div class="alert alert-success" role="alert">
-            Les données sont bien été insérées
-        </div>
-    <?php endif; ?>
 
     <?php if (isset($_GET['error']) && $_GET['error'] == 'pw') : ?>
         <div class="alert alert-danger text-center font-weight-bold" role="alert">
@@ -39,6 +30,7 @@ require_once('../inc_config.php');
                         <h2 class="mb-2 text-center font-weight-bold heading">Bienvenu !</h2>
                         <h3 class="mb-5 text-center heading">Vous n'êtes pas encore inscrit</h3>
 
+                        <!-- form  -->
                         <form method="POST" action="../controllers/add.php">
 
                             <div class="my-3">
@@ -56,19 +48,38 @@ require_once('../inc_config.php');
                             <div class="my-3">
                                 <label class="form-check-label py-1 mr-2 ml-2 "> Vous êtes ? </label>
                                 <div class="form-check-inline py-1 ">
-                                    <input type="radio" class="form-check-input" name="role" value="stagaire" checked> <label class="form-check-label">Stagiaire
+                                    <input type="radio" class="form-check-input" name="role" value="Partenaire" checked> <label class="form-check-label">Partenaire
+                                    </label>
+                                </div>
+
+                                <div class="form-check-inline">
+                                    <input id="exampleRadios1" type="radio" class="form-check-input" name="role" value="client"> <label class="form-check-label">Client
                                     </label>
                                 </div>
                                 <div class="form-check-inline">
-                                    <input type="radio" class="form-check-input" name="role" value="client"> <label class="form-check-label">Client
+                                    <input id="showSelect" type="radio" class="form-check-input" name="role" value="Stagiaire" id="exampleRadios1"> <label class="form-check-label">Stagiaire
                                     </label>
                                 </div>
+
+                                <!-- list -->
+                                <div class="form-row div">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect2">Votre formation</label>
+                                        <select class="form-control" id="">
+                                            <option selected class="selected">Coiffure</option>
+                                            <option>Informatique</option>
+                                            <option>Ressources humaines</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- jquery -->
+                                <?php include 'testing.html'; ?>
+
                             </div>
 
-
-                            <div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" id="email" name="firstname" placeholder="Nom" class="form-control" required> </div>
-                            <div class="form-group"> <label class="form-control-label ">Prénom</label> <input type="text" id="psw" name="lastname" placeholder="Prénom" class="form-control" required> </div>
-                            <div class="form-group"> <label class="form-control-label ">E-mail</label> <input type="email" id="email" name="email" placeholder="E-mail" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" name="firstname" placeholder="Nom" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label ">Prénom</label> <input type="text" name="lastname" placeholder="Prénom" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label ">E-mail</label> <input type="email" name="email" placeholder="E-mail" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Mot de passe</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Confirmation de mot de passe</label> <input type="password" name="confirmPassword" placeholder="Mot de passe" class="form-control" required> </div>
 
