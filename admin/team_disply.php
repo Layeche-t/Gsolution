@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     header('Location: ../admin/team_disply.php?delete');
     exit();
 }
-if (isset($_SESSION['info'])){
+if (isset($_SESSION['info'])) {
     unset($_SESSION['info']);
 }
 $_SESSION['info']['redirect'] = 'team_disply';
@@ -95,7 +95,7 @@ $_SESSION['info']['table'] = $user::TABLE;
                                         <td> <?= $team['function'] ?> </td>
                                         <td>
                                             <a href="team_modification.php?id= <?= $team['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $team['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
                                         </td>
                                     </tr>
 
@@ -153,6 +153,28 @@ $_SESSION['info']['table'] = $user::TABLE;
                     </div>
                 </div>
                 <!-- end -->
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--titre du formulaire -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- formulaire d'envoie-->
+                    <div class="modal-body">
+                        <div>
+                            <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
+                        </div>
+                        <div class="modal-footer text-center">
+                            <a href="?id= <?= $team['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

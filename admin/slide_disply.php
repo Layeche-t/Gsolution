@@ -174,14 +174,12 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                     <!-- formulaire d'envoie-->
                     <div class="modal-body">
-                        <form action="../controllers/add_blog.php" method="POST" enctype="multipart/form-data">
-                            <div>
-                                <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
-                            </div>
-                            <div class="modal-footer text-center">
-                                <a href="?id= <?= $slider['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
-                            </div>
-                        </form>
+                        <div>
+                            <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
+                        </div>
+                        <div class="modal-footer text-center">
+                            <a href="?id= <?= $slider['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
+                        </div>
                     </div>
                 </div>
             </div>

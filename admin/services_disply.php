@@ -6,7 +6,7 @@ require_once('../inc_config.php');
 $post = new Post();
 
 //methode select par
-$sliders = $post->findBy(['type' => 'service'], 1000, $post::TABLE);
+$services = $post->findBy(['type' => 'service'], 1000, $post::TABLE);
 
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
@@ -15,11 +15,12 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-if (isset($_SESSION['info'])){
+if (isset($_SESSION['info'])) {
     unset($_SESSION['info']);
 }
 $_SESSION['info']['redirect'] = 'services_disply';
 $_SESSION['info']['table'] = $post::TABLE;
+
 ?>
 <!-- import du header -->
 <?php include('inc_header.php'); ?>
@@ -74,17 +75,17 @@ $_SESSION['info']['table'] = $post::TABLE;
                                 <!-- la boucle foreach pour l'affichage -->
                                 <?php
                                 $num = 0;
-                                foreach ($sliders as $slider) :
+                                foreach ($services as $service) :
                                     $num = $num + 1;
                                 ?>
 
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
-                                        <td> <?= $slider['titel'] ?> </td>
-                                        <td> <?= $slider['description'] ?> </td>
+                                        <td> <?= $service['titel'] ?> </td>
+                                        <td> <?= $service['description'] ?> </td>
                                         <td>
-                                            <a href="services_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                            <a href="services_modification.php?id= <?= $service['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
                                         </td>
                                     </tr>
 
@@ -141,6 +142,28 @@ $_SESSION['info']['table'] = $post::TABLE;
                     </div>
                 </div>
                 <!-- end -->
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--titre du formulaire -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- formulaire d'envoie-->
+                    <div class="modal-body">
+                        <div>
+                            <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
+                        </div>
+                        <div class="modal-footer text-center">
+                            <a href="?id= <?= $service['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

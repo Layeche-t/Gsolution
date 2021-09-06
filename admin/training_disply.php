@@ -118,6 +118,18 @@ $_SESSION['info']['table'] = $post::TABLE;
                         </div>
                     <?php endif ?>
 
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'siz') : ?>
+                        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                            Le fichier est trop volumineux !
+                        </div>
+                    <?php endif ?>
+
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'ext') : ?>
+                        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                            Merci d'importer un fichier pdf !
+                        </div>
+                    <?php endif ?>
+
 
 
                     <div class='card-body'>
@@ -150,7 +162,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         <td> <?= $resultat['titel'] ?> </td>
                                         <td>
                                             <a href="training_modification.php?id= <?= $resultat['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $resultat['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
                                         </td>
                                     </tr>
 
@@ -184,7 +196,12 @@ $_SESSION['info']['table'] = $post::TABLE;
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture" required>
+                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label for="file" class="label-file">Choisir votre fihcier</label> <br>
+                                <input type="file" class="form-control input-file" accept=".pdf" name="file">
                             </div>
 
                             <div class="mb-3">
@@ -205,10 +222,30 @@ $_SESSION['info']['table'] = $post::TABLE;
                             </div>
                         </form>
                     </div>
-
-
                 </div>
                 <!-- end -->
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--titre du formulaire -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Suppression</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- formulaire d'envoie-->
+                    <div class="modal-body">
+                        <div>
+                            <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
+                        </div>
+                        <div class="modal-footer text-center">
+                            <a href="?id= <?= $training['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
