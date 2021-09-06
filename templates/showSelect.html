@@ -1,0 +1,19 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+
+
+<script>
+    $(".form-check-inline input[type='radio']").on("change", function () {
+        // Regardless of WHICH radio was clicked, is the
+        //  showSelect radio active?
+        if ($("#showSelect").is(':checked')) {
+            $('.div').removeClass("hidden");
+        } else {
+            $('.div').addClass("hidden");
+        }
+    })
+</script>
