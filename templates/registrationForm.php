@@ -70,9 +70,9 @@ $postFor =  $post->findBy(['type' => 'training'], 1000, $post::TABLE);
                             <!-- list -->
                             <div class="form-group div">
                                 <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre formation</label>
-                                <select class="form-control" id="">
+                                <select class="form-control" id="" name="id_formation">
                                     <?php foreach ($postFor as $training) : ?>
-                                        <option><?= $training['titel'] ?></option>
+                                        <option value="<?= $training['id'] ?>"><?= $training['titel'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
