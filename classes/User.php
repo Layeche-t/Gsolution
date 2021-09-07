@@ -133,4 +133,26 @@ class User extends AbstractDataBase
     {
         return parent::set($params, $table);
     }
+
+    public function getUsersByRole(array $types, $sufix = ' OR ', $table = self::TABLE)
+    {
+
+        
+        $sql = 'SELECT * FROM users WHERE role = ' . $types[0] . ' ' . $sufix . ' role = ' . $types[1];
+
+
+        //$add = substr(strstr($add, " "), 1);
+        //$add = $str = preg_replace('/\W\w+\s*(\W*)$/', '$1', $add);
+
+        var_dump($sql);
+        die;
+
+
+        $sql = $this->bd->query($sql);
+
+        $sql->execute();
+        $results = $sql->fetchAll();
+
+        return $results;
+    }
 }
