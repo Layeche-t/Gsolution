@@ -6,8 +6,12 @@ $post = new Post();
 
 if (isset($_SESSION['user']['id'])) {
     $curentuser = $user->findOneBy(['id' => $_SESSION['user']['id']], $user::TABLE);
+    var_dump($curentuser);
+    die;
 }
 $formation = $post->findOneBy(['id' => $curentuser->id_formation], $post::TABLE);
+var_dump($formation);
+die;
 
 
 
@@ -113,7 +117,7 @@ include 'inc_header.php';
                             <div class="mt-3"> <span class="">Introduction de la formation </span> </div>
                             <div class="ml-auto">
                                 <button type="button" class="btn btn-primary btn-circle m-1">
-                                    <i class="far fa-file-pdf"></i>
+                                    <a href="../controllers/download.php"> <i class="far fa-file-pdf"></i></a>
                                 </button>
                             </div>
                         </li>
