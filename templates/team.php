@@ -2,68 +2,112 @@
 include_once '../inc_config.php';
 
 
+$user = new User();
 
-// pagination
-// On détermine sur quelle page on se trouve
-if (isset($_GET['page']) && !empty($_GET['page'])) {
-	$currentPage = (int) strip_tags($_GET['page']);
-} else {
-	$currentPage = 1;
+$teams = $user->findBy(['role' => 'team'], 30, $user::TABLE);
+
+$crumbs = explode("/", $_SERVER["REQUEST_URI"]);
+$i = implode($crumbs);
+
+
+
+
+
+
+// récup nbr du tableau 
+$count = $bdd->query("SELECT count(id) AS fa FROM users WHERE role = 'team' ");
+$count->setFetchMode(PDO::FETCH_ASSOC);
+$count->execute();
+$tcount = $count->fetchAll();
+
+
+//pagination 
+@$page = $_GET['page'];
+if (empty($page)) {
+	$page = 1;
 }
-
-// On prépare la requête pour le count
-$sql = "SELECT COUNT(id) AS nb_articles FROM `users` WHERE role='team'";
-$query = $bdd->prepare($sql);
-$query->execute();
-$result = $query->fetch();
-$nbEquipe = (int) $result['nb_articles'];
-
-// On détermine le nombre d'articles par page
-$parPage = 6;
-// On calcule le nombre de pages total
-$pages = ceil($nbEquipe / $parPage);
-
-// Calcul du 1er article de la page
-$premier = ($currentPage * $parPage) - $parPage;
+$nbr_element_par_page = 8;
+$nbr_page = ceil($tcount[0]['fa'] / $nbr_element_par_page);
+$debut = ($page - 1) * $nbr_element_par_page;
 
 
-// récupération des données 
-$sql = "SELECT * FROM `users` WHERE role='team' LIMIT $premier, $parPage";
-$query = $bdd->prepare($sql);
-$query->execute();
+// récup data
+$sel = $bdd->query("SELECT * FROM users WHERE role= 'team' LIMIT $debut, $nbr_element_par_page");
 
-$equipes = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
+$sel->setFetchMode(PDO::FETCH_ASSOC);
+$sel->execute();
+$resultats = $sel->fetchAll();
+if (count($resultats) == 0) {
+	header("Location: training_disply.php");
+}
 ?>
+
+
+
 
 <!--Header + menu-->
 <?php include 'inc_header.php'; ?>
 
-<section class="mt-4" id="gallery">
-	<div class="container">
-		<div class="row">
-			<!-- Le titre de la page -->
-			<h1 class="card-title mb-3"> L'équipe </h1>
-			<?php foreach ($equipes as $equipe) : ?>
 
-				<div class="col-lg-4 mb-4">
-					<div class="card">
-						<?php
-						echo '<img src="../upload/"' . $equipe['image'] . 'alt="Card image cap" class="card-img-top">';
 
-						?>
-						<div class="card " style="height: 12rem;">
-							<h5 class="card-title mt-3 mr-3 titel-team "> <?= $equipe['firstname'], $equipe['lastname'] ?> </h5>
-							<h6 class="card-title"><?= $equipe['function'] ?></h6>
-						</div>
-					</div>
+
+<div class="container">
+	<h3 class="mt-3 ml-1 mb-0 font-weight-bold titel ">L'Equipe </h3>
+
+	<div class="row">
+		<div class="btn-group btn-breadcrumb ml-1 mb-4">
+			<a href="#" class="btn btn-default "><i class="fas fa-home"></i></a>
+			<a href="#" class="btn btn-default font-weight-bold a-color">Snippets <i class="fas fa-chevron-right"></i></a>
+			<a href="#" class="btn btn-default font-weight-bold a-color">Breadcrumbs <i class="fas fa-chevron-right"></i></a>
+			<a href="#" class="btn btn-default font-weight-bold a-color">Default</a>
+		</div>
+	</div>
+
+	<div class="  row text-center mb-5 ">
+		<!-- Team item -->
+		<?php foreach ($resultats as $resultat) : ?>
+			<div class="col-xl-3 col-sm-6 mb-5 ">
+				<div class="color-forgot1 rounded shadow-sm py-5 px-4 coloooor" style="height: 300px;">
+
+					<?php
+					echo  "<img src='../upload/" . $resultat['image'] . "'   width='100'  class='img-fluid rounded-circle mb-3 img-thumbnail shadow-sm' \>";
+					?>
+					<h5 class="mb-0 mx-1 font-weight-bold "><?= $resultat['firstname'] . ' ' . $resultat['lastname'] ?></h5><span class="small text-uppercase text-muted font-weight-bold"><?= $resultat['function'] ?></span>
+					<ul class=" mb-0 list-inline mt-3">
+						<li class="list-inline-item "><a href="#" class="social-link "><i class=" fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+					</ul>
 				</div>
-			<?php endforeach ?>
+			</div>
+		<?php endforeach; ?>
+	</div>
 
-			<!--header-->
+	<nav aria-label="Page navigation example ">
+		<ul class="pagination justify-content-center">
+			<li class="page-item ">
+				<a class="page-link color-forgot1 text-dark font-weight-bold" href="#" tabindex="-1">Précédent</a>
+			</li>
 
+			<?php for ($i = 1; $i <= $nbr_page; $i++) : ?>
+				<?php if ($page != $i) : ?>
 
-			</body>
+					<li class="page-item"><a class="page-link bg-white text-dark" href="?page=<?= $i ?>"><?= $i; ?></a></li>
 
-			</html>
+				<?php else : ?>
+					<li class="page-item bg-secondary"><a class="page-link bg-secondary text-dark " href="?page=<?= $i ?>"><?= $i; ?></a></li>
+
+				<?php endif ?>
+
+			<?php endfor ?>
+
+			<li class="page-item">
+				<a class="page-link color-forgot1 text-dark font-weight-bold" href="#">Suivant</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+<?php include_once 'inc_footer.php'; ?>
+
+</body>
+
+</html>
