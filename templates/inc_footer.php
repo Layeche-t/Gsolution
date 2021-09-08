@@ -1,76 +1,72 @@
-<footer class="container-fluid bg-grey py-5">
+<footer class="container-fluid bg-grey pt-5">
 
-	<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-6 ">
+					<div class="logo-part">
+						<img src="../pictures/qualiopi.png" class="w-50 logo-footer">
+						<p>7637 Laurel Dr. King Of Prussia, PA 19406</p>
+						<p>Use this tool as test data for an automated system or find your next pen</p>
+					</div>
+				</div>
 
-		<div class="row">
-
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-6 ">
-						<div class="logo-part">
-							<img src="../pictures/qualiopi.png" class="w-50 logo-footer">
-							<p>7637 Laurel Dr. King Of Prussia, PA 19406</p>
-							<p>Use this tool as test data for an automated system or find your next pen</p>
+				<div class="col-md-6 px-4">
+					<h6 class="font-weight-bold"> Nos offres</h6>
+					<div class="row ">
+						<div class="col-md-6 font-weight-bold">
+							<ul>
+								<li> <a href="#"> Formations à distence</a> </li>
+								<li> <a href="#"> Nos services</a> </li>
+								<li> <a href="#"> Sur mesure</a> </li>
+							</ul>
 						</div>
 					</div>
-					<div class="col-md-6 px-4">
-						<h6> Nos offres</h6>
-						<p>But horizontal lines can only be a full pixel high.</p>
+				</div>
+
+				<div class="col-md-6">
+					<div class="social">
+						<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 					</div>
-					<div class="col-md-6 ">
-						<div class="social">
-							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-						</div>
-					</div>
-
-
-
 				</div>
 			</div>
+		</div>
 
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-6 px-4">
-						<h6> Help us</h6>
-						<div class="row ">
-							<div class="col-md-6">
-								<ul>
-									<li> <a href="#"> Home</a> </li>
-									<li> <a href="#"> About</a> </li>
-									<li> <a href="#"> Service</a> </li>
-									<li> <a href="#"> Team</a> </li>
-									<li> <a href="#"> Help</a> </li>
-									<li> <a href="#"> Contact</a> </li>
-								</ul>
-							</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-6 px-4">
+					<h6 class="font-weight-bold"> G7solution</h6>
+					<div class="row ">
+						<div class="col-md-6 font-weight-bold">
+							<ul>
+								<li> <a href="#"> Nous sommes</a> </li>
+								<li> <a href="#"> L'équipe</a> </li>
+								<li> <a href="#"> Nos experts</a> </li>
+								<li> <a href="#"> Blog</a> </li>
+							</ul>
 						</div>
 					</div>
+				</div>
 
-
-
-					<div class="col-md-6 ">
-						<h6> Newsletter</h6>
-
-						<div class="row ">
-							<div class="col-md-6">
-								<ul>
-									<li> <a href="#"> Home</a> </li>
-									<li> <a href="#"> About</a> </li>
-									<li> <a href="#"> Service</a> </li>
-									<li> <a href="#"> Team</a> </li>
-									<li> <a href="#"> Help</a> </li>
-									<li> <a href="#"> Contact</a> </li>
-								</ul>
-							</div>
+				<div class="col-md-6 ">
+					<h6 class="font-weight-bold"> En savoir plus </h6>
+					<div class="row ">
+						<div class="col-md-6 font-weight-bold">
+							<ul>
+								<li> <a href="#"> FQA</a> </li>
+								<li> <a href="#"> Contactez nous</a> </li>
+								<li> <a href="#"> Le plan du site</a> </li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<div class="copyright">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6">
 					<span>Copyright © 2019, All Right Reserved Seobin</span>
@@ -107,8 +103,14 @@
 			<i class="fa fa-angle-up"></i>
 		</button>
 	</div>
-	</div>
+
 </footer>
+
+
+
+</body>
+
+</html>
 
 
 
@@ -158,4 +160,4 @@
 		<h2 class="sous-text"><a href="#">Le plan du site</a></h2>
 	</div>
 </footer>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
