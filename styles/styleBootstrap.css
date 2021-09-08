@@ -1,10 +1,18 @@
 
+/* body{
+background-color: #fcfbbc !important ;
+} */
+
 /* Titres des pages */
 .titel-pages{
     color: #147144;
     margin: 30px 0px 0px 151px;
     
 } 
+/* border */
+.coloooor{
+border: 1px solid #e5e5da !important;
+}
 
 
 /* Header */
@@ -74,6 +82,7 @@ p.text-client {
 /* Titel of page home display */
 .titel {
     color: #147144; 
+
 }
 
 /* Carousel opinion */
@@ -173,7 +182,7 @@ line-height: 8px;
 
 a:hover {
 text-decoration: none !important;
-color: #147144 !important;
+color: black !important;
 
 }
 
@@ -462,4 +471,83 @@ ul.list-style-none li a {
     display: flex;
     align-items: center;
 }
+
+/* Dashboard */
+.had{
+    height: 30px !important;
+}
+
+
+/* team */
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.social-link:hover, .social-link:focus {
+    background: #7CBC52;
+    text-decoration: none;
+    color: #555;
+}
+
+/* color */
+
+.grren {
+    color:#147144;
+}
+
+/* blog */
+
+card-sl {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 8px 8px 0px 0;
+}
+
+.card-heading {
+    font-size: 18px;
+    font-weight: bold;
+    background: #fff;
+    padding: 10px 15px;
+}
+
+.card-text {
+    padding: 10px 15px;
+    background: #fff;
+    font-size: 14px;
+    color: #636262;
+}
+
+.card-button {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #147144;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    font-size: 14px;
+}
+
+.card-button:hover {
+    text-decoration: none;
+    background-color: #7CBC52;
+    color: black;
+}
+
+
 
