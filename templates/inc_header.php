@@ -1,3 +1,14 @@
+<?php
+require_once('../inc_config.php');
+
+$post = new Post();
+$menuFr =  $post->findBy(['type' => 'training'], 1000, $post::TABLE);
+$menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -16,100 +27,102 @@
 
 
 <body>
-
-    <div class="container-fluid container-general">
-        <div class="container-fluid div-logo">
-            <div class="row ">
-                <div class="col border">
-                    <a href="#">
-                        <img src="../pictures/logo.png" alt="" width="300" height="100">
-                    </a>
-                </div>
-                <div class=" nav-item dropdown col">
-
-                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action" id="navbardrop"><i class="fas fa-user"></i>
-                        <?php
-                        if (isset($_SESSION['user']['id']) && isset($_SESSION['user']['lastname'])) {
-
-                            echo '<span>' . $_SESSION['user']['lastname'] . '</span></a>';
-                            echo '<div class="dropdown-menu">';
-                            echo '<a href="../templates/myPersonalSpace" class="dropdown-item"><i class="fa fa-user-o"></i>Espace personel</a>';
-                            echo '<a href="../templates/myAccount?id=' . $_SESSION['user']['id'] . '" class="dropdown-item"><i class="fa fa-user-o"></i>Mon compte</a>';
-                            echo '<div class="divider dropdown-divider"></div>';
-                            echo '<a href="logout" class="dropdown-item"><i class="fa fa-user-o"></i>Déconnexion</a>';
-                            echo '</div>';
-                        } else {
-                            echo '<span> espace personel </span></a>';
-                        ?>
-                            <div class="dropdown-menu">
-                                <a href="../templates/form_autho.php" class="dropdown-item"><i class="fa fa-user-o"></i>Connexion</a>
-                                <a href="../templates/registrationForm.php" class="dropdown-item"><i class="fa fa-calendar-o"></i>Inscription</a>
-                            </div>
-                        <?php } ?>
-
-
-                </div>
+    <div class="container-fluid border" style="color:#e0ffd4 !important;">
+        <div class="row div-logo pb-3  pt-1  ">
+            <div class="col ">
+                <a href="#">
+                    <img src="../pictures/logo.png" alt="" width="300" height="100">
+                </a>
             </div>
 
-            <nav class="navbar navbar-expand-lg justify-content-center menu" style="border-radius:0px;">
+            <?php if (isset($_SESSION['user']['id']) && isset($_SESSION['user']['lastname'])) {
 
-                <!-- Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link nav-color font-weight-bold" href="#">ACCUEIL</a>
-                    </li>
-
-                    <!-- Dropdown -->
-                    <li class="nav-item dropdown mx-2">
-                        <a class="nav-link dropdown-toggle nav-color font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
-                            ORGANISME DE FORMATION
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown mx-2">
-                        <a class="nav-link dropdown-toggle nav-color font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
-                            RH EXTERNISE
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown mx-2">
-                        <a class="nav-link dropdown-toggle nav-color font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
-                            CONSEILS
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item mx-2">
-                        <a class="nav-link nav-color font-weight-bold" href="#">PLANNING</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link nav-color font-weight-bold" href="#">A PROPOS</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link nav-color font-weight-bold" href="#">CONTACT</a>
-                    </li>
-                </ul>
-            </nav>
-
-</body>
-
-</html>
-
-</div>
+                echo ' <div class=" col text-right py-4 ">';
+                echo ' <div class="dropdown show">';
+                echo ' <i class="fas fa-user"></i> <a class="btn font-weight-bold " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i> ' . $_SESSION['user']['lastname'] . '
+                    </a>';
+                echo ' <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
+                echo ' <a href="myPersonalSpace?id=' . $_SESSION['user']['id'] . '" class="dropdown-item">Espace personel</a>';
+                echo ' <a href="myAccount?id=' . $_SESSION['user']['id'] . '" class="dropdown-item">Mon compte</a>';
+                echo '<div class="divider dropdown-divider"></div>';
+                echo ' <a class="dropdown-item" href="logout">Déconnexion</a>';
+                echo ' </div>';
+                echo ' </div>';
+                echo ' </div>';
+            } else {
+                echo '<div class=" col text-right py-4 ">';
+                echo '<div class="dropdown show ">';
+                echo ' <a class="btn font-weight-bold " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i> Connexion';
+                echo '</a>';
+                echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
+                echo '<a class="dropdown-item" href="form_autho">Connexion</a>';
+                echo '<a class="dropdown-item" href="registrationForm">Création de compte</a>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
 
 
-</body>
+        </div>
+
+
+
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg justify-content-center menu" style="border-radius:0px;">
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item mx-3">
+                <a class="nav-link Dark link font-weight-bold" href="home_display">ACCUEIL</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown mx-3">
+                <a class="nav-link Dark link font-weight-bold dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    ORGANISME DE FORMATION
+                </a>
+                <div class="dropdown-menu">
+                    <?php foreach ($menuFr as $fr) : ?>
+                        <a class="dropdown-item " href="#"><?= $fr['titel'] ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown mx-3">
+                <a class="nav-link dropdown-toggle nav-color font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
+                    SERVICES
+                </a>
+                <div class="dropdown-menu">
+                    <?php foreach ($menuSr as $sr) : ?>
+                        <a class="dropdown-item " href="#"><?= $sr['titel'] ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </li>
+
+            <!-- <li class="nav-item dropdown mx-2">
+                <a class="nav-link dropdown-toggle nav-color font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
+                    CONSEILS
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li> -->
+
+            <li class="nav-item mx-3">
+                <a class="nav-link nav-color font-weight-bold" href="planning">PLANNING</a>
+            </li>
+            <li class="nav-item mx-3">
+                <a class="nav-link nav-color font-weight-bold" href="#">A PROPOS</a>
+            </li>
+            <li class="nav-item mx-3">
+                <a class="nav-link nav-color font-weight-bold" href="registrationForm">CONTACT</a>
+            </li>
+        </ul>
+    </nav>
