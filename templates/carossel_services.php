@@ -17,19 +17,15 @@ for ($i = 0; $i < $lent; $i++) {
 
 ?>
 
-<?php
-include_once '../inc_config.php';
 
-$post = new Post();
-$sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
-?>
 
-<section class="pt-5 pb-5">
+<section class="pt-5 pb-5 ">
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3 class="mb-3 font-weight-bold titel">Services </h3>
+                <h3 class="mb-3 font-weight-bold titel">Formations </h3>
             </div>
+
             <div class="col-6 text-right">
                 <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                     <i class="fa fa-arrow-left"></i>
@@ -38,6 +34,7 @@ $sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
+
             <div class="col-12">
                 <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
@@ -45,13 +42,16 @@ $sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
                         <div class="carousel-item active">
                             <div class="row">
                                 <?php foreach ($data[0] as $slider) : ?>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
+                                    <div class="col-md-4 mb-3 ">
+                                        <div class="card ">
                                             <?php
-                                            echo  "<img src='../upload/" . $slider['picture'] . "' \>";
+                                            echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 190px !important;' \>";
                                             ?>
                                             <div class="card-body">
-                                                <h4 class="card-title"><?= $slider['titel'] ?></h4>
+                                                <h4 class="text-break" style="height: 120px; font-size: 20px;"><?= $slider['description']  ?></h4>
+                                            </div>
+                                            <div class="card-footer color-forgot1" style="height: 50px; border:none;">
+                                                <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -65,10 +65,13 @@ $sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
                                     <div class="col-md-4 mb-3">
                                         <div class="card">
                                             <?php
-                                            echo  "<img src='../upload/" . $slider['picture'] . "' \>";
+                                            echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 190px !important;' \>";
                                             ?>
                                             <div class="card-body">
-                                                <h4 class="card-title"><?= $slider['titel'] ?></h4>
+                                                <h4 class="text-break" style="height: 120px; font-size: 20px;"><?= $slider['description']  ?></h4>
+                                            </div>
+                                            <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
+                                                <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -87,6 +90,3 @@ $sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
         </div>
     </div>
 </section>
-</body>
-
-</html>
