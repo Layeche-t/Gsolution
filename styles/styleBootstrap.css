@@ -41,6 +41,15 @@ p.text-client {
     margin: 30px;
 }
 
+.nav-item a{
+    color: #212529;
+    font-size: 15px;
+} 
+
+.nav-item a:hover{
+    color: #147144 !important ;
+} 
+
 /* Slider */
 
 .counter-box {
@@ -102,7 +111,7 @@ p.text-client {
  footer {
         color: grey;
  }
- footer p, a {
+ footer p, footer a {
 font-size: 12px;
 }
 
