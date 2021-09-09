@@ -15,7 +15,7 @@ require_once('../inc_config.php');
     </div>
 
     <div class="row formation">
-
+        <?php include 'carossel_training.php'; ?>
     </div>
 
     <div class="row realisations">
