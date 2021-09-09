@@ -124,12 +124,17 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez la source de votre image :</label>
-                                <input type="text" class="form-control" id="recipient-name" name="titel" required>
+                                <input type="text" class="form-control" id="recipient-name" name="source" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">La description : </label>
                                 <textarea class="form-control" id="message-text" rows="5" cols="33" name="description" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Le text : </label>
+                                <textarea class="form-control" id="message-text" rows="5" cols="33" name="text" required></textarea>
                             </div>
 
                             <!-- le type pour l'appel à la base de données -->
