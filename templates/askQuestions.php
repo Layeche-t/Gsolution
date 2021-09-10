@@ -6,7 +6,15 @@ require_once('../inc_config.php');
 
 <h2 class="titel-pages font-weight-bold m mb-3">FAQ</h2>
 
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
+	<div class="row">
+		<div class="btn-group btn-breadcrumb ml-1 mb-4">
+			<a href="#" class="btn btn-default "><i class="fas fa-home"></i></a>
+			<a href="#" class="btn btn-default font-weight-bold a-color">Snippets <i class="fas fa-chevron-right"></i></a>
+			<a href="#" class="btn btn-default font-weight-bold a-color">Breadcrumbs <i class="fas fa-chevron-right"></i></a>
+			<a href="#" class="btn btn-default font-weight-bold a-color">Default</a>
+		</div>
+	</div>
 	<div id="accordion" role="tablist">
 
 		<!-- start -->
@@ -17,12 +25,9 @@ require_once('../inc_config.php');
 					Comment travailler au ministère de la Culture ?
 				</h5>
 
-
-				<i class="fas fa-plus-square col"></i>
-
 			</div>
 
-			<div id="collapseOne" class="collapse show row" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+			<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
 				<div class="card-body ">
 					Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
 				</div>
@@ -55,6 +60,5 @@ require_once('../inc_config.php');
 	</div>
 </div>
 
-</body>
 
-</html>
+<?php include 'inc_footer.php'; ?>
