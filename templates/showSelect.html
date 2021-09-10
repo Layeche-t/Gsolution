@@ -16,4 +16,18 @@
             $('.div').addClass("hidden");
         }
     })
+
+
+    $(".form-check-inline input[type='radio']").on("change", function () {
+        // Regardless of WHICH radio was clicked, is the
+        //  showSelect radio active?
+        if ($("#showClient").is(':checked')) {
+            $('.divClient').removeClass("hidden");
+        } else {
+            $('.divClient').addClass("hidden");
+        }
+    })
+
+
+
 </script>
