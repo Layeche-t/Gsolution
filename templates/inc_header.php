@@ -6,6 +6,7 @@ $menuFr =  $post->findBy(['type' => 'training'], 1000, $post::TABLE);
 $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
 
 
+
 ?>
 
 
@@ -88,7 +89,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
                 </a>
                 <div class="dropdown-menu">
                     <?php foreach ($menuFr as $fr) : ?>
-                        <a class="dropdown-item " href="#"><?= $fr['titel'] ?></a>
+                        <a class="dropdown-item" href="page.php?id= <?= $fr['id'] ?>"><?= $fr['titel'] ?></a>
                     <?php endforeach; ?>
                 </div>
             </li>
@@ -99,7 +100,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
                 </a>
                 <div class="dropdown-menu">
                     <?php foreach ($menuSr as $sr) : ?>
-                        <a class="dropdown-item " href="#"><?= $sr['titel'] ?></a>
+                        <a class="dropdown-item " href="page.php?id= <?= $sr['id'] ?>"> <?= $sr['titel'] ?> </a>
                     <?php endforeach; ?>
                 </div>
             </li>
