@@ -55,13 +55,14 @@
 		</div>
 
 	</div>
-	<div class="row div-logo text-center ">
-		<div class="social col pt-2">
-			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+	<div class="div-logo  ">
+		<div class=" text-center social  pt-2 ">
+
+			<a href="https://www.linkedin.com/company/g7-solution-toulouse/?originalSubdomain=fr"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			<a href="https://m.facebook.com/g7.Solution31/?locale2=fr_FR"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 		</div>
 		<div class="">
-			<p class="font-weight-bold mb-2">© G7solution - Tous droits réservés</p>
+			<p class=" text-center font-weight-bold mb-2">© G7solution - Tous droits réservés</p>
 		</div>
 
 	</div>
