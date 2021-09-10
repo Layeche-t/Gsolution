@@ -17,10 +17,32 @@ require_once('../inc_config.php');
 
 <body>
     <div class="registration-form">
+
         <form action="../controllers/authontification_backOffice.php" method="POST">
+
             <div class="form-icon">
                 <span><i class="far fa-user"></i></span>
             </div>
+
+            <!-- errors -->
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'K') : ?>
+                <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                    Votre email est incorrect !
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'nok') : ?>
+                <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                    Votre mot de passe est incorrect !
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_GET['error']) && $_GET['error'] == 'role') : ?>
+                <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                    Vous n'êtes pas administrateur !
+                </div>
+            <?php endif; ?>
+
             <div class="form-group">
                 <input type="text" class="form-control item" name="email" placeholder="Email">
             </div>
