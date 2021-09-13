@@ -620,9 +620,22 @@ h1, .h1 {
     border-radius: 10px
 }
 
-.progress div {
-    background-color: red
+.progress25 div {
+    background-color: green;
 }
+
+.progress50 div{
+    background-color: orange;
+}
+
+.progress75 div{
+    background-color: red;
+}
+
+.progress75 div{
+    background-color: black;
+}
+
 
 .text1 {
     font-size: 14px;
@@ -636,4 +649,13 @@ h1, .h1 {
     color: black;
 }
 
+.search {
+    float: right;
+    margin-bottom: 5px;
+}
 
+
+#radioBtn .notActive{
+    color: #3276b1;
+    background-color: #fff;
+}
