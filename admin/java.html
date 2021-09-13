@@ -1,0 +1,23 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#search1").on("keyup", function () {
+        var value = $(this).val().replace(" ", "");
+
+
+        $("#tableUsers tr").each(function (index) {
+            if (index !== 0) {
+
+                $row = $(this);
+
+                var id = $row.find("td:first").text().replace(" ", "");
+
+                if (id.trim().includes(value.trim())) {
+                    $row.show();
+                } else {
+                    $row.hide();
+                }
+            }
+        });
+    });
+</script>
