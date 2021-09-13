@@ -46,8 +46,8 @@ $sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
                     ?>
 
                     <div class="carousel-caption">
-                        <h3><?= $slider['titel'] ?></h3>
-                        <p><?= $slider['description'] ?></p>
+                        <h3 class="font-weight-bold"><?= $slider['titel'] ?></h3>
+                        <p class="font-weight-bold"><?= $slider['description'] ?></p>
                     </div>
                 </div>
             <?php $i++;
