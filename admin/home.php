@@ -1,79 +1,112 @@
 <?php
+
+// Database connection
 require_once('../inc_config.php');
 
+// instanciation 
 $post = new Post();
+$user = new User();
+$file = new File();
 
-$all = $post->findAll($post::TABLE);
+// data recovery for posts and users 
+$allPost = $post->findAll($post::TABLE);
+$allUser = $user->findAll($user::TABLE);
+$allFile = $file->findAll($file::TABLE);
+
+
+
+//count number of data (allPost)
 $countB = 0;
 $countSl = 0;
-$countP = 0;
 $countSr = 0;
 $countT = 0;
 $countTr = 0;
 $countU = 0;
 $countL = 0;
 
-foreach ($all as $case) {
-    if ($case['type'] == 'blog') {
+foreach ($allPost as $casePost) {
+    if ($casePost['type'] == 'blog') {
         $countB++;
     }
-    if ($case['type'] == 'slider') {
-        $countS++;
+    if ($casePost['type'] == 'slider') {
+        $countSl++;
     }
-    if ($case['type'] == 'planning') {
-        $countP++;
-    }
-    if ($case['type'] == 'training') {
+    if ($casePost['type'] == 'training') {
         $countT++;
     }
-    if ($case['type'] == 'services') {
+    if ($casePost['type'] == 'service') {
         $countSr++;
     }
-    if ($case['type'] == 'library') {
+    if ($casePost['type'] == 'library') {
         $countL++;
     }
 }
 
+//count number of data (allUsers)
+$countU = 0;
+$countA = 0;
+$countTm = 0;
+$countD = 0;
 
-$sql = "SELECT 'type' FROM `posts` ";
+foreach ($allUser as $caseUser) {
 
-$query = $bdd->prepare($sql);
-$query->execute();
-$articles = $query->fetchAll(PDO::FETCH_ASSOC);
+    if ($caseUser['function']) {
+        $countTm++;
+    }
+    if ($caseUser['role'] == 'user') {
+        $countU++;
+    }
+    if ($caseUser['role'] == 'admin') {
+        $countA++;
+    }
+    if ($caseUser['accepted'] == '0') {
+        $countD++;
+    }
+}
+
+$countAll = $countU + $countA;
+
+//count number of data (allUsers)
+
+$countF = 0;
+
+foreach ($allFile as $caseFile) {
+    $countF++;
+}
 
 
 
-
-
+// start session
 if ($_SESSION['autoriser'] != 'oui') {
     header('Location: ../admin/login_backOffice.php');
     exit();
 }
+
+
 ?>
 
+<!-- header -->
 <?php include('inc_header.php'); ?>
 
+<!-- start dashoard -->
 <div class='dashboard-app'>
     <header class='dashboard-toolbar'>
         <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
     </header>
-    <!-- Le contenu du dashbord-->
+    <!-- dashboard content-->
     <div class='dashboard-content'>
         <div class='container'>
             <div class='card'>
-                <!--titre du dashbord -->
+                <!--dashbord titel -->
                 <div class='card-header'>
                     <h1>Accueil</h1>
-
                 </div>
 
-                <!--contenu du tableau -->
+                <!--table content -->
                 <div class='card-body'>
                     <div class="container mt-5 mb-3">
-
                         <div class="row">
-
-                            <!-- Slider -->
+                            <!-- news -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
@@ -82,7 +115,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <i class="fab fa-slideshare"></i>
                                             </div>
                                             <div class="ms-2 c-details">
-                                                <h6 class="mb-0">Slider</h6>
+                                                <h6 class="mb-0">Actualités</h6>
                                                 <span>4 days ago</span>
                                             </div>
                                         </div>
@@ -90,29 +123,20 @@ if ($_SESSION['autoriser'] != 'oui') {
                                     </div>
                                     <div class="mt-5">
                                         <a href="slide_disply.php" class="link-dashbord">
-                                            <h3 class="heading">Sliders</h3>
+                                            <h3 class="heading">Actualités</h3>
                                         </a>
-
-
                                         <h3>Simo </h3>
-
-
-
-
-
-
-
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countSl / 4 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="4"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1"><?= $countS ?> Applied <span class="text2">of 70 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countSl ?> actualités <span class="text2">sur une limite de 4</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Services -->
+                            <!-- services -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
@@ -131,19 +155,18 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <a href="services_disply.php" class="link-dashbord">
                                             <h3 class="heading">Services </h3>
                                         </a>
-
                                         <h3>Designer-Singapore</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countSr / 6 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1"><?= $countS ?><span class="text2">of 70 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"> <?= $countSr ?> services <span class="text2">sur une limite de 6</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Formations -->
+                            <!-- training -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
@@ -165,15 +188,15 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3> - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countT / 6 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1"><?= $countTr ?><span class="text2">of 70 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countT ?> formations <span class="text2">sur une limite de 6</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Blog -->
+                            <!-- blog -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
@@ -198,47 +221,45 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countT / 30 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="30"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1"><?= $countB ?><span class="text2">of 70 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countB ?> blogs <span class="text2">sur une limite de 30</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Planning -->
+                            <!-- accepted -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-row align-items-center">
                                             <div class="icon">
-                                                <i class="fas fa-calendar-plus"></i>
+                                                <i class="fas fas fa-plus"></i>
                                             </div>
                                             <div class="ms-2 c-details">
-                                                <h6 class="mb-0">Planning</h6>
+                                                <h6 class="mb-0">Demandes</h6>
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
                                         <div class="badge"> <span>Organisation</span> </div>
                                     </div>
                                     <div class="mt-5">
-
                                         <a href="planning_disply.php" class="link-dashbord">
-                                            <h3 class="heading">Planning </h3>
+                                            <h3 class="heading">Demandes </h3>
                                         </a>
-
                                         <h3> Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countD / 100 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1"><?= $countP ?><span class="text2">of 70 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countD ?> demandes <span class="text2">sur une limite de 100</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Equipe -->
+                            <!-- team -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
@@ -257,20 +278,18 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <a href="team_disply.php" class="link-dashbord">
                                             <h3 class="heading">Equipe </h3>
                                         </a>
-
-
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countTm / 30 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="30"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countTm; ?> personnes <span class="text2">sur une limite de 30</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Utilisateurs -->
+                            <!-- users -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
@@ -292,24 +311,24 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countAll / 20 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="20"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1">52 Applied <span class="text2">of 100 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"> <?= $countAll; ?> utilisateurs <span class="text2">sur une limite de 20</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Bibliothèque -->
+                            <!-- files -->
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-row align-items-center">
                                             <div class="icon">
-                                                <i class="fas fa-user-plus"></i>
+                                                <i class="fas fa-folder-plus"></i>
                                             </div>
                                             <div class="ms-2 c-details">
-                                                <h6 class="mb-0">Bibliothèque</h6>
+                                                <h6 class="mb-0">Fichier</h6>
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
@@ -317,31 +336,34 @@ if ($_SESSION['autoriser'] != 'oui') {
                                     </div>
                                     <div class="mt-5">
                                         <a href="users_disply.php" class="link-dashbord">
-                                            <h3 class="heading">Bibliothèque </h3>
+                                            <h3 class="heading">Fichiers </h3>
                                         </a>
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress25">
+                                                <div class="progress-bar" role="progressbar" style="width:<?= $countAll / 20 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1"><?= $countL ?> <span class="text2">of 100 capacity</span></span> </div>
+                                            <div class="mt-3"> <span class="text1"><?= $countF ?> données <span class="text2">sur une limite de 100</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
 
-
-
                 </div>
-
             </div>
-
         </div>
+
+
+
     </div>
-    <?php include('inc_footer.php'); ?>
+
+</div>
+
+</div>
+
+
+</div>
+<?php include('inc_footer.php'); ?>
 </div>
