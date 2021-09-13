@@ -5,9 +5,16 @@ require_once('../inc_config.php');
 //l'objet
 $user = new User();
 
+$count = $bdd->query("SELECT *  FROM users WHERE role ='admin' OR role ='trainee'");
+$count->setFetchMode(PDO::FETCH_ASSOC);
+$count->execute();
+$tcounts = $count->fetchAll();
+
+
+
 //méthode select par
 
-$teams = $user->findBy(['role' => 'trainee'],  1000, $user::TABLE);
+
 
 
 //supprimer un élement du tableau
@@ -88,19 +95,19 @@ $_SESSION['info']['table'] = $user::TABLE;
                                 <!-- la boucle foreach pour l'affichage -->
                                 <?php
                                 $num = 0;
-                                foreach ($teams as $team) :
+                                foreach ($tcounts as $tcount) :
                                     $num = $num + 1;
                                 ?>
 
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
-                                        <td> <?= $team['firstname'] ?> </td>
-                                        <td> <?= $team['lastname'] ?> </td>
-                                        <td> <?= $team['email'] ?> </td>
-                                        <td> <?= $team['role'] ?> </td>
+                                        <td> <?= $tcount['firstname'] ?> </td>
+                                        <td> <?= $tcount['lastname'] ?> </td>
+                                        <td> <?= $tcount['email'] ?> </td>
+                                        <td> <?= $tcount['role'] ?> </td>
                                         <td>
-                                            <a href="users_modification.php?id= <?= $team['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
+                                            <a href="users_modification.php?id= <?= $tcount['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <a href="?id= <?= $tcount['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button>
                                         </td>
                                     </tr>
 
@@ -156,6 +163,13 @@ $_SESSION['info']['table'] = $user::TABLE;
                                 </select>
                             </div>
 
+                            <div class="form-check-inline">
+                                <input type="hidden" name="sexe" value="0">
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="hidden" name="accepted" value="0">
+                            </div>
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary" name="validation">Valider</button>
                             </div>
@@ -189,5 +203,9 @@ $_SESSION['info']['table'] = $user::TABLE;
         </div>
 
         <!--import du footer-->
-        <?php include('inc_footer.php'); ?>
+
     </div>
+</div>
+</div>
+</div>
+<?php include('inc_footer.php'); ?>
