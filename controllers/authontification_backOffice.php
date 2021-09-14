@@ -9,6 +9,7 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
     // check if email exists 
     $connexion = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
 
+
     if ($connexion->email != $_POST['email']) {
         header('Location: ../admin/login_backOffice.php?error=K');
         exit;
@@ -19,7 +20,7 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
         exit;
     }
     // check if role equal admin
-    if (!$connexion->role['admin']) {
+    if ($connexion->role != 'admin') {
         header('Location: ../admin/login_backOffice.php?error=role');
         exit;
     } else {
@@ -27,6 +28,7 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
         $_SESSION['autoriser'] = 'oui';
         $_SESSION['admi']['firstname'] = $connexion->firstname;
         $_SESSION['admi']['lastname'] = $connexion->lastname;
+        $_SESSION['admi']['id'] = $connexion->id;
 
         header('Location:../admin/home.php');
         exit;
