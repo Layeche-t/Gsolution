@@ -57,9 +57,10 @@ if (count($resultats) == 0) {
 			<div class="col-md-3 mb-4">
 
 				<div class="card-sl">
-					<div class="card-image">
-						<img src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
-					</div>
+					<?php
+					echo  "<img src='../upload/" . $blog['picture'] . "'width='100%' height='20%'>";
+					?>
+
 
 					<div class="card-heading text-center color-forgot1 border border-bottom-0 " style="height: 55px !important;">
 						<?= $blog['titel'] ?>
