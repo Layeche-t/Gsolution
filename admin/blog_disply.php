@@ -93,7 +93,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         <td> <?= $blog['titel'] ?> </td>
                                         <td>
                                             <a href="blog_modification.php?id= <?= $blog['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button></a>
+                                            <a href="?id= <?= $blog['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
                                         </td>
                                     </tr>
 
