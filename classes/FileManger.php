@@ -15,7 +15,7 @@ class FileManger
 
         $extension = strtolower(end($tabExtension));
 
-        $extensionAutrosiee = ['png', 'jpg', 'jpeg'];
+        $extensionAutrosiee = ['png', 'jpg', 'jpeg', 'pdf'];
         $tailleMx = 500000; //a voir avec macy
         $uniqueName = uniqid('', true);
         $fileName = $uniqueName . '.' . $extension;
