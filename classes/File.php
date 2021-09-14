@@ -5,17 +5,17 @@
  */
 class File extends AbstractDataBase
 {
-    const TABLE = 'files';
+    const TABLE = ' files ';
 
     private $id;
-
-    private $id_posts;
 
     private $name;
 
     private $link;
 
     private $createdAt;
+
+    private $type;
 
     public function __construct()
     {
@@ -32,15 +32,7 @@ class File extends AbstractDataBase
         $this->id = $id;
     }
 
-    public function setId_post(int $id_posts)
-    {
-        $this->id_post = $id_posts;
-    }
 
-    public function getId_post(int $id_posts)
-    {
-        $this->id_post = $id_posts;
-    }
 
     public function setTitle(string $title)
     {
