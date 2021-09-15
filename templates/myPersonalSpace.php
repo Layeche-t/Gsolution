@@ -3,15 +3,17 @@ require_once('../inc_config.php');
 
 $user = new User();
 $post = new Post();
+$file = new File();
 
 if (isset($_SESSION['user']['id'])) {
     $curentuser = $user->findOneBy(['id' => $_SESSION['user']['id']], $user::TABLE);
-    var_dump($curentuser);
-    die;
+
+    $formation = $post->findOneBy(['id' => $curentuser->id_formation], $post::TABLE);
+
+    $files = $file->findBy(['id_post' => $curentuser->id_formation], 15, $file::TABLE);
 }
-$formation = $post->findOneBy(['id' => $curentuser->id_formation], $post::TABLE);
-var_dump($formation);
-die;
+
+
 
 
 
@@ -86,9 +88,13 @@ include 'inc_header.php';
                                     <span class="text-black-50">G7solution</span>
                                 </div>
                             </div>
-                            <h6 class="mt-4"><?= $formation->description ?></h6>
-                            <div class="d-flex justify-content-between install mt-3"><span><?= $formation->createdAt ?></span>
-                                <a href="#" class="text-primary">Savoir plus&nbsp;
+
+                            <div class="d-flex justify-content-between install mt-3">
+                                <span><?= $formation->description ?></span>
+
+                            </div>
+                            <div class="d-flex justify-content-between install mt-3">
+                                <a href="page.php?id= <?= $formation->id ?>" style="color: black;">Savoir plus&nbsp;
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>
@@ -112,34 +118,19 @@ include 'inc_header.php';
                         </button>
                     </div>
                     <ul class="list-style-none">
-                        <li class="d-flex no-block card-body ">
 
-                            <div class="mt-3"> <span class="">Introduction de la formation </span> </div>
-                            <div class="ml-auto">
-                                <button type="button" class="btn btn-primary btn-circle m-1">
-                                    <a href="../controllers/download.php"> <i class="far fa-file-pdf"></i></a>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="d-flex no-block card-body border-top ">
-
-                            <div class="mt-3"> <span class="">Modèle de formation </span> </div>
-                            <div class="ml-auto">
-                                <button type="button" class="btn btn-primary btn-circle m-1">
-                                    <i class="far fa-file-pdf"></i>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="d-flex no-block card-body border-top ">
-
-                            <div class="mt-3"> <span class="">Attestation de réussite </span> </div>
-                            <div class="ml-auto">
-                                <button type="button" class="btn btn-primary btn-circle m-1">
-                                    <i class="far fa-file-pdf"></i>
-                                </button>
-                            </div>
-                        </li>
+                        <?php foreach ($files as $file) : ?>
+                            <li class="d-flex no-block card-body ">
+                                <div class="mt-3"> <span class=""><?= $file['title'] ?> </span> </div>
+                                <div class="ml-auto">
+                                    <button type="button" class="btn btn-primary btn-circle m-1">
+                                        <a href="../upload/<?= $file["link"] ?>" target="_blank"> <i class="far fa-file-pdf"></i></a>
+                                    </button>
+                                </div>
+                            </li>
+                        <?php endforeach ?>
                     </ul>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
