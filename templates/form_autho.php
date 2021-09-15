@@ -32,6 +32,11 @@ require_once('../inc_config.php');
             Merci de saisir vos données !
         </div>
     <?php endif ?>
+    <?php if (isset($_GET['success'])) : ?>
+        <div class="alert alert-success text-center font-weight-bold" role="alert">
+            Les données sont bien été insérées
+        </div>
+    <?php endif; ?>
 
 
     <div class="card card0">
