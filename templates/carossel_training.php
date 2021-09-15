@@ -49,7 +49,9 @@ for ($i = 0; $i < $lent; $i++) {
                                                 <h4 class="text-break" style="height: 120px; font-size: 20px;"><?= $service['description']  ?></h4>
                                             </div>
                                             <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
-                                                <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
+                                                <a href="page.php?id= <?= $service['id'] ?>" style="color: black;">
+                                                    <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +71,9 @@ for ($i = 0; $i < $lent; $i++) {
                                                 <h4 class="text-break" style="height: 120px; font-size: 20px;"><?= $service['description']  ?></h4>
                                             </div>
                                             <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
-                                                <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
+                                                <a href="page.php?id= <?= $service['id'] ?>" style="color: black;">
+                                                    <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
