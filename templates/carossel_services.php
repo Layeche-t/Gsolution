@@ -45,13 +45,13 @@ for ($i = 0; $i < $lent; $i++) {
                                     <div class="col-md-4 mb-3 ">
                                         <div class="card ">
                                             <?php
-                                            echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 190px !important;' \>";
+                                            echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 300px !important;' \>";
                                             ?>
-                                            <div class="card-body">
-                                                <h4 class="text-break" style="height: 120px; font-size: 20px;"><?= $slider['description']  ?></h4>
-                                            </div>
-                                            <div class="card-footer color-forgot1" style="height: 50px; border:none;">
-                                                <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
+
+                                            <div class="card-footer " style="height: 50px; border:none; color: #84bc9c !important;">
+                                                <a href="page.php?id= <?= $slider['id'] ?>" style="color: black;">
+                                                    <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -65,13 +65,12 @@ for ($i = 0; $i < $lent; $i++) {
                                     <div class="col-md-4 mb-3">
                                         <div class="card">
                                             <?php
-                                            echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 190px !important;' \>";
+                                            echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 300px !important;' \>";
                                             ?>
-                                            <div class="card-body">
-                                                <h4 class="text-break" style="height: 120px; font-size: 20px;"><?= $slider['description']  ?></h4>
-                                            </div>
-                                            <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
-                                                <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
+                                            <div class="card-footer" style="height: 50px; height: 50px; border:none; color:#3acf87;">
+                                                <a href="page.php?id= <?= $slider['id'] ?>" style="color: black;">
+                                                    <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
