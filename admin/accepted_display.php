@@ -1,35 +1,32 @@
 <?php
 
-//connxion à la base de données
+//connxion to database
 require_once('../inc_config.php');
-//l'objet
+//object 
 $user = new User();
 
-
-//methode select par
+//methode by select 
 if (isset($_SESSION['admi']['id'])) {
     $accepteds = $user->findAll($user::TABLE);
 }
 
-
-
-
-
-//supprimer un élement du tableau
+//delete element of table
 if (isset($_GET['id'])) {
     $post->deleteById($_GET['id'], $post::TABLE);
     header('Location: ../admin/libraryDisplay?delete');
     exit();
 }
 
+// verificat session
 if (isset($_SESSION['info'])) {
     unset($_SESSION['info']);
 }
+// creat session
 $_SESSION['info']['redirect'] = 'filesDisplay';
 $_SESSION['info']['table'] = $user::TABLE;
 
 
-// accepter un user
+// accepe a user
 if (isset($_GET['accept']) && $_GET['accept'] !== '') {
 
     $updeat = $user->updateById(['accepted' => 1, 'id' => $_GET['accept']], $user::TABLE);
@@ -37,6 +34,7 @@ if (isset($_GET['accept']) && $_GET['accept'] !== '') {
     exit();
 }
 
+// deactivate a user
 if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
 
     $updeat = $user->updateById(['accepted' => 0, 'id' => $_GET['cancel']], $user::TABLE);
@@ -45,10 +43,11 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
 }
 
 ?>
-<!-- import du header -->
+
+<!-- header -->
 <?php include('inc_header.php'); ?>
 
-<!-- Le contenu du dashbord-->
+<!-- content dashbord-->
 <div class='dashboard-app'>
     <header class='dashboard-toolbar'>
         <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
@@ -58,55 +57,57 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
         <div class='container mb-4'>
             <div class='card'>
 
-                <!--titre du dashbord -->
+                <!--title of dashbord -->
                 <div class='card-header'>
                     <h1>Le contenu de bibliothèque</h1>
 
-                    <!--success ajout-->
+                    <!--success add-->
                     <?php if (isset($_GET['success'])) : ?>
                         <div class="alert alert-success text-center font-weight-bold" role="alert">
-                            Votre ficher vient d'être ajouté
+                            Votre ficher vient d'être ajouté.
                         </div>
                     <?php endif ?>
 
-                    <!--success suppression-->
+                    <!--success delet-->
                     <?php if (isset($_GET['delete'])) : ?>
                         <div class="alert alert-success text-center font-weight-bold" role="alert">
-                            Votre ficher vient d'être supprimé
+                            Votre ficher vient d'être supprimé.
                         </div>
                     <?php endif ?>
 
+                    <!--success modification -->
                     <?php if (isset($_GET['ok'])) : ?>
                         <div class="alert alert-success text-center font-weight-bold" role="alert">
-                            La modification a bien été prise en compte
+                            La modification a bien été prise en compte.
                         </div>
                     <?php endif ?>
 
                     <div class='card-body'>
-                        <input type="text" class="search" id="search1" placeholder="Chercher un client "></input>
+                        <!-- search bar -->
+                        <input type="text" class="search mb-2 justify-content" id="search1" placeholder="Chercher un client "></input>
 
-                        <!--contenu du tableau -->
+                        <!--content of table -->
                         <table id="tableUsers" class="table">
-                            <!-- le header du tableau -->
+
+                            <!--  header of table-->
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Id</th>
-                                    <th scope="col">Titre</th>
-                                    <th scope="col">Fichier</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prénom</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
 
+                            <!-- body of table -->
                             <tbody>
-
-
-                                <!-- la boucle foreach pour l'affichage -->
+                                <!-- la boucle foreach for display -->
                                 <?php
                                 $num = 0;
                                 foreach ($accepteds as  $accepted) :
                                     $num = $num + 1;
                                 ?>
-
+                                    <!-- display data -->
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
                                         <td> <?= $accepted['firstname'] ?> </td>
@@ -122,16 +123,17 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
+                            <!-- end table -->
                         </table>
-                        <!-- fin du tableau -->
-                        <?php include('java.html'); ?>
 
+                        <!-- javaScript -->
+                        <?php include('java.html'); ?>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <!--import du footer-->
+        <!--footer-->
     </div>
     <?php include('inc_footer.php'); ?>
