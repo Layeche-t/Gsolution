@@ -21,7 +21,7 @@
                         <a href="#" class="brand-logo"><i class="fas fa-anchor"></i><span> <?= $_SESSION['admi']['firstname'] ?></span></a>
                     </header>
                     <a href="home.php" class="dashboard-nav-item "><i class="fas fa-home"></i>Accueil </a>
-                    <a href="slide_disply.php" class="dashboard-nav-item "><i class="fas fa-tachometer-alt"></i> Slide</a>
+                    <a href="slide_disply.php" class="dashboard-nav-item "><i class="fas fa-tachometer-alt"></i> Actualités</a>
                     <a href="services_disply.php" class="dashboard-nav-item"><i class="fas fa-archive"></i> Services </a>
                     <a href="training_disply.php" class="dashboard-nav-item"><i class="fas fa-graduation-cap"></i>
                         Formations</a>
