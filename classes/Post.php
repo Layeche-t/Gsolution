@@ -18,7 +18,10 @@ class Post extends AbstractDataBase
 
     private $createdAt;
 
-    private $foring;
+    private $type;
+
+    private $code;
+
 
     public function __construct()
     {
@@ -85,14 +88,24 @@ class Post extends AbstractDataBase
         $this->id = $picture;
     }
 
-    public function getForing()
+    public function getType()
     {
-        return $this->foring;
+        return $this->type;
     }
 
-    public function setForinge(string $foring)
+    public function setType(string $type)
     {
-        $this->foring = $foring;
+        $this->code = $type;
+    }
+
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code)
+    {
+        $this->code = $code;
     }
 
     public function SetPost(array $params, $table = self::TABLE)
