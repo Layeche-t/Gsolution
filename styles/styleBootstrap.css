@@ -1,7 +1,7 @@
 
-/* body{
-background-color: #fcfbbc !important ;
-} */
+ body{
+background-color: #edfce7 !important ;
+} 
 
 /* Titres des pages */
 .titel-pages{
@@ -23,13 +23,13 @@ div.container-general{
 }
 
 .div-logo{
-    background-color: #e0ffd4;
+    background-color: #edfce7;
 }
 
 /* Navbar */
-
+/* 84bc9c */
 .menu{
-    background-color: #edfce7;
+    background-color: #9adbb6;
 }
 
 .nav-color{
@@ -141,7 +141,7 @@ bottom: -20px;
            
  }
 .form-footer input[type="text"] {
-    border: none;
+border: none;
 border-radius: 16px 0 0 16px;
 outline: none;
 padding-left: 10px;
@@ -196,7 +196,7 @@ height: 100%;
     width: 100%;
     box-sizing: border-box;
     border: none !important;
-    border: 1px solid white !important;
+    border: 1px solid #e3e4e3 !important;
     font-size: 19px !important;
 }
 
@@ -730,3 +730,7 @@ card-sl {
       color: black;
   }
   
+/* border inputs */
+.border-input{
+    border: 1px solid black !important;
+}
