@@ -1,9 +1,9 @@
 <?php
+
 // connxion at database 
 require_once('../inc_config.php');
 
 // instanciation
-
 $post = new Post();
 
 // data recovery
@@ -19,7 +19,12 @@ include 'inc_header.php';
 
 <div class="container px-5 py-5 mx-auto">
 
-    <!--error display -->
+    <!-- for code -->
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'cod') : ?>
+        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+            Le code de la session que vous avez saisi n'est pas valide !
+        </div>
+    <?php endif ?>
     <!-- for password -->
     <?php if (isset($_GET['error']) && $_GET['error'] == 'pw') : ?>
         <div class="alert alert-danger text-center font-weight-bold" role="alert">
@@ -32,6 +37,12 @@ include 'inc_header.php';
             Cet email existe déja ! Veuillez saisir une nouvelle adresse email.
         </div>
     <?php endif ?>
+    <!-- for empty -->
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'vd') : ?>
+        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+            Veuillez remplir tous les champs obligatoires.
+        </div>
+    <?php endif ?>
 
     <!-- start of form -->
     <div class="card card0">
@@ -42,6 +53,7 @@ include 'inc_header.php';
                         <!-- the title of the form -->
                         <h2 class="mb-2 text-center font-weight-bold heading">Bienvenu !</h2>
                         <h3 class="mb-5 text-center heading">Vous n'êtes pas encore inscrit</h3>
+
                         <!-- form  -->
                         <form method="POST" action="../controllers/add.php">
 
@@ -61,18 +73,19 @@ include 'inc_header.php';
                             <div class="my-3">
                                 <label class="form-check-label py-1 mr-2 ml-2 "> Vous êtes ? </label>
                                 <div class="form-check-inline radio2 py-1">
-                                    <input id="showSelect" type="radio" class="form-check-input" name="role" value="Stagiaire" checked> <label class="form-check-label">Stagiaire
-                                    </label>
+                                    <input id="showSelect" type="radio" class="form-check-input" name="role" value="Stagiaire" checked>
+                                    <label class="form-check-label">Stagiaire</label>
+
                                 </div>
 
                                 <div class="form-check-inline">
-                                    <input type="radio" class="form-check-input" name="role" value="Partenaire"> <label class="form-check-label">Partenaire
-                                    </label>
+                                    <input type="radio" class="form-check-input" name="role" value="Partenaire">
+                                    <label class="form-check-label">Partenaire</label>
                                 </div>
 
                                 <div class="form-check-inline radio5">
-                                    <input id="showClient" type="radio" class="form-check-input" name="role" value="client"> <label class="form-check-label">Client
-                                    </label>
+                                    <input id="showClient" type="radio" class="form-check-input" name="role" value="client">
+                                    <label class="form-check-label">Client </label>
                                 </div>
                             </div>
 
@@ -87,7 +100,7 @@ include 'inc_header.php';
                             </div>
 
 
-                            <!-- list2 -->
+                            <!-- list 2 -->
                             <div class="form-group divClient hidden">
                                 <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre service</label>
                                 <select class="form-control" id="" name="id_formation">
@@ -98,9 +111,10 @@ include 'inc_header.php';
                             </div>
 
                             <!-- group input 3 -->
-                            <div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" name="lastname" placeholder="Nom" class="form-control" required> </div>
-                            <div class="form-group"> <label class="form-control-label ">Prénom</label> <input type="text" name="firstname" placeholder="Prénom" class="form-control" required> </div>
-                            <div class="form-group"> <label class="form-control-label ">E-mail</label> <input type="email" name="email" placeholder="E-mail" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label">Entrez le code lié à votre produit</label> <input type="text" name="code" placeholder="CO112" class="form-control w-25 border-input" required> </div>
+                            <div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" name="lastname" placeholder="Dupon" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label ">Prénom</label> <input type="text" name="firstname" placeholder="Michel" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label ">E-mail</label> <input type="email" name="email" placeholder="miche.dupon@gmail.com" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Mot de passe</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Confirmation de mot de passe</label> <input type="password" name="confirmPassword" placeholder="Mot de passe" class="form-control" required> </div>
 
