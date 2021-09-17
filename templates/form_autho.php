@@ -32,6 +32,12 @@ require_once('../inc_config.php');
             Merci de saisir vos données !
         </div>
     <?php endif ?>
+
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'atp') : ?>
+        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+            Votre inscription est toujours en attent de validation !
+        </div>
+    <?php endif ?>
     <?php if (isset($_GET['success'])) : ?>
         <div class="alert alert-success text-center font-weight-bold" role="alert">
             Les données sont bien été insérées
