@@ -1,20 +1,23 @@
 <?php
 
-//connxion à la base de données
+//connxion to database
 require_once('../inc_config.php');
-//l'objet
+
+//l'object
 $post = new Post();
 
-//méthode select par
+//méthode by select 
 $trainings = $post->findBy(['type' => 'training'], 1000, $post::TABLE);
 
-//supprimer un élement du tableau
+//remove an element from the array
 if (isset($_GET['id'])) {
+
     $post->deleteById($_GET['id'], $post::TABLE);
     header('Location: ../admin/training_disply.php?delete');
     exit();
 }
 
+// start session
 if (isset($_SESSION['info'])) {
     unset($_SESSION['info']);
 }
@@ -22,10 +25,10 @@ $_SESSION['info']['redirect'] = 'training_disply';
 $_SESSION['info']['table'] = $post::TABLE;
 ?>
 
-<!-- import du header -->
+<!-- header -->
 <?php include('inc_header.php'); ?>
 
-<!-- Le contenu du dashbord-->
+<!-- The content of the dashboard-->
 <div class='dashboard-app'>
     <header class='dashboard-toolbar'>
         <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
@@ -35,20 +38,20 @@ $_SESSION['info']['table'] = $post::TABLE;
         <div class='container'>
             <div class='card'>
 
-                <!--titre du dashbord -->
+                <!--dashbord title -->
                 <div class='card-header'>
                     <h1>Le contenu de votre formation</h1>
 
                     <?php
 
-                    // récup nbr du tableau 
+                    // recover nbr du table 
                     $count = $bdd->query("SELECT count(id) AS fa FROM posts WHERE type = 'training' ");
                     $count->setFetchMode(PDO::FETCH_ASSOC);
                     $count->execute();
                     $tcount = $count->fetchAll();
 
 
-                    //pagination 
+                    //paging 
                     @$page = $_GET['page'];
                     if (empty($page)) {
                         $page = 1;
@@ -58,7 +61,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                     $debut = ($page - 1) * $nbr_element_par_page;
 
 
-                    // récup data
+                    // recover data
                     $sel = $bdd->query("SELECT * FROM posts WHERE type= 'training' LIMIT $debut, $nbr_element_par_page");
 
                     $sel->setFetchMode(PDO::FETCH_ASSOC);
@@ -68,43 +71,18 @@ $_SESSION['info']['table'] = $post::TABLE;
                         header("Location: training_disply.php");
                     }
 
-
                     ?>
 
-                    <!-- pagination -->
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" href="#" tabindex="-1">Précédent</a>
-                            </li>
-
-                            <?php for ($i = 1; $i <= $nbr_page; $i++) : ?>
-                                <?php if ($page != $i) : ?>
-
-                                    <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
-
-                                <?php else : ?>
-                                    <li class="page-item active"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
-
-                                <?php endif ?>
-
-                            <?php endfor ?>
-
-                            <li class="page-item">
-                                <a class="page-link" href="#">Suivant</a>
-                            </li>
-                        </ul>
-                    </nav>
 
 
-                    <!--success ajout-->
+                    <!--success add-->
                     <?php if (isset($_GET['success'])) : ?>
                         <div class="alert alert-success" role="alert">
                             Votre formation vient d'être ajouté
                         </div>
                     <?php endif ?>
 
-                    <!--success suppression-->
+                    <!--success delete-->
                     <?php if (isset($_GET['delete'])) : ?>
                         <div class="alert alert-success" role="alert">
                             Votre formation vient d'être supprimé
@@ -118,12 +96,14 @@ $_SESSION['info']['table'] = $post::TABLE;
                         </div>
                     <?php endif ?>
 
+                    <!--error store-->
                     <?php if (isset($_GET['error']) && $_GET['error'] == 'siz') : ?>
                         <div class="alert alert-danger text-center font-weight-bold" role="alert">
                             Le fichier est trop volumineux !
                         </div>
                     <?php endif ?>
 
+                    <!--error type file-->
                     <?php if (isset($_GET['error']) && $_GET['error'] == 'ext') : ?>
                         <div class="alert alert-danger text-center font-weight-bold" role="alert">
                             Merci d'importer un fichier pdf !
@@ -133,14 +113,14 @@ $_SESSION['info']['table'] = $post::TABLE;
 
 
                     <div class='card-body'>
-                        <!-- bouton d'envoie (pop up) -->
+                        <!-- (pop up) -->
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
                         </div>
 
-                        <!--contenu du tableau -->
+                        <!--table content -->
                         <table class="table">
-                            <!-- le header du tableau -->
+                            <!-- header table-->
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Id</th>
@@ -150,7 +130,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                             </thead>
 
                             <tbody>
-                                <!-- la boucle foreach pour l'affichage -->
+                                <!--  loop foreach for display -->
                                 <?php
                                 $num = 0;
                                 foreach ($resultats as $resultat) :
@@ -162,31 +142,30 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         <td> <?= $resultat['titel'] ?> </td>
                                         <td>
                                             <a href="training_modification.php?id= <?= $resultat['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
+                                            <a href="?id= <?= $resultat['id'] ?>"> <button type="button" class="btn btn-danger">Supprimer</button>
                                         </td>
                                     </tr>
 
                                 <?php endforeach ?>
                             </tbody>
                         </table>
-                        <!-- fin du tableau -->
-
+                        <!-- end table -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- pop up d'ajout -->
+        <!--add pop up  -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <!--titre du formulaire -->
+                    <!--title of table -->
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Nouveau contenu</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <!-- formulaire d'envoie-->
+                    <!-- submission form-->
                     <div class="modal-body">
                         <form action="../controllers/add_blog.php" method="POST" enctype="multipart/form-data">
 
@@ -199,14 +178,14 @@ $_SESSION['info']['table'] = $post::TABLE;
                                 <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="picture">
                             </div>
 
-                            <div class="input-group mb-3">
-                                <label for="file" class="label-file">Choisir votre fihcier</label> <br>
-                                <input type="file" class="form-control input-file" accept=".pdf" name="file">
-                            </div>
-
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez la source de votre image :</label>
                                 <input type="text" class="form-control" id="recipient-name" name="source" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Entrez le code de votre formation :</label>
+                                <input type="text" class="form-control w-25" id="recipient-name" name="code" required>
                             </div>
 
                             <div class="mb-3">
@@ -214,7 +193,12 @@ $_SESSION['info']['table'] = $post::TABLE;
                                 <textarea class="form-control" id="message-text" rows="5" cols="33" name="description" required></textarea>
                             </div>
 
-                            <!-- le type pour l'appel à la base de données -->
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Le texte : </label>
+                                <textarea class="form-control" id="message-text" rows="5" cols="33" name="text" required></textarea>
+                            </div>
+
+                            <!-- type hidden -->
                             <input name="type" value="training" hidden>
 
                             <div class="modal-footer">
@@ -230,25 +214,54 @@ $_SESSION['info']['table'] = $post::TABLE;
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <!--titre du formulaire -->
+                    <!--title  -->
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel1">Suppression</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <!-- formulaire d'envoie-->
+                    <!-- submission form-->
                     <div class="modal-body">
                         <div>
                             <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
                         </div>
                         <div class="modal-footer text-center">
-                            <a href="?id= <?= $training['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
+                            <a href="?id= <?= $resultat['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--import du footer-->
-        <?php include('inc_footer.php'); ?>
+        <!-- paging -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" tabindex="-1">Précédent</a>
+                </li>
+
+                <?php for ($i = 1; $i <= $nbr_page; $i++) : ?>
+                    <?php if ($page != $i) : ?>
+
+                        <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
+
+                    <?php else : ?>
+                        <li class="page-item active"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
+
+                    <?php endif ?>
+
+                <?php endfor ?>
+
+                <li class="page-item">
+                    <a class="page-link" href="#">Suivant</a>
+                </li>
+            </ul>
+        </nav>
+
+
     </div>
+</div>
+</div>
+</div>
+<!-- footer -->
+<?php include('inc_footer.php'); ?>
