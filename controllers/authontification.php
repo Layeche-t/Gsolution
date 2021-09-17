@@ -10,10 +10,17 @@ if (isset($_POST['email']) && $_POST['email'] != "") {
     // check if email exists 
     $check = $user->findOneBy(['email' => $_POST['email']], $user::TABLE);
 
+
     if (!$check) {
         header('Location: ../templates/form_autho.php?error=eml');
         exit;
     }
+
+    if ($check->accepted != 1) {
+        header('Location: ../templates/form_autho.php?error=atp');
+        exit;
+    }
+
     // if users password == instretd password => created new session
     if ($check->password == $_POST['password']) {
         $_SESSION['access'] = "oui";
