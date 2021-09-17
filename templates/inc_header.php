@@ -40,7 +40,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
 
                 echo ' <div class=" col text-right py-4 ">';
                 echo ' <div class="dropdown show">';
-                echo ' <i class="fas fa-user"></i> <a class="btn font-weight-bold " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                echo '  <a class="btn font-weight-bold " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i> ' . $_SESSION['user']['lastname'] . '
                     </a>';
                 echo ' <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
@@ -59,14 +59,13 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
                 echo '</a>';
                 echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
                 echo '<a class="dropdown-item" href="form_autho">Connexion</a>';
-                echo '<a class="dropdown-item" href="registrationForm">Création de compte</a>';
+                echo '<div class="divider dropdown-divider"></div>';
+                echo '<a class="dropdown-item" href="registrationForm">Inscription</a>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
             }
             ?>
-
-
         </div>
 
 
@@ -80,6 +79,10 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
         <ul class="navbar-nav">
             <li class="nav-item mx-3">
                 <a class="nav-link Dark link font-weight-bold" href="home_display">ACCUEIL</a>
+            </li>
+
+            <li class="nav-item mx-3">
+                <a class="nav-link nav-color font-weight-bold" href="#">A PROPOS</a>
             </li>
 
             <!-- Dropdown -->
@@ -105,25 +108,8 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
                 </div>
             </li>
 
-            <!-- <li class="nav-item dropdown mx-2">
-                <a class="nav-link dropdown-toggle nav-color font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
-                    CONSEILS
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li> -->
-
             <li class="nav-item mx-3">
-                <a class="nav-link nav-color font-weight-bold" href="planning">PLANNING</a>
-            </li>
-            <li class="nav-item mx-3">
-                <a class="nav-link nav-color font-weight-bold" href="#">A PROPOS</a>
-            </li>
-            <li class="nav-item mx-3">
-                <a class="nav-link nav-color font-weight-bold" href="registrationForm">CONTACT</a>
+                <a class="nav-link nav-color font-weight-bold" href="form_contact">CONTACT</a>
             </li>
         </ul>
     </nav>
