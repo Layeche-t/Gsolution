@@ -11,11 +11,13 @@ $fileManager = new FileManger();
 
 if (isset($_POST['validation'])) {
 
+
     unset($_POST['validation']);
 
-    $fileName = $fileManager->UploadFile($_FILES['link']);
+    $fileName = $fileManager->UploadImage($_FILES['link']);
     $_POST['link'] = $fileName;
-    $newFile = $file->set($_POST, $_SESSION['info']['table']);
+
+    $newFile = $file->set($_POST, $file::TABLE);
 
 
     header('Location: ../admin/' . $_SESSION['info']['redirect'] . '.php?success');
