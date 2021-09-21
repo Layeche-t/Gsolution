@@ -1,3 +1,4 @@
+frome_auth
 <!--Header + menu-->
 <?php include 'inc_header.php'; ?>
 <h1 class="titre-blog"> <span class="span-blog">Le développement durable</span></h1>
