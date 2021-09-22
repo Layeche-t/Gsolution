@@ -659,3 +659,7 @@ h1, .h1 {
     color: #3276b1;
     background-color: #fff;
 }
+
+.bold-text{
+    font-weight: bold;
+}
