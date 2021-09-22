@@ -92,7 +92,7 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
                             <!--  header of table-->
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col">N°</th>
                                     <th scope="col">Nom</th>
                                     <th scope="col">Prénom</th>
                                     <th scope="col">Action</th>
