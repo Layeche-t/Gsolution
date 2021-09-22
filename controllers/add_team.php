@@ -26,3 +26,5 @@ if (in_array($extension, $extensionAutrosiee) && $_FILES['image']['size'] < $tai
         exit;
     }
 }
+header('Location: ../admin/team_disply.php?error=non');
+exit;
