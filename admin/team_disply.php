@@ -1,14 +1,15 @@
 <?php
 
-//connxion à la base de données
+//connxion to database
 require_once('../inc_config.php');
-//l'objet
+
+//object
 $user = new User();
 
-//méthode select par
+//methode by select 
 $teams = $user->findBy(['role' => 'team'], 1000, $user::TABLE);
 
-//supprimer un élement du tableau
+//remove an element from the array
 if (isset($_GET['id'])) {
     $user->deleteById($_GET['id'], $user::TABLE);
     header('Location: ../admin/team_disply.php?delete');
@@ -17,14 +18,15 @@ if (isset($_GET['id'])) {
 if (isset($_SESSION['info'])) {
     unset($_SESSION['info']);
 }
+// start session
 $_SESSION['info']['redirect'] = 'team_disply';
 $_SESSION['info']['table'] = $user::TABLE;
 ?>
 
-<!-- import du header -->
+<!-- header -->
 <?php include('inc_header.php'); ?>
 
-<!-- Le contenu du dashbord-->
+<!-- content of the dashboard-->
 <div class='dashboard-app'>
     <header class='dashboard-toolbar'>
         <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
@@ -34,42 +36,49 @@ $_SESSION['info']['table'] = $user::TABLE;
         <div class='container'>
             <div class='card'>
 
-                <!--titre du dashbord -->
+                <!--title of dashbord -->
                 <div class='card-header'>
                     <h1>Votre équipe</h1>
 
-                    <!--success ajout-->
+                    <!-- message success add -->
                     <?php if (isset($_GET['success'])) : ?>
-                        <div class="alert alert-success" role="alert">
-                            Un membre de votre équipe vient d'être ajouté
+                        <div class="alert alert-success bold-text" role="alert">
+                            Un membre de votre équipe vient d'être ajouté.
                         </div>
                     <?php endif ?>
 
-                    <!--success suppression-->
+                    <!--message success delete-->
                     <?php if (isset($_GET['delete'])) : ?>
-                        <div class="alert alert-success" role="alert">
-                            Un membre de votre équipe vient d'être supprimé
+                        <div class="alert alert-success bold-text" role="alert">
+                            Un membre de votre équipe vient d'être supprimé.
                         </div>
                     <?php endif ?>
 
-                    <!--success modification-->
+                    <!--message success modification-->
                     <?php if (isset($_GET['modif'])) : ?>
-                        <div class="alert alert-success" role="alert">
-                            Un membre de votre équipe vient vient d'être modifié
+                        <div class="alert alert-success bold-text" role="alert">
+                            Un membre de votre équipe vient d'être modifié.
+                        </div>
+                    <?php endif ?>
+
+                    <!-- error message -->
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'non') : ?>
+                        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                            Votre image est volumineuse
                         </div>
                     <?php endif ?>
 
 
 
                     <div class='card-body'>
-                        <!-- bouton d'envoie (pop up) -->
+                        <!-- pop up send -->
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
                         </div>
 
-                        <!--contenu du tableau -->
+                        <!--content of table -->
                         <table class="table">
-                            <!-- le header du tableau -->
+                            <!--  header of table -->
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Id</th>
@@ -81,7 +90,7 @@ $_SESSION['info']['table'] = $user::TABLE;
                             </thead>
 
                             <tbody>
-                                <!-- la boucle foreach pour l'affichage -->
+                                <!-- la boucle foreach for display -->
                                 <?php
                                 $num = 0;
                                 foreach ($teams as $team) :
@@ -95,31 +104,31 @@ $_SESSION['info']['table'] = $user::TABLE;
                                         <td> <?= $team['function'] ?> </td>
                                         <td>
                                             <a href="team_modification.php?id= <?= $team['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
+                                            <a href="?id= <?= $team['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button>
                                         </td>
                                     </tr>
 
                                 <?php endforeach ?>
                             </tbody>
                         </table>
-                        <!-- fin du tableau -->
+                        <!-- end -->
 
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- pop up d'ajout -->
+        <!-- pop up add -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <!--titre du formulaire -->
+                    <!--form title -->
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Nouveau membre</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <!-- formulaire d'envoie-->
+                    <!-- send form-->
                     <div class="modal-body">
                         <form action="../controllers/add_team.php" method="POST" enctype="multipart/form-data">
 
@@ -138,12 +147,17 @@ $_SESSION['info']['table'] = $user::TABLE;
                                 <input type="text" class="form-control" id="recipient-name" name="function" required>
                             </div>
 
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Lien linkedin :</label>
+                                <input type="text" class="form-control" id="recipient-name" name="link_social" required>
+                            </div>
+
                             <div class="input-group mb-3">
                                 <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="image">
                             </div>
 
 
-                            <!-- le type pour l'appel à la base de données -->
+                            <!-- the type for the database call -->
                             <input name="role" value="team" hidden>
 
                             <div class="modal-footer">
@@ -156,28 +170,12 @@ $_SESSION['info']['table'] = $user::TABLE;
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!--titre du formulaire -->
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1">Suppression</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
 
-                    <!-- formulaire d'envoie-->
-                    <div class="modal-body">
-                        <div>
-                            <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
-                        </div>
-                        <div class="modal-footer text-center">
-                            <a href="?id= <?= $team['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!--import du footer-->
-        <?php include('inc_footer.php'); ?>
     </div>
+</div>
+</div>
+</div>
+<!--footer-->
+
+<?php include('inc_footer.php'); ?>
