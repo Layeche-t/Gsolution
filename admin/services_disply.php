@@ -64,9 +64,8 @@ $_SESSION['info']['table'] = $post::TABLE;
                             <!-- le header du tableau -->
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col">N°</th>
                                     <th scope="col">Titre</th>
-                                    <th scope="col">Description</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -81,11 +80,11 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
-                                        <td> <?= $service['titel'] ?> </td>
-                                        <td> <?= $service['description'] ?> </td>
-                                        <td>
-                                            <a href="services_modification.php?id= <?= $service['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
+                                        <td class="bold-text  w-25"> <?= $service['titel'] ?> </td>
+                                        <td class="">
+                                            <a href=" services_modification.php?id=<?= $service['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <a href="?id= <?= $service['id'] ?>">
+                                                <button type="button" class="btn btn-danger" onclick="return confirm('Vous êtes sûr de vouloir supprimer cet element ??');">Supprimer</button>
                                         </td>
                                     </tr>
 
@@ -125,6 +124,11 @@ $_SESSION['info']['table'] = $post::TABLE;
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Entrez la source de votre image :</label>
                                 <input type="text" class="form-control" id="recipient-name" name="source" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Entrez le code de votre formation :</label>
+                                <input type="text" class="form-control w-25" id="recipient-name" name="code" required>
                             </div>
 
                             <div class="mb-3">
@@ -173,5 +177,9 @@ $_SESSION['info']['table'] = $post::TABLE;
         </div>
 
         <!--import du footer-->
-        <?php include('inc_footer.php'); ?>
+
     </div>
+</div>
+</div>
+</div>
+<?php include('inc_footer.php'); ?>
