@@ -112,9 +112,9 @@ include 'inc_header.php';
 
                             <!-- group input 3 -->
                             <div class="form-group"> <label class="form-control-label">Entrez le code lié à votre produit</label> <input type="text" name="code" placeholder="CO112" class="form-control w-25 border-input" required> </div>
-                            <div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" name="lastname" placeholder="Dupon" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label  ">Nom</label> <input type="text" name="lastname" placeholder="Dupont" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Prénom</label> <input type="text" name="firstname" placeholder="Michel" class="form-control" required> </div>
-                            <div class="form-group"> <label class="form-control-label ">E-mail</label> <input type="email" name="email" placeholder="miche.dupon@gmail.com" class="form-control" required> </div>
+                            <div class="form-group"> <label class="form-control-label ">E-mail</label> <input type="email" name="email" placeholder="michel.dupont@gmail.com" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Mot de passe</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control" required> </div>
                             <div class="form-group"> <label class="form-control-label ">Confirmation de mot de passe</label> <input type="password" name="confirmPassword" placeholder="Mot de passe" class="form-control" required> </div>
 
