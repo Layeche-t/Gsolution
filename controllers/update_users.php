@@ -5,10 +5,13 @@ $user = new User();
 
 if (isset($_POST['modification'])) {
 
+
     unset($_POST['modification']);
 
     $update = $user->updateById($_POST, $user::TABLE);
 
-    header('Location: ../admin/users_disply.php?modif');
-    exit();
+
+    header('Location: ../' . $_SESSION['info']['redirect'] . '.php?yes');
+
+    exit;
 }

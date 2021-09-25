@@ -183,5 +183,9 @@ $_SESSION['info']['image'] = true;
         </div>
 
         <!--import du footer-->
-        <?php include('inc_footer.php'); ?>
+
     </div>
+</div>
+</div>
+</div>
+<?php include('inc_footer.php'); ?>

@@ -9,9 +9,11 @@ $post = new Post();
 //méthode select par
 $sliders = $post->findBy(['type' => 'slider'], 100, $post::TABLE);
 
+
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
     $post->deleteById($_GET['id'], $post::TABLE);
+
     header('Location: ../admin/slide_disply.php?delete');
     exit();
 }
@@ -25,16 +27,18 @@ $_SESSION['info']['table'] = $post::TABLE;
 <!-- import du header -->
 <?php include('inc_header.php'); ?>
 
+
+
 <!-- Le contenu du dashbord-->
 <div class='dashboard-app'>
-    <header class='dashboard-toolbar'>
-        <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+    <header class='dashboard-toolbar had p-0'>
+
     </header>
+
 
     <div class='dashboard-content'>
         <div class='container'>
             <div class='card'>
-
                 <!--titre du dashbord -->
                 <div class='card-header'>
                     <h1>Le contenu de votre slide</h1>
@@ -97,7 +101,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         <td> <?= $slider['description'] ?> </td>
                                         <td>
                                             <a href="slide_modification.php?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Supprimer</button>
+                                            <a href="?id= <?= $slider['id'] ?>"><button type="button" class="btn btn-danger" type="button">Supprimer</button></a>
                                         </td>
                                     </tr>
 
@@ -105,10 +109,11 @@ $_SESSION['info']['table'] = $post::TABLE;
                             </tbody>
                         </table>
                         <!-- fin du tableau -->
-
                     </div>
                 </div>
+
             </div>
+
         </div>
 
         <!-- pop up d'ajout -->
@@ -163,29 +168,34 @@ $_SESSION['info']['table'] = $post::TABLE;
 
 
         <!-- pop up d'ajout -->
-        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <!-- <div class="modal fade" id="exampleModal1" tabindex="1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <!--titre du formulaire -->
+                   titre du formulaire
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel1">Suppression</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <!-- formulaire d'envoie-->
+                     formulaire d'envoie
                     <div class="modal-body">
                         <div>
                             <p class="font-weight-bolder text-danger text-center ">Est-vous sûr de vouloir supprimer cet élement</p>
                         </div>
                         <div class="modal-footer text-center">
-                            <a href="?id= <?= $slider['id'] ?>"><button type="button " class="btn btn-danger">Supprimer</button></a>
+
+                            <a href="?id= "><button type="button " class="btn btn-danger">Supprimer</button></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <!--import du footer-->
-        <?php include('inc_footer.php'); ?>
+
     </div>
+</div>
+</div>
+</div>
+<?php include('inc_footer.php'); ?>

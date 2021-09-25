@@ -35,25 +35,29 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
                 <div class='card-body'>
                     <!-- le formuliare d'envoie -->
                     <form action="../controllers/update_backOffice.php" method="POST">
-                        <div class="input-group">
+
+                        <div class="input-group mb-3">
                             <span class="input-group-text">Entrez votre titre</span>
                             <input type="text" aria-label="First name" class="form-control" name="titel" value=<?= $slider->titel ?> required>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-group mb-2">
                             <span class="input-group-text">La source de votre image</span>
                             <input type="text" aria-label="First name" class="form-control" name="source" value=<?= $slider->source ?> required>
                         </div>
 
+
+                        <label for="recipient-name" class="col-form-label">Entrez votre description :</label>
                         <div class="form-floating">
                             <textarea class="form-control area-description" id="floatingTextarea2" name="description" required><?= $slider->description  ?></textarea>
                         </div>
 
+                        <label for="recipient-name" class="col-form-label ">Entrez votre text :</label>
                         <div class="form-floating">
                             <textarea class="form-control conteiner-slide" id="floatingTextarea2" name="text" required><?= $slider->text ?></textarea>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 text-center">
                             <input type="text" aria-label="First name" class="form-control" name="id" value=<?= $slider->id ?> hidden>
                             <button class="btn btn-success submit-modification" type="submit" name="modification">Modifier</button>
                         </div>

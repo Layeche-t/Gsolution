@@ -23,6 +23,7 @@ if (isset($_SESSION['info'])) {
 }
 $_SESSION['info']['redirect'] = 'training_disply';
 $_SESSION['info']['table'] = $post::TABLE;
+
 ?>
 
 <!-- header -->
@@ -40,7 +41,12 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                 <!--dashbord title -->
                 <div class='card-header'>
-                    <h1>Le contenu de votre formation</h1>
+                    <div class="row">
+                        <h1 class="col-sm">Le contenu de votre formation</h1>
+                        <div class="btn-group col-sm" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary submit-ajout w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
+                        </div>
+                    </div>
 
                     <?php
 
@@ -49,6 +55,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                     $count->setFetchMode(PDO::FETCH_ASSOC);
                     $count->execute();
                     $tcount = $count->fetchAll();
+                    $j = $tcount[0]['fa'];
 
 
                     //paging 
@@ -67,9 +74,8 @@ $_SESSION['info']['table'] = $post::TABLE;
                     $sel->setFetchMode(PDO::FETCH_ASSOC);
                     $sel->execute();
                     $resultats = $sel->fetchAll();
-                    if (count($resultats) == 0) {
-                        header("Location: training_disply.php");
-                    }
+
+
 
                     ?>
 
@@ -114,16 +120,13 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                     <div class='card-body'>
                         <!-- (pop up) -->
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
-                        </div>
 
                         <!--table content -->
                         <table class="table">
                             <!-- header table-->
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Titre de la formation</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -132,13 +135,13 @@ $_SESSION['info']['table'] = $post::TABLE;
                             <tbody>
                                 <!--  loop foreach for display -->
                                 <?php
-                                $num = 0;
+
                                 foreach ($resultats as $resultat) :
-                                    $num = $num + 1;
+
                                 ?>
 
                                     <tr>
-                                        <th scope="row"> <?= $num ?> </th>
+                                        <th scope="row"> <?= $resultat['id'] ?> </th>
                                         <td> <?= $resultat['titel'] ?> </td>
                                         <td>
                                             <a href="training_modification.php?id= <?= $resultat['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
@@ -146,7 +149,9 @@ $_SESSION['info']['table'] = $post::TABLE;
                                         </td>
                                     </tr>
 
-                                <?php endforeach ?>
+                                <?php
+
+                                endforeach ?>
                             </tbody>
                         </table>
                         <!-- end table -->
@@ -170,7 +175,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                         <form action="../controllers/add_blog.php" method="POST" enctype="multipart/form-data">
 
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Entrez le titre de votre service :</label>
+                                <label for="recipient-name" class="col-form-label">Entrez le titre de votre formation :</label>
                                 <input type="text" class="form-control" id="recipient-name" name="titel" required>
                             </div>
 

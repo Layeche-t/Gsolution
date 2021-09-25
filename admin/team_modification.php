@@ -20,34 +20,36 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
     <!-- Le contenu du dashbord-->
     <div class='dashboard-content'>
         <div class='container'>
-            <div class='card'>
+            <div class='card d-flex'>
                 <!--titre du dashbord -->
                 <div class='card-header'>
+                    <!-- title of dashbord -->
                     <h1>Modification</h1>
-                    <?php if (isset($_GET['success'])) : ?>
-                        <div class="alert alert-success" role="alert">
-                            A simple success alert—check it out!
-                        </div>
-                    <?php endif; ?>
+
                 </div>
 
 
-                <div class='card-body'>
+                <div class="card-body">
                     <!-- le formuliare d'envoie -->
                     <form action="../controllers/update_team.php" method="POST">
-                        <div class="input-group">
-                            <span class="input-group-text">Nom :</span>
+                        <div class="input-group mb-3 w-50 d-flex ">
+                            <span class="input-group-text w-25">Nom :</span>
                             <input type="text" aria-label="First name" class="form-control" name="firstname" value=<?= $team->firstname ?> required>
                         </div>
 
-                        <div class="input-group">
-                            <span class="input-group-text">Prénom :</span>
+                        <div class="input-group mb-3 w-50">
+                            <span class="input-group-text w-25">Prénom :</span>
                             <input type="text" aria-label="First name" class="form-control" name="lastname" value=<?= $team->lastname ?> required>
                         </div>
 
-                        <div class="input-group">
-                            <span class="input-group-text">Fonction :</span>
+                        <div class="input-group mb-3 w-50">
+                            <span class="input-group-text w-25">Fonction :</span>
                             <input type="text" aria-label="First name" class="form-control" name="function" value=<?= $team->function ?> required>
+                        </div>
+
+                        <div class="input-group mb-3 w-50">
+                            <span class="input-group-text w-25">Linkedin :</span>
+                            <input type="text" aria-label="First name" class="form-control" name="link_social" value=<?= $team->link_social ?> required>
                         </div>
 
                         <div class="col-12">

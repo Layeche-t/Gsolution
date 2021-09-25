@@ -27,13 +27,13 @@ require_once('../inc_config.php');
             <!-- errors -->
             <?php if (isset($_GET['error']) && $_GET['error'] == 'K') : ?>
                 <div class="alert alert-danger text-center font-weight-bold" role="alert">
-                    Votre email est incorrect !
+                    Votre identifiant est incorrect !
                 </div>
             <?php endif; ?>
 
             <?php if (isset($_GET['error']) && $_GET['error'] == 'nok') : ?>
                 <div class="alert alert-danger text-center font-weight-bold" role="alert">
-                    Votre mot de passe est incorrect !
+                    Votre identifiant est incorrect !
                 </div>
             <?php endif; ?>
 

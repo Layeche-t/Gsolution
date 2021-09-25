@@ -6,9 +6,7 @@ $fileManager = new FileManger();
 
 
 //upload file
-if (isset($_SESSION['info']['image'])) {
-    $fileName = $fileManager->UploadImage($_FILES['picture']);
-}
+
 
 
 if (isset($_POST['validation'])) {

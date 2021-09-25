@@ -31,7 +31,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
     <div class="container-fluid border" style="color:#e0ffd4 !important;">
         <div class="row div-logo pb-3  pt-1  ">
             <div class="col ">
-                <a href="#">
+                <a href="home_display.php">
                     <img src="../pictures/logo.png" alt="" width="300" height="100">
                 </a>
             </div>

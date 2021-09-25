@@ -10,6 +10,7 @@ $post = new Post();
 //methode select par
 if (isset($_SESSION['admi']['id'])) {
     $trainings = $post->findBy(['type' => 'training'], 1000, $post::TABLE);
+    $services = $post->findBy(['type' => 'service'], 1000, $post::TABLE);
     $files = $file->findAll($file::TABLE);
 }
 
@@ -19,8 +20,9 @@ if (isset($_SESSION['admi']['id'])) {
 
 //supprimer un élement du tableau
 if (isset($_GET['id'])) {
-    $post->deleteById($_GET['id'], $post::TABLE);
-    header('Location: ../admin/libraryDisplay?delete');
+
+    $file->deleteById($_GET['id'], $file::TABLE);
+    header('Location: ../admin/filesDisplay?delete');
     exit();
 }
 
@@ -50,22 +52,25 @@ $_SESSION['info']['table'] = $file::TABLE;
 
                     <!--success ajout-->
                     <?php if (isset($_GET['success'])) : ?>
-                        <div class="alert alert-success" role="alert">
-                            Votre bibliothèque vient d'être ajouté
+                        <div class="alert alert-success text-center font-weight-bold" role="alert">
+                            Votre ficher vient d'être ajouté
                         </div>
                     <?php endif ?>
 
                     <!--success suppression-->
                     <?php if (isset($_GET['delete'])) : ?>
-                        <div class="alert alert-success" role="alert">
-                            Votre bibliothèque vient d'être supprimé
+                        <div class="alert alert-success text-center font-weight-bold" role="alert">
+                            Votre ficher vient d'être supprimé
                         </div>
                     <?php endif ?>
 
                     <div class='card-body'>
                         <!-- bouton d'envoie (pop up) -->
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
+                            <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter un ficher pour un stagaire </button>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal1">Ajouter un ficher pour un client </button>
                         </div>
 
                         <!--contenu du tableau -->
@@ -93,8 +98,8 @@ $_SESSION['info']['table'] = $file::TABLE;
                                         <td> <?= $filePdf['title'] ?> </td>
                                         <td> <?= $filePdf['link'] ?> </td>
                                         <td>
-                                            <a href="services_modification.php?id= <?= $filePdf['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $filePdf['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                            <a href="training_modification.php?id= <?= $filePdf['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                            <a href="?id= <?= $filePdf['id'] ?>"> <button type="button" class="btn btn-danger">Supprimer</button>
                                         </td>
                                     </tr>
 
@@ -129,7 +134,7 @@ $_SESSION['info']['table'] = $file::TABLE;
 
                             <div class="form-group div">
                                 <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre formation</label>
-                                <select class="form-control" name="id_posts">
+                                <select class="form-control" name="id_post">
                                     <?php foreach ($trainings as $training) : ?>
                                         <option value="<?= $training['id'] ?>"><?= $training['titel'] ?></option>
                                     <?php endforeach; ?>
@@ -139,6 +144,55 @@ $_SESSION['info']['table'] = $file::TABLE;
                             <div class=" mb-3">
                                 <label for="link" class="col-form-label">Choissiez votre fichier</label>
                                 <input type="file" class="form-control input-file" id="inputGroupFile02" accept=".pdf" name="link">
+                                <input name="type" type="hidden" value="service">
+                            </div>
+
+
+                            <!-- le type pour l'appel à la base de données -->
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" name="validation">Valider</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+
+        <!-- 2222 -->
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--titre du formulaire -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Nouveau contenu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- formulaire d'envoie-->
+                    <div class="modal-body">
+                        <form action="../controllers/add_pdf.php" method="POST" enctype="multipart/form-data">
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Entrez le titre de votre fichier :</label>
+                                <input type="text" class="form-control" name="title" required>
+                            </div>
+
+                            <div class="form-group div">
+                                <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre service</label>
+                                <select class="form-control" name="id_post">
+                                    <?php foreach ($services as $service) : ?>
+                                        <option value="<?= $service['id'] ?>"><?= $service['titel'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class=" mb-3">
+                                <label for="link" class="col-form-label">Choissiez votre fichier</label>
+                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept=".pdf" name="link">
+                                <input name="type" type="hidden" value="training">
                             </div>
 
 
@@ -156,4 +210,7 @@ $_SESSION['info']['table'] = $file::TABLE;
 
         <!--import du footer-->
     </div>
-    <?php include('inc_footer.php'); ?>
+</div>
+</div>
+</div>
+<?php include('inc_footer.php'); ?>

@@ -40,6 +40,7 @@ $resultats = $sel->fetchAll();
 if (count($resultats) == 0) {
 	header("Location: training_disply.php");
 }
+
 ?>
 
 
@@ -74,8 +75,7 @@ if (count($resultats) == 0) {
 					?>
 					<h5 class="mb-0 mx-1 font-weight-bold "><?= $resultat['firstname'] . ' ' . $resultat['lastname'] ?></h5><span class="small text-uppercase text-muted font-weight-bold"><?= $resultat['function'] ?></span>
 					<ul class=" mb-0 list-inline mt-3">
-						<li class="list-inline-item "><a href="#" class="social-link "><i class=" fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="<?= $resultat['link_social'] ?>" class="social-link"><i class="fa fa-linkedin"></i></a></li>
 					</ul>
 				</div>
 			</div>

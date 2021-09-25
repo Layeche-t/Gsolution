@@ -20,10 +20,8 @@ include 'inc_header.php'; ?>
 
         <div class="row">
             <div class="btn-group btn-breadcrumb ml-4 mb-2">
-                <a href="#" class="btn btn-default "><i class="fas fa-home"></i></a>
-                <a href="#" class="btn btn-default font-weight-bold a-color">Snippets <i class="fas fa-chevron-right"></i></a>
-                <a href="#" class="btn btn-default font-weight-bold a-color">Breadcrumbs <i class="fas fa-chevron-right"></i></a>
-                <a href="#" class="btn btn-default font-weight-bold a-color">Default</a>
+                <a href="home_display" class="btn btn-default "><i class="fas fa-home"></i></a>
+                <a href="#" class="btn btn-default font-weight-bold a-color"><?= $slider->titel ?> <i class="fas fa-chevron-right"></i></a>
             </div>
         </div>
 

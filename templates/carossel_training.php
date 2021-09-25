@@ -58,20 +58,22 @@ for ($i = 0; $i < $lent; $i++) {
 
                         <div class="carousel-item">
                             <div class="row">
-                                <?php foreach ($dataSr[1] as $service) : ?>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <?php
-                                            echo  "<img src='../upload/" . $service['picture'] . "' style='height: 190px !important;' \>";
-                                            ?>
-                                            <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
-                                                <a href="page.php?id= <?= $service['id'] ?>" style="color: black;">
-                                                    <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
-                                                </a>
+                                <?php if ($lent > 3) : ?>
+                                    <?php foreach ($dataSr[1] as $service) : ?>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <?php
+                                                echo  "<img src='../upload/" . $service['picture'] . "' style='height: 190px !important;' \>";
+                                                ?>
+                                                <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
+                                                    <a href="page.php?id= <?= $service['id'] ?>" style="color: black;">
+                                                        <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
 
 
                             </div>
