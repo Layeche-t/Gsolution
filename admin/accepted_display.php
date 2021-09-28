@@ -59,7 +59,7 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
 
                 <!--title of dashbord -->
                 <div class='card-header'>
-                    <h1>Le contenu de bibliothèque</h1>
+                    <h1>Les demandes</h1>
 
                     <!--success add-->
                     <?php if (isset($_GET['success'])) : ?>
