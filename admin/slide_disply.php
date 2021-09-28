@@ -122,7 +122,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                 <div class="modal-content">
                     <!--titre du formulaire -->
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nouveau contenu</h5>
+                        <h5 class="modal-title border mr-4" id="exampleModalLabel">Nouveau contenu</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -150,15 +150,13 @@ $_SESSION['info']['table'] = $post::TABLE;
                                 <textarea class="form-control" id="message-text" name="description" required></textarea>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Votre contenu : </label>
-                                <textarea class="form-control" id="message-text" rows="5" cols="33" name="text" required></textarea>
-                            </div>
                             <input name="type" value="slider" hidden>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" name="validation">Valider</button>
+
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="submit" class="btn back-color-green3 text-light" name="validation">Valider</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
                 <!-- end -->
