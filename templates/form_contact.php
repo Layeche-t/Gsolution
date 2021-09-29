@@ -44,7 +44,13 @@
 							</div>
 
 							<div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" type="submit" name="validation">Envoyer</button> </div>
-							<div class="row justify-content-center my-1"> <a class="a-color" href="#">Lire les conditions générales</a> </div>
+							<div class="row justify-content-center my-1">
+								<a class="forogt-pass" href="#">
+									<small class="text-dark-green forogt-pass">
+										<h6>Lire les conditions générales</h6>
+									</small>
+								</a>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -53,7 +59,7 @@
 
 			<div class="card card2">
 				<div class="my-auto mx-md-5 px-md-2 right" style="margin: 0px;">
-					<h3 class="text-body font-weight-bold">G7solution</h3>
+					<h3 class="text-body font-weight-bold text-center mb-3">G7solution</h3>
 					<small class="font-weight-bold">Votre partenaire en conseil et formation, vous accompagne du diagnostic à la réalisation de vos projets de développement, compétences et ressources : G7 Solution !</small><br><br>
 					<small class="text-center font-weight-bold">Adresse : 32 rue Riquet / 53 rue de la Colombette 31000 Toulouse</small>
 					<small class="text-center font-weight-bold">Téléphone : 06 19 44 53 34</small><br>
@@ -61,7 +67,11 @@
 				</div>
 
 				<div class=" text-center mb-5">
-					<p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous n'avez pas de compte ?<a href="form_autho.php"><button class="btn btn-white ml-2">S'inscrire </button></a></p>
+					<p href="#" class="sm-text mx-auto mb-1 font-weight-bold">Vous n'avez pas de compte ?
+						<a href="form_autho.php">
+							<button class="btn btn-white ml-2"> S'inscrire </button>
+						</a>
+					</p>
 				</div>
 			</div>
 		</div>

@@ -120,7 +120,13 @@ include 'inc_header.php';
 
                             <!-- link to conditions of use   -->
                             <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" type="submit" name="validation">Enregistrer</button> </div>
-                            <div class="row justify-content-center my-1"> <a class="a-color" href="#">Lire les conditions générales</a> </div>
+                            <div class="row justify-content-center my-1">
+                                <a class="forogt-pass" href="#">
+                                    <small class="text-dark-green forogt-pass">
+                                        <h6>Lire les conditions générales</h6>
+                                    </small>
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
