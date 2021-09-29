@@ -12,7 +12,7 @@ if (isset($_POST['validation'])) {
         echo 'non';
     } else {
 
-        $to = 'layeche.torki@gmail.com';
+        $to = 'tfateh43@gmail.com';
         $subject = $_POST['subject'];
         $message = $_POST['message'];
         $headers = [];
