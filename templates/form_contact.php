@@ -26,7 +26,7 @@
 							<div class="form-group pr-5"> <label class="form-control-label  ">Nom</label> <input type="text" name="firstname" placeholder="Dupon" class="form-control" required> </div>
 							<div class="form-group pr-5"> <label class="form-control-label ">Prénom</label> <input type="text" name="lastname" placeholder="Michel" class="form-control" required> </div>
 							<div class="form-group pr-5"> <label class="form-control-label ">E-mail</label> <input type="email" name="email" placeholder="michel.dupon@gmail.com" class="form-control" required> </div>
-							<div class="form-group pr-5"> <label class="form-control-label ">Téléphone</label> <input type="tel" name="number" placeholder="06-22-30-30-30" class="form-control" required> </div>
+							<div class="form-group pr-5"> <label class="form-control-label ">Téléphone</label> <input type="tel" name="number" placeholder="0622303030" maxlength="10" class="form-control" required> </div>
 
 							<div class="input-group mt-5 mb-4 pr-5">
 								<div class="input-group-prepend">
@@ -39,11 +39,19 @@
 								</select>
 							</div>
 							<div class="mb-3 pr-5">
+								<?php $message = ''; ?>
+
 								<label for="exampleFormControlTextarea1" class="form-label ml-2">Message</label>
-								<textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="4" required></textarea>
+								<textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="4" maxlength="250" required>
+
+								</textarea>
+
+
 							</div>
 
-							<div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" type="submit" name="validation">Envoyer</button> </div>
+							<div class="row form-group pr-5  my-3 px-3">
+								<button class=" w-100 btn-color" type="submit" name="validation">Envoyer</button>
+							</div>
 							<div class="row justify-content-center my-1">
 								<a class="forogt-pass" href="#">
 									<small class="text-dark-green forogt-pass">
