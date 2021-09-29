@@ -15,6 +15,7 @@ if (isset($_POST['validation'])) {
         $to = 'tfateh43@gmail.com';
         $subject = $_POST['subject'];
         $message = $_POST['message'];
+        $message = wordwrap($message, 70, "\r\n");
         $headers = [];
         $headers[] = "MIME-Version: 1.0\r\n";
         $headers[] = "Content-type: text/html; charset=iso-8859-1\r\n";
