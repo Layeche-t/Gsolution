@@ -58,7 +58,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
                 <i class="fas fa-user"></i> Connexion';
                 echo '</a>';
                 echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
-                echo '<a class="dropdown-item" href="form_autho">Connexion</a>';
+                echo '<a class="dropdown-item" href="../templates/form_autho">Connexion</a>';
                 echo '<div class="divider dropdown-divider"></div>';
                 echo '<a class="dropdown-item" href="registrationForm">Inscription</a>';
                 echo '</div>';
@@ -78,7 +78,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
         <!-- Links -->
         <ul class="navbar-nav">
             <li class="nav-item mx-3">
-                <a class="nav-link Dark link font-weight-bold" href="home_display">ACCUEIL</a>
+                <a class="nav-link Dark link font-weight-bold" href="../index/home_display">ACCUEIL</a>
             </li>
 
             <li class="nav-item mx-3">
@@ -92,7 +92,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
                 </a>
                 <div class="dropdown-menu">
                     <?php foreach ($menuFr as $fr) : ?>
-                        <a class="dropdown-item" href="page.php?id= <?= $fr['id'] ?>"><?= $fr['titel'] ?></a>
+                        <a class="dropdown-item" href="../templates/page.php?id= <?= $fr['id'] ?>"><?= $fr['titel'] ?></a>
                     <?php endforeach; ?>
                 </div>
             </li>
@@ -103,13 +103,13 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
                 </a>
                 <div class="dropdown-menu">
                     <?php foreach ($menuSr as $sr) : ?>
-                        <a class="dropdown-item " href="page.php?id= <?= $sr['id'] ?>"> <?= $sr['titel'] ?> </a>
+                        <a class="dropdown-item " href="../templates/page.php?id= <?= $sr['id'] ?>"> <?= $sr['titel'] ?> </a>
                     <?php endforeach; ?>
                 </div>
             </li>
 
             <li class="nav-item mx-3">
-                <a class="nav-link nav-color font-weight-bold" href="form_contact">CONTACT</a>
+                <a class="nav-link nav-color font-weight-bold" href="../templates/form_contact.php">CONTACT</a>
             </li>
         </ul>
     </nav>
