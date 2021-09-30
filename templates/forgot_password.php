@@ -52,7 +52,6 @@ include 'inc_header.php';
                     <div class="form-group">
                         <label for="email-for-pass">Entrez votre adresse email : </label>
                         <input class="form-control" type="text" name="email" required="">
-                        <small class="form-text text-muted"></small>
                     </div>
                 </div>
                 <div class=" text-center mb-4">

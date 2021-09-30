@@ -1,6 +1,11 @@
 <?php
 
-include('../inc_config.php');
+if (file_exists('inc_config.php')) {
+    require_once('inc_config.php');
+} else {
+    require_once('../inc_config.php');
+}
+
 
 abstract class AbstractDataBase
 {

@@ -1,11 +1,13 @@
 <?php
-require_once('../inc_config.php');
+if (file_exists('inc_config.php')) {
+    require_once('inc_config.php');
+} else {
+    require_once('../inc_config.php');
+}
 
 $post = new Post();
 $menuFr =  $post->findBy(['type' => 'training'], 1000, $post::TABLE);
 $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
-
-
 
 ?>
 
@@ -16,7 +18,15 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
 <head>
     <meta charset="utf-8">
     <title>G7solution</title>
-    <link rel="stylesheet" href="../styles/styleBootstrap.css">
+
+    <?php
+    if (file_exists('inc_config.php')) : ?>
+        <link rel="stylesheet" href="styles/styleBootstrap.css">
+    <?php else : ?>
+        <link rel="stylesheet" href="../styles/styleBootstrap.css">
+
+    <?php endif ?>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -32,7 +42,7 @@ $menuSr =  $post->findBy(['type' => 'service'], 1000, $post::TABLE);
         <div class="row div-logo pb-3  pt-1  ">
             <div class="col ">
                 <a href="home_display.php">
-                    <img src="../pictures/logo.png" alt="" width="300" height="100">
+                    <img src="pictures/logo.png" alt="" width="300" height="100">
                 </a>
             </div>
 

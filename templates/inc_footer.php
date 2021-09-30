@@ -13,8 +13,8 @@
 								compétences et ressources : G7 Solution !
 							</p>
 							<div class="col  p-0 mb-2">
-								<img src="../pictures/qualiopi-removebg-preview.png" width="100px" height="60px">
-								<img src="../pictures/data-removebg-preview.png" width="100px" height="60px">
+								<img src="pictures/qualiopi-removebg-preview.png" width="100px" height="60px">
+								<img src="pictures/data-removebg-preview.png" width="100px" height="60px">
 							</div>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 						<div class="row ">
 							<div class="col-md-6">
 								<a class="text-body font-weight-bold text-decoration-none"> Nous sommes</a>
-								<a href="../templates/team.php" class="text-body font-weight-bold text-decoration-none"> L'équipe</a><br>
+								<a href="templates/team.php" class="text-body font-weight-bold text-decoration-none"> L'équipe</a><br>
 								<a class="text-body font-weight-bold text-decoration-none"> Nos experts</a><br>
 								<a href="blog" class="text-body font-weight-bold text-decoration-none"> Blog</a>
 							</div>

@@ -1,9 +1,5 @@
 
 
-*, *::before, *::after {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 html {
     font-family: sans-serif;
@@ -661,5 +657,16 @@ h1, .h1 {
 }
 
 .bold-text{
-    font-weight: bold;
+    font-weight: bold;  
+}
+
+
+.back-color-green1{
+    background-color: #3acf87;
+}
+.back-color-green2{
+    background-color: #7CBC52;
+}
+.back-color-green3{
+    background-color: #147144;
 }

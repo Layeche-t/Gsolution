@@ -1,10 +1,12 @@
 <?php
-require_once('../inc_config.php');
+require_once('inc_config.php');
 
 $post = new Post();
 $services = $post->findBy(['type' => 'service'], 6, $post::TABLE);
 
+
 $lent = count($services);
+
 
 for ($i = 0; $i < $lent; $i++) {
     if ($i < 3) {
@@ -17,24 +19,26 @@ for ($i = 0; $i < $lent; $i++) {
 
 ?>
 
-<section class="pt-5 pb-5">
+
+
+<section class="pt-5 pb-5 ">
     <div class="container">
         <div class="row">
-            <div class="col-6 ">
-                <h3 class="mb-3 font-weight-bold titel">Services </h3>
+            <div class="col-6">
+                <h3 class="mb-3 font-weight-bold titel">Formations </h3>
             </div>
 
             <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators1" role="button" data-slide="prev">
                     <i class="fa fa-arrow-left"></i>
                 </a>
-                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators1" role="button" data-slide="next">
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
 
             <div class="col-12">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
 
                         <div class="carousel-item active">
@@ -43,9 +47,10 @@ for ($i = 0; $i < $lent; $i++) {
                                     <div class="col-md-4 mb-3 ">
                                         <div class="card ">
                                             <?php
-                                            echo  "<img src='../upload/" . $service['picture'] . "' style='height: 190px !important;' \>";
+                                            echo  "<img src='upload/" . $service['picture'] . "' style='height: 300px !important;' \>";
                                             ?>
-                                            <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
+
+                                            <div class="card-footer " style="height: 50px; border:none; color: #84bc9c !important;">
                                                 <a href="page.php?id= <?= $service['id'] ?>" style="color: black;">
                                                     <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
                                                 </a>
@@ -58,22 +63,20 @@ for ($i = 0; $i < $lent; $i++) {
 
                         <div class="carousel-item">
                             <div class="row">
-                                <?php if ($lent > 3) : ?>
-                                    <?php foreach ($dataSr[1] as $service) : ?>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <?php
-                                                echo  "<img src='../upload/" . $service['picture'] . "' style='height: 190px !important;' \>";
-                                                ?>
-                                                <div class="card-footer color-forgot1" style="height: 50px; height: 50px; border:none;">
-                                                    <a href="page.php?id= <?= $service['id'] ?>" style="color: black;">
-                                                        <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
-                                                    </a>
-                                                </div>
+                                <?php foreach ($dataSr[1] as $service) : ?>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <?php
+                                            echo  "<img src='upload/" . $service['picture'] . "' style='height: 300px !important;' \>";
+                                            ?>
+                                            <div class="card-footer" style="height: 50px; height: 50px; border:none; color:#3acf87;">
+                                                <a href="page.php?id= <?= $service['id'] ?>" style="color: black;">
+                                                    <h4 class="card-title text-center"><?= $service['titel'] ?></h4>
+                                                </a>
                                             </div>
                                         </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
 
 
                             </div>

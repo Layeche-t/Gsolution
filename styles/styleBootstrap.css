@@ -1,7 +1,31 @@
-
- body{
-background-color: #edfce7 !important ;
+body{
+background-color: #f3f7f3 !important ;
 } 
+
+/* color */
+.dark-green{
+  background-color: #147144; 
+}
+
+.green-yellow{
+    background-color: #7CBC52; 
+}
+
+/* text color */
+.text-dark-green{
+    color: #147144 !important; 
+}
+  
+.text-green-yellow{
+    color: #7CBC52; 
+}
+
+/* forogt link */
+.forogt-pass:hover  {
+    color: #7CBC52 !important;
+    cursor: pointer;
+    text-decoration: none;
+}
 
 /* Titres des pages */
 .titel-pages{
@@ -170,11 +194,7 @@ background: #147144;
 
 
 
-a:hover {
-text-decoration: none !important;
-color: #147144 !important;
 
-}
 
 .logo-part {
 border-right: 1px solid #147144;
@@ -246,6 +266,7 @@ textarea:focus {
     background-color:#147144; 
 }
 
+/* for fomulaire */
 .btn-white {
     border-radius: 30px;
     background-color: #fff;
@@ -256,6 +277,8 @@ textarea:focus {
 
 .btn-white:hover {
     background-color: #147144;
+    color: white !important;
+    font-weight: bold;
 }
 
 .a-color {

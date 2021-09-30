@@ -1,5 +1,5 @@
 <?php
-include_once '../inc_config.php';
+include_once 'inc_config.php';
 
 $post = new Post();
 $sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
@@ -42,7 +42,7 @@ $sliders = $post->findBy(['type' => 'slider'], 5, $post::TABLE);
             ?>
                 <div class="carousel-item <?= $actives; ?>">
                     <?php
-                    echo  "<img src='../upload/" . $slider['picture'] . "' width='1100' height='500'\>";
+                    echo  "<img src='upload/" . $slider['picture'] . "' width='1100' height='500'\>";
                     ?>
 
                     <div class="carousel-caption">

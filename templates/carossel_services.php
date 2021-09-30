@@ -1,5 +1,5 @@
 <?php
-require_once('../inc_config.php');
+require_once('inc_config.php');
 
 $post = new Post();
 $sliders = $post->findBy(['type' => 'training'], 6, $post::TABLE);
@@ -45,7 +45,7 @@ for ($i = 0; $i < $lent; $i++) {
                                     <div class="col-md-4 mb-3 ">
                                         <div class="card ">
                                             <?php
-                                            echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 300px !important;' \>";
+                                            echo  "<img src='upload/" . $slider['picture'] . "' style='height: 300px !important;' \>";
                                             ?>
 
                                             <div class="card-footer " style="height: 50px; border:none; color: #84bc9c !important;">
@@ -61,22 +61,20 @@ for ($i = 0; $i < $lent; $i++) {
 
                         <div class="carousel-item">
                             <div class="row">
-                                <?php if (isset($data[1]) && !empty($data[1])) : ?>
-                                    <?php foreach ($data[1] as $slider) : ?>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <?php
-                                                echo  "<img src='../upload/" . $slider['picture'] . "' style='height: 300px !important;' \>";
-                                                ?>
-                                                <div class="card-footer" style="height: 50px; height: 50px; border:none; color:#3acf87;">
-                                                    <a href="page.php?id= <?= $slider['id'] ?>" style="color: black;">
-                                                        <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
-                                                    </a>
-                                                </div>
+                                <?php foreach ($data[1] as $slider) : ?>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <?php
+                                            echo  "<img src='upload/" . $slider['picture'] . "' style='height: 300px !important;' \>";
+                                            ?>
+                                            <div class="card-footer" style="height: 50px; height: 50px; border:none; color:#3acf87;">
+                                                <a href="page.php?id= <?= $slider['id'] ?>" style="color: black;">
+                                                    <h4 class="card-title text-center"><?= $slider['titel'] ?></h4>
+                                                </a>
                                             </div>
                                         </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
 
 
                             </div>

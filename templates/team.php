@@ -22,24 +22,24 @@ $tcount = $count->fetchAll();
 
 
 //pagination 
-@$page = $_GET['page'];
-if (empty($page)) {
-	$page = 1;
-}
-$nbr_element_par_page = 8;
-$nbr_page = ceil($tcount[0]['fa'] / $nbr_element_par_page);
-$debut = ($page - 1) * $nbr_element_par_page;
+// @$page = $_GET['page'];
+// if (empty($page)) {
+// 	$page = 1;
+// }
+// $nbr_element_par_page = 8;
+// $nbr_page = ceil($tcount[0]['fa'] / $nbr_element_par_page);
+// $debut = ($page - 1) * $nbr_element_par_page;
 
 
-// récup data
-$sel = $bdd->query("SELECT * FROM users WHERE role= 'team' LIMIT $debut, $nbr_element_par_page");
+// // récup data
+// $sel = $bdd->query("SELECT * FROM users WHERE role= 'team' LIMIT $debut, $nbr_element_par_page");
 
-$sel->setFetchMode(PDO::FETCH_ASSOC);
-$sel->execute();
-$resultats = $sel->fetchAll();
-if (count($resultats) == 0) {
-	header("Location: training_disply.php");
-}
+// $sel->setFetchMode(PDO::FETCH_ASSOC);
+// $sel->execute();
+// $resultats = $sel->fetchAll();
+// if (count($resultats) == 0) {
+// 	header("Location: team.php");
+// }
 
 ?>
 

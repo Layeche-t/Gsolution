@@ -43,7 +43,6 @@
 
 								<label for="exampleFormControlTextarea1" class="form-label ml-2">Message</label>
 								<textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="4" maxlength="250" required>
-
 								</textarea>
 
 

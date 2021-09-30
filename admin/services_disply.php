@@ -41,14 +41,20 @@ $_SESSION['info']['table'] = $post::TABLE;
 
                     <!--success ajout-->
                     <?php if (isset($_GET['success'])) : ?>
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success bold-text" role="alert">
                             Votre service vient d'être ajouté
+                        </div>
+                    <?php endif ?>
+
+                    <?php if (isset($_GET['successModi'])) : ?>
+                        <div class="alert alert-success bold-text" role="alert">
+                            Les modifications ont été apportées
                         </div>
                     <?php endif ?>
 
                     <!--success suppression-->
                     <?php if (isset($_GET['delete'])) : ?>
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success bold-text" role="alert">
                             Votre service vient d'être supprimé
                         </div>
                     <?php endif ?>
@@ -127,7 +133,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                             </div>
 
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Entrez le code de votre formation :</label>
+                                <label for="recipient-name" class="col-form-label">Entrez le code de votre service :</label>
                                 <input type="text" class="form-control w-25" id="recipient-name" name="code" required>
                             </div>
 

@@ -61,7 +61,9 @@ include 'inc_header.php';
                         <form action="../controllers/authontification.php" method="POST">
                             <div class="form-group"> <label class="form-control-label text-muted ">E-mail</label> <input type="text" name="email" placeholder="Votre e-mail" class="form-control"> </div>
                             <div class="form-group"> <label class="form-control-label text-muted">Mot de passe</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control"> </div>
-                            <div class="row justify-content-center my-3 px-3"> <button class="btn-block btn-color" name="" type="submit">Connexion</button> </div>
+                            <div class="row justify-content-center my-3 px-3">
+                                <button class="btn-block btn-color" type="submit">Connexion</button>
+                            </div>
                         </form>
                         <div class="row justify-content-center my-1">
                             <a class="forogt-pass" href="forgot_password.php">
