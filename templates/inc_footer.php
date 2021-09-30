@@ -36,7 +36,7 @@
 						<div class="row ">
 							<div class="col-md-6">
 								<a class="text-body font-weight-bold text-decoration-none"> Nous sommes</a>
-								<a href="team" class="text-body font-weight-bold text-decoration-none"> L'équipe</a><br>
+								<a href="../templates/team.php" class="text-body font-weight-bold text-decoration-none"> L'équipe</a><br>
 								<a class="text-body font-weight-bold text-decoration-none"> Nos experts</a><br>
 								<a href="blog" class="text-body font-weight-bold text-decoration-none"> Blog</a>
 							</div>
