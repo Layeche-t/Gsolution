@@ -128,7 +128,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3>Simo </h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countSl / 4 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="4"></div>
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countSl / 4 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="4"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"><?= $countSl ?> actualités <span class="text2">sur une limite de 4</span></span> </div>
                                         </div>
@@ -149,7 +149,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>4 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Aide</span> </div>
+                                        <div class="badge"> <span>Publicité</span> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a href="services_disply.php" class="link-dashbord">
@@ -158,7 +158,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3>Designer-Singapore</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countSr / 6 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countSr / 6 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"> <?= $countSr ?> services <span class="text2">sur une limite de 6</span></span> </div>
                                         </div>
@@ -179,7 +179,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Excellence</span> </div>
+                                        <div class="badge"> <span>Publicité</span> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a href="services_backOffice.php" class="link-dashbord">
@@ -188,7 +188,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3> - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countT / 6 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countT / 6 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"><?= $countT ?> formations <span class="text2">sur une limite de 6</span></span> </div>
                                         </div>
@@ -221,7 +221,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countT / 30 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="30"></div>
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countT / 30 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="30"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"><?= $countB ?> blogs <span class="text2">sur une limite de 30</span></span> </div>
                                         </div>
@@ -251,7 +251,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3> Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countD / 100 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countD / 100 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"><?= $countD ?> demandes <span class="text2">sur une limite de 100</span></span> </div>
                                         </div>
@@ -272,7 +272,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Solidarité</span> </div>
+                                        <div class="badge"> <span>Informations</span> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a href="team_disply.php" class="link-dashbord">
@@ -281,7 +281,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countTm / 30 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="30"></div>
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countTm / 30 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="30"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"><?= $countTm; ?> personnes <span class="text2">sur une limite de 30</span></span> </div>
                                         </div>
@@ -302,7 +302,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Dévloppement</span> </div>
+                                        <div class="badge"> <span>Organisation</span> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a href="users_disply.php" class="link-dashbord">
@@ -311,7 +311,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countAll / 20 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="20"></div>
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countAll / 20 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="20"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"> <?= $countAll; ?> utilisateurs <span class="text2">sur une limite de 20</span></span> </div>
                                         </div>
@@ -332,7 +332,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <span>2 days ago</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <span>Dévloppement</span> </div>
+                                        <div class="badge "> <span class="back-color-green3">Organisation</span> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a href="users_disply.php" class="link-dashbord">
@@ -340,26 +340,27 @@ if ($_SESSION['autoriser'] != 'oui') {
                                         </a>
                                         <h3>Java - USA</h3>
                                         <div class="mt-5">
-                                            <div class="progress25">
-                                                <div class="progress-bar" role="progressbar" style="width:<?= $countAll / 20 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="mt-5">
+                                                <div class="progress">
+                                                    <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countF / 20 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="20"></div>
+                                                </div>
+                                                <div class="mt-3"> <span class="text1"> <?= $countF; ?> utilisateurs <span class="text2">sur une limite de 20</span></span> </div>
                                             </div>
-                                            <div class="mt-3"> <span class="text1"><?= $countF ?> données <span class="text2">sur une limite de 100</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
 
-
-
     </div>
-
-</div>
 
 </div>
 
