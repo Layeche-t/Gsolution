@@ -1,10 +1,3 @@
-<footer class="py-4 bg-dark flex-shrink-0">
-        <div class="container text-center">
-                <a href="https://bootstrapious.com/snippets" class="text-muted">Created by Layeche TORKI</a>
-        </div>
-</footer>
-
-
 <script src="https://kit.fontawesome.com/5da465d417.js" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!--ajouter depuis le bost -->

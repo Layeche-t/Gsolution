@@ -38,7 +38,11 @@ $_SESSION['info']['table'] = $user::TABLE;
 
                 <!--title of dashbord -->
                 <div class='card-header'>
-                    <h1>Votre équipe</h1>
+                    <div class="d-flex justify-content-center">
+                        <div class="mb-2">
+                            <h1>L'équipe</h1>
+                        </div>
+                    </div>
 
                     <!-- message success add -->
                     <?php if (isset($_GET['success'])) : ?>
@@ -68,111 +72,117 @@ $_SESSION['info']['table'] = $user::TABLE;
                         </div>
                     <?php endif ?>
 
+                </div>
 
 
-                    <div class='card-body'>
-                        <!-- pop up send -->
-                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-primary submit-ajout" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
+
+                <div class='card-body'>
+                    <!-- pop up send -->
+                    <div class="pb-3 text-center" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn back-color-green3 text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter </button>
+                    </div>
+
+
+                    <!--content of table -->
+                    <table class="table">
+                        <!--  header of table -->
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Fonction</th>
+                                <th class="text-center" scope="col">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- la boucle foreach for display -->
+                            <?php
+                            $num = 0;
+                            foreach ($teams as $team) :
+                                $num = $num + 1;
+                            ?>
+
+                                <tr>
+                                    <th scope="row"> <?= $num ?> </th>
+                                    <td class="bold-text w-25"> <?= $team['firstname'] ?> </td>
+                                    <td class="bold-text w-25"> <?= $team['lastname'] ?> </td>
+                                    <td class="bold-text "> <?= $team['function'] ?> </td>
+                                    <td>
+                                        <a href="team_modification.php?id= <?= $team['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
+                                        <a href="?id= <?= $team['id'] ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Vous êtes sûr de vouloir supprimer élément ?');">Supprimer</button>
+                                    </td>
+                                </tr>
+
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <!-- end -->
+
+                </div>
+                <div class="card-footer">
+                    <p class="text-center pt-2">CREAT BY LAYECHE TORKI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- pop up add -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--form title -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nouveau membre</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- send form-->
+                <div class="modal-body">
+                    <form action="../controllers/add_team.php" method="POST" enctype="multipart/form-data">
+
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Nom :</label>
+                            <input type="text" class="form-control" id="recipient-name" name="firstname" required>
                         </div>
 
-                        <!--content of table -->
-                        <table class="table">
-                            <!--  header of table -->
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Prénom</th>
-                                    <th scope="col">Fonction</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Prénom :</label>
+                            <input type="text" class="form-control" id="recipient-name" name="lastname" required>
+                        </div>
 
-                            <tbody>
-                                <!-- la boucle foreach for display -->
-                                <?php
-                                $num = 0;
-                                foreach ($teams as $team) :
-                                    $num = $num + 1;
-                                ?>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Fonction :</label>
+                            <input type="text" class="form-control" id="recipient-name" name="function" required>
+                        </div>
 
-                                    <tr>
-                                        <th scope="row"> <?= $num ?> </th>
-                                        <td> <?= $team['firstname'] ?> </td>
-                                        <td> <?= $team['lastname'] ?> </td>
-                                        <td> <?= $team['function'] ?> </td>
-                                        <td>
-                                            <a href="team_modification.php?id= <?= $team['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
-                                            <a href="?id= <?= $team['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button>
-                                        </td>
-                                    </tr>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Lien linkedin :</label>
+                            <input type="text" class="form-control" id="recipient-name" name="link_social" required>
+                        </div>
 
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
-                        <!-- end -->
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="image">
+                        </div>
 
-                    </div>
+
+                        <!-- the type for the database call -->
+                        <input name="role" value="team" hidden>
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn back-color-green3 text-light" name="validation">Valider</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <!-- end -->
         </div>
-
-        <!-- pop up add -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!--form title -->
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nouveau membre</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <!-- send form-->
-                    <div class="modal-body">
-                        <form action="../controllers/add_team.php" method="POST" enctype="multipart/form-data">
-
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Nom :</label>
-                                <input type="text" class="form-control" id="recipient-name" name="firstname" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Prénom :</label>
-                                <input type="text" class="form-control" id="recipient-name" name="lastname" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Fonction :</label>
-                                <input type="text" class="form-control" id="recipient-name" name="function" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Lien linkedin :</label>
-                                <input type="text" class="form-control" id="recipient-name" name="link_social" required>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control input-file" id="inputGroupFile02" accept="image/*" name="image">
-                            </div>
-
-
-                            <!-- the type for the database call -->
-                            <input name="role" value="team" hidden>
-
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" name="validation">Valider</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- end -->
-            </div>
-        </div>
-
-
-
     </div>
+
+
+
+</div>
 </div>
 </div>
 </div>

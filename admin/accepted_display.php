@@ -110,8 +110,8 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
                                     <!-- display data -->
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
-                                        <td> <?= $accepted['firstname'] ?> </td>
-                                        <td> <?= $accepted['lastname'] ?> </td>
+                                        <td class="bold-text"> <?= $accepted['firstname'] ?> </td>
+                                        <td class="bold-text"> <?= $accepted['lastname'] ?> </td>
                                         <td>
                                             <?php if ($accepted['accepted'] == 0) { ?>
                                                 <a type="button" class="btn btn-success" href="?accept=<?= $accepted['id'] ?>">Accepter</a>
@@ -125,15 +125,20 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
                             </tbody>
                             <!-- end table -->
                         </table>
-
                         <!-- javaScript -->
                         <?php include('java.html'); ?>
                     </div>
+
+                </div>
+                <div class="card-footer">
+                    <p class="text-center pt-2">CREAT BY LAYECHE TORKI</p>
                 </div>
             </div>
         </div>
 
-
-        <!--footer-->
     </div>
-    <?php include('inc_footer.php'); ?>
+</div>
+</div>
+</div>
+<!--footer-->
+<?php include('inc_footer.php'); ?>
