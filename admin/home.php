@@ -10,8 +10,11 @@ $file = new File();
 
 // data recovery for posts and users 
 $allPost = $post->findAll($post::TABLE);
+$postDate = $allPost[0]['createdAt'];
 $allUser = $user->findAll($user::TABLE);
+$userDate = $allUser[0]['createdAt'];
 $allFile = $file->findAll($file::TABLE);
+$fileDate = $allFile[0]['createdAt'];
 
 
 
@@ -23,6 +26,7 @@ $countT = 0;
 $countTr = 0;
 $countU = 0;
 $countL = 0;
+$countPt = 0;
 
 foreach ($allPost as $casePost) {
     if ($casePost['type'] == 'blog') {
@@ -39,6 +43,9 @@ foreach ($allPost as $casePost) {
     }
     if ($casePost['type'] == 'library') {
         $countL++;
+    }
+    if ($casePost['type'] == 'partenariat') {
+        $countPt++;
     }
 }
 
@@ -161,6 +168,36 @@ if ($_SESSION['autoriser'] != 'oui') {
                                                 <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countSr / 6 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
                                             </div>
                                             <div class="mt-3"> <span class="text1"> <?= $countSr ?> services <span class="text2">sur une limite de 6</span></span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Partenarait  -->
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="icon">
+                                                <i class="fas fa-server"></i>
+                                            </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">Partenariat</h6>
+                                                <span>4 days ago</span>
+                                            </div>
+                                        </div>
+                                        <div class="badge"> <span>Organisation</span> </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <a href="partnership_disply.php" class="link-dashbord">
+                                            <h3 class="heading">Partenariat</h3>
+                                        </a>
+                                        <h3>Designer-Singapore</h3>
+                                        <div class="mt-5">
+                                            <div class="progress">
+                                                <div class="progress-bar back-color-green3" role="progressbar" style="width:<?= $countPt / 100 * 100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="6"></div>
+                                            </div>
+                                            <div class="mt-3"> <span class="text1"> <?= $countPt ?> partenariat <span class="text2">sur une limite de 100</span></span> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +336,7 @@ if ($_SESSION['autoriser'] != 'oui') {
                                             </div>
                                             <div class="ms-2 c-details">
                                                 <h6 class="mb-0">Utilisateurs</h6>
-                                                <span>2 days ago</span>
+                                                <span><?= $userDate ?></span>
                                             </div>
                                         </div>
                                         <div class="badge"> <span>Organisation</span> </div>
