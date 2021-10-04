@@ -9,6 +9,7 @@ $post = new Post();
 // data recovery
 $trainings = $post->findBy(['type' => 'training'], 1000, $post::TABLE);
 $services = $post->findBy(['type' => 'service'], 1000, $post::TABLE);
+$partenariats = $post->findBy(['type' => 'partenariat'], 1000, $post::TABLE);
 
 // header
 include 'inc_header.php';
@@ -79,7 +80,7 @@ include 'inc_header.php';
                                 </div>
 
                                 <div class="form-check-inline">
-                                    <input type="radio" class="form-check-input" name="role" value="Partenaire">
+                                    <input id="showPartenaire" type="radio" class="form-check-input" name="role" value="Partenaire">
                                     <label class="form-check-label">Partenaire</label>
                                 </div>
 
@@ -103,9 +104,19 @@ include 'inc_header.php';
                             <!-- list 2 -->
                             <div class="form-group divClient hidden">
                                 <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre service</label>
-                                <select class="form-control" id="" name="id_formation">
+                                <select class="form-control" name="id_formation">
                                     <?php foreach ($services as $service) : ?>
                                         <option value="<?= $service['id'] ?>"><?= $service['titel'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <!-- list 2 -->
+                            <div class="form-group divPartenaire hidden">
+                                <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre partenariat</label>
+                                <select class="form-control" id="" name="id_formation">
+                                    <?php foreach ($partenariats as $partenariat) : ?>
+                                        <option value="<?= $partenariat['id'] ?>"><?= $partenariat['titel'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
