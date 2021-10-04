@@ -1,10 +1,7 @@
 <?php
 
-if (file_exists('inc_config.php')) {
-    require_once('inc_config.php');
-} else {
-    require_once('../inc_config.php');
-}
+require_once('../inc_config.php');
+
 
 
 abstract class AbstractDataBase
@@ -61,7 +58,7 @@ abstract class AbstractDataBase
      */
     public function findAll(string $table)
     {
-        $sql = $this->bd->prepare("SELECT * FROM " . $table . " WHERE id  > 0");
+        $sql = $this->bd->prepare("SELECT * FROM " . $table . " WHERE id  > 0 order by createdAt DESC");
         $sql->execute();
         $results = $sql->fetchAll();
 
