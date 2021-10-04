@@ -58,6 +58,12 @@ $_SESSION['info']['table'] = $post::TABLE;
                             Votre service vient d'être supprimé
                         </div>
                     <?php endif ?>
+
+                    <?php if (isset($_GET['size'])) : ?>
+                        <div class="alert alert-danger text-center font-weight-bold" role="alert">
+                            Votre fichier dépasse la taille autorisée !
+                        </div>
+                    <?php endif ?>
                 </div>
 
                 <div class='card-body'>
