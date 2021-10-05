@@ -29,7 +29,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 
                 <div class='card-body'>
                     <!-- le formuliare d'envoie -->
-                    <form action="../controllers/update_users.php" method="POST">
+                    <form action="../controllers/update.php" method="POST">
                         <div class="input-group">
                             <span class="input-group-text">Nom :</span>
                             <input type="text" aria-label="First name" class="form-control" name="firstname" value=<?= $team->firstname ?> required>
