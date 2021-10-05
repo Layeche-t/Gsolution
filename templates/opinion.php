@@ -1,15 +1,15 @@
-<div class="container my-5 ">
-    <h3 class="mb-4 font-weight-bold titel "> Ce qu'ils disent de nous </h3>
-    <div class="carousel-opinion col-lg-10 offset-lg-1 text-light  ">
+<div class="container my-5  ">
+    <h3 class="mb-4 font-weight-bold titel "> Recommandations </h3>
+    <div class="mt-1 green-yellow col-lg-10 offset-lg-1 text-light">
         <div id="client-testimonial-carousel" class="carousel slide" data-ride="carousel" style="height:200px;">
 
             <div class="carousel-inner" role="listbox">
 
                 <div class="carousel-item active text-center p-4">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0 font-weight-bold"><i class="fa fa-quote-left"></i> Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.
+                        <p class="mb-0 font-weight-bold"><i class="fa fa-quote-left"></i> Que dire de cette équipe Remarquable. Ils portent vraiment bien leur nom. Hésitez pas à contacter jeune dynamique et motivé.
                         </p>
-                        <footer class="blockquote-footer font-weight-bold">Albert Einstein <br><cite title="Source Title">genius</cite></footer>
+                        <footer class="blockquote-footer font-weight-bold" style="color: white !important;">Benjamin COURAUD <br><cite title=" Source Title">Apprenti</cite></footer>
                         <!-- Client review stars -->
                         <!-- "fas fa-star" for a full star, "far fa-star" for an empty star, "far fa-star-half-alt" for a half star. -->
                         <p class="client-review-stars">
@@ -24,9 +24,10 @@
 
                 <div class="carousel-item text-center p-4">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0 font-weight-bold"><i class="fa fa-quote-left"></i> Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.
+                        <p class="mb-0 font-weight-bold"><i class="fa fa-quote-left"></i> Super équipe, dynamique, disponible, toujours à l 'écoute.
+                            Je recommande vivement.
                         </p>
-                        <footer class="blockquote-footer font-weight-bold">Albert Einstein <br><cite title="Source Title">genius</cite></footer>
+                        <footer class="blockquote-footer font-weight-bold" style="color: white !important;"> Nathalie VECILE <br><cite title="Source Title">Apprenti</cite></footer>
                         <!-- Client review stars -->
                         <!-- "fas fa-star" for a full star, "far fa-star" for an empty star, "far fa-star-half-alt" for a half star. -->
                         <p class="client-review-stars">
@@ -41,9 +42,9 @@
 
                 <div class="carousel-item text-center p-4">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-0 font-weight-bold"><i class="fa fa-quote-left"></i> Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.
+                        <p class="mb-0 font-weight-bold"><i class="fa fa-quote-left"></i> Je remercie G7 solution et son équipe, pour l’accompagnement, l’écoute, le professionnalisme apportés dans le cadre de ma préparation à l’audit initial de la certification Qualiopi.
                         </p>
-                        <footer class="blockquote-footer font-weight-bold ">Albert Einstein <br><cite title="Source Title">genius</cite></footer>
+                        <footer class="blockquote-footer font-weight-bold" style="color: white !important;">Jonah PARISINI <br><cite title="Source Title">Apprenti</cite></footer>
                         <!-- Client review stars -->
                         <!-- "fas fa-star" for a full star, "far fa-star" for an empty star, "far fa-star-half-alt" for a half star. -->
                         <p class="client-review-stars">
