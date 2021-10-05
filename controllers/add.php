@@ -5,6 +5,8 @@ $user = new User();
 $post = new Post();
 $now = new DateTime();
 
+
+
 if (
     isset($_POST['validation'])
     && isset($_POST['firstname']) && isset($_POST['role'])
@@ -17,7 +19,14 @@ if (
     !empty($_POST['confirmPassword'])
 ) {
 
+    if ($_POST['id_formation'] == '' && $_POST['id_formation_p'] == '') {
+        $_POST['id_formation'] = $_POST['id_formation_s'];
+    } elseif ($_POST['id_formation'] == '' && $_POST['id_formation_s'] == '') {
+        $_POST['id_formation'] = $_POST['id_formation_p'];
+    }
 
+    unset($_POST['id_formation_p']);
+    unset($_POST['id_formation_s']);
     unset($_POST['validation']);
 
     $checkPosr = $post->findOneBy(['code' => $_POST['code']], $post::TABLE);
@@ -41,6 +50,7 @@ if (
     }
 
     $_POST['createdAt'] = $now->format('Y-m-d H:i:s');
+
     $newUser = $user->SetUser($_POST);
 
     header('Location: ../templates/form_autho.php?success');
