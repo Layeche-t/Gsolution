@@ -8,8 +8,10 @@ $post = new Post();
 
 // data recovery
 $trainings = $post->findBy(['type' => 'training'], 1000, $post::TABLE);
+
 $services = $post->findBy(['type' => 'service'], 1000, $post::TABLE);
 $partenariats = $post->findBy(['type' => 'partenariat'], 1000, $post::TABLE);
+
 
 // header
 include 'inc_header.php';
@@ -80,7 +82,7 @@ include 'inc_header.php';
                                 </div>
 
                                 <div class="form-check-inline">
-                                    <input id="showPartenaire" type="radio" class="form-check-input" name="role" value="Partenaire">
+                                    <input id="showPartenaire" type="radio" class="form-check-input" name="role" value="partenaire">
                                     <label class="form-check-label">Partenaire</label>
                                 </div>
 
@@ -93,9 +95,10 @@ include 'inc_header.php';
                             <!-- list -->
                             <div class="form-group div">
                                 <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre formation</label>
-                                <select class="form-control" name="id_formation">
+                                <select class="form-control" id="" name="id_formation">
+                                    <option value=""> selectionner </option>
                                     <?php foreach ($trainings as $training) : ?>
-                                        <option value="<?= $training['id'] ?>"><?= $training['titel'] ?></option>
+                                        <option value="<?= $training['id']; ?>"> <?= $training['titel'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -103,8 +106,10 @@ include 'inc_header.php';
 
                             <!-- list 2 -->
                             <div class="form-group divClient hidden">
-                                <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre service</label>
-                                <select class="form-control" name="id_formation">
+                                <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect3">Votre service</label>
+
+                                <select class="form-control" id="" name="id_formation_s">
+                                    <option value=""> selectionner </option>
                                     <?php foreach ($services as $service) : ?>
                                         <option value="<?= $service['id'] ?>"><?= $service['titel'] ?></option>
                                     <?php endforeach; ?>
@@ -113,8 +118,9 @@ include 'inc_header.php';
 
                             <!-- list 2 -->
                             <div class="form-group divPartenaire hidden">
-                                <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect2">Votre partenariat</label>
-                                <select class="form-control" id="" name="id_formation">
+                                <label class="py-1 mr-2 ml-2" for="exampleFormControlSelect4">Votre partenariat</label>
+                                <select class="form-control" id="" name="id_formation_p">
+                                    <option value=""> selectionner </option>
                                     <?php foreach ($partenariats as $partenariat) : ?>
                                         <option value="<?= $partenariat['id'] ?>"><?= $partenariat['titel'] ?></option>
                                     <?php endforeach; ?>
