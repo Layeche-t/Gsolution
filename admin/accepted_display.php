@@ -8,6 +8,11 @@ $user = new User();
 //methode by select 
 if (isset($_SESSION['admi']['id'])) {
     $accepteds = $user->findAll($user::TABLE);
+
+    $sel = $bdd->query("SELECT * FROM users WHERE role = 'Stagiaire' OR 'client' OR 'partenaire' ");
+    $sel->setFetchMode(PDO::FETCH_ASSOC);
+    $sel->execute();
+    $resultats = $sel->fetchAll();
 }
 
 //delete element of table
@@ -38,7 +43,7 @@ if (isset($_GET['accept']) && $_GET['accept'] !== '') {
 if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
 
     $updeat = $user->updateById(['accepted' => 0, 'id' => $_GET['cancel']], $user::TABLE);
-    header('Location: ../admin/accepted_display.php?ok');
+    header('Location: ../admin/accepted_display.php?no');
     exit();
 }
 
@@ -49,9 +54,7 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
 
 <!-- content dashbord-->
 <div class='dashboard-app'>
-    <header class='dashboard-toolbar'>
-        <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
-    </header>
+
 
     <div class='dashboard-content'>
         <div class='container mb-4'>
@@ -61,24 +64,18 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
                 <div class='card-header'>
                     <h1>Les demandes</h1>
 
-                    <!--success add-->
-                    <?php if (isset($_GET['success'])) : ?>
-                        <div class="alert alert-success text-center font-weight-bold" role="alert">
-                            Votre ficher vient d'être ajouté.
-                        </div>
-                    <?php endif ?>
 
-                    <!--success delet-->
-                    <?php if (isset($_GET['delete'])) : ?>
-                        <div class="alert alert-success text-center font-weight-bold" role="alert">
-                            Votre ficher vient d'être supprimé.
-                        </div>
-                    <?php endif ?>
 
                     <!--success modification -->
                     <?php if (isset($_GET['ok'])) : ?>
-                        <div class="alert alert-success text-center font-weight-bold" role="alert">
-                            La modification a bien été prise en compte.
+                        <div class="alert alert-success text-center bold-text" role="alert">
+                            Vous venez d'accepté un nouvel utilisateur
+                        </div>
+                    <?php endif ?>
+
+                    <?php if (isset($_GET['no'])) : ?>
+                        <div class="alert alert-danger text-center bold-text" role="alert">
+                            Vous venez de désactivé un nouvel utilisateur
                         </div>
                     <?php endif ?>
 
@@ -104,19 +101,20 @@ if (isset($_GET['cancel']) && $_GET['cancel'] !== '') {
                                 <!-- la boucle foreach for display -->
                                 <?php
                                 $num = 0;
-                                foreach ($accepteds as  $accepted) :
+
+                                foreach ($resultats as  $resultat) :
                                     $num = $num + 1;
                                 ?>
                                     <!-- display data -->
                                     <tr>
                                         <th scope="row"> <?= $num ?> </th>
-                                        <td class="bold-text"> <?= $accepted['firstname'] ?> </td>
-                                        <td class="bold-text"> <?= $accepted['lastname'] ?> </td>
+                                        <td class="bold-text"> <?= $resultat['firstname'] ?> </td>
+                                        <td class="bold-text"> <?= $resultat['lastname'] ?> </td>
                                         <td>
-                                            <?php if ($accepted['accepted'] == 0) { ?>
-                                                <a type="button" class="btn btn-success" href="?accept=<?= $accepted['id'] ?>">Accepter</a>
+                                            <?php if ($resultat['accepted'] == 0) { ?>
+                                                <a type="button" class="btn btn-success" href="?accept=<?= $resultat['id'] ?>">Accepter</a>
                                             <?php } else { ?>
-                                                <a type="button" class="btn btn-danger" href="?cancel=<?= $accepted['id'] ?>">Désactiver</a>
+                                                <a type="button" class="btn btn-danger" href="?cancel=<?= $resultat['id'] ?>">Désactiver</a>
 
                                             <?php } ?>
                                         </td>
