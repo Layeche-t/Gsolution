@@ -8,7 +8,7 @@ $blogs = $post->findBy(['type' => 'blog'], 1000, $post::TABLE);
 
 
 // récup nbr du tableau 
-$count = $bdd->query("SELECT count(id) AS fa FROM posts WHERE type = 'blog' ");
+$count = $bdd->query("SELECT count(id) AS fa FROM posts WHERE type = 'blog'");
 $count->setFetchMode(PDO::FETCH_ASSOC);
 $count->execute();
 $tcount = $count->fetchAll();
@@ -19,20 +19,21 @@ $tcount = $count->fetchAll();
 if (empty($page)) {
 	$page = 1;
 }
-$nbr_element_par_page = 8;
+$nbr_element_par_page = 5;
 $nbr_page = ceil($tcount[0]['fa'] / $nbr_element_par_page);
 $debut = ($page - 1) * $nbr_element_par_page;
 
 
 // récup data
-$sel = $bdd->query("SELECT * FROM users WHERE role= 'team' LIMIT $debut, $nbr_element_par_page");
+$sel = $bdd->query("SELECT * FROM posts WHERE type= 'blog' LIMIT $debut, $nbr_element_par_page");
+
 
 $sel->setFetchMode(PDO::FETCH_ASSOC);
 $sel->execute();
 $resultats = $sel->fetchAll();
-if (count($resultats) == 0) {
-	header("Location: blog.php");
-}
+// if (count($resultats) == 0) {
+// 	header("Location: ");
+// }
 
 ?>
 
@@ -46,28 +47,26 @@ if (count($resultats) == 0) {
 	<div class="row">
 		<div class="btn-group btn-breadcrumb ml-1 mb-4">
 			<a href="#" class="btn btn-default "><i class="fas fa-home"></i></a>
-			<a href="#" class="btn btn-default font-weight-bold a-color">Snippets <i class="fas fa-chevron-right"></i></a>
-			<a href="#" class="btn btn-default font-weight-bold a-color">Breadcrumbs <i class="fas fa-chevron-right"></i></a>
-			<a href="#" class="btn btn-default font-weight-bold a-color">Default</a>
+			<a href="#" class="btn btn-default font-weight-bold a-color">Blog <i class="fas fa-chevron-right"></i></a>
 		</div>
 	</div>
 
 	<div class="row">
-		<?php foreach ($blogs as $blog) : ?>
+		<?php foreach ($resultats as $resultat) : ?>
 			<div class="col-md-3 mb-4">
 
 				<div class="card-sl">
 					<?php
-					echo  "<img src='../upload/" . $blog['picture'] . "'width='100%' height='20%'>";
+					echo  "<img src='../upload/" . $resultat['picture'] . "'width='100%' height='200px'>";
 					?>
 
-
-					<div class="card-heading text-center color-forgot1 border border-bottom-0 " style="height: 55px !important;">
-						<?= $blog['titel'] ?>
+					<div class="color-forgot1 d-flex justify-content-center " style="height: 40px !important;">
+						<p class="mt-2 font-weight-bold"> <?= $resultat['titel'] ?></p>
 					</div>
-					<div class="card-text text-center color-forgot1 border border-top-0" style="height: 120px !important;">
-						<?= $blog['description'] ?> </div>
-					<a href=" #" class="card-button font-weight-bold"> Purchase</a>
+					<div class="card-text text-center color-forgot1 border border-top-0" style="height: 160px !important;">
+						<p class="mt-0"> <?= $resultat['description'] ?></p>
+					</div>
+					<a href="page_blog.php?id= <?= $resultat['id'] ?>" class="card-button font-weight-bold"> Lire plus..</a>
 				</div>
 
 			</div>
