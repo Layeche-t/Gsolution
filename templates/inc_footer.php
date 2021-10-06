@@ -1,4 +1,4 @@
-<footer class="container-fluid menu ">
+<footer class="container-fluid menu mt-3 ">
 	<div class="container">
 		<div class="row">
 
@@ -13,8 +13,17 @@
 								compétences et ressources : G7 Solution !
 							</p>
 							<div class="col  p-0 mb-2">
-								<img src="pictures/qualiopi-removebg-preview.png" width="100px" height="60px">
-								<img src="pictures/data-removebg-preview.png" width="100px" height="60px">
+
+								<a href="../index.php">
+									<?php
+									if (file_exists('inc_config.php')) : ?>
+										<img src="pictures/qualiopi-removebg-preview.png" width="100px" height="60px">
+										<img src="pictures/data-removebg-preview.png" width="100px" height="60px">
+									<?php else : ?>
+										<img src="../pictures/qualiopi-removebg-preview.png" width="100px" height="60px">
+										<img src="../pictures/data-removebg-preview.png" width="100px" height="60px"> <?php endif ?>
+								</a>
+
 							</div>
 						</div>
 					</div>
@@ -35,8 +44,8 @@
 						<h6 class="text-body font-weight-bold "> G7solution</h6>
 						<div class="row ">
 							<div class="col-md-6">
-								<a class="text-body font-weight-bold text-decoration-none"> Nous sommes</a>
-								<a href="templates/team.php" class="text-body font-weight-bold text-decoration-none"> L'équipe</a><br>
+								<a href="about.php" class="text-body font-weight-bold text-decoration-none"> Nous sommes</a>
+								<a href="team.php" class="text-body font-weight-bold text-decoration-none"> L'équipe</a><br>
 								<a class="text-body font-weight-bold text-decoration-none"> Nos experts</a><br>
 								<a href="blog" class="text-body font-weight-bold text-decoration-none"> Blog</a>
 							</div>
@@ -51,19 +60,19 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 	</div>
-	<div class="div-logo  ">
-		<div class=" text-center social  pt-2 ">
 
-			<a href="https://www.linkedin.com/company/g7-solution-toulouse/?originalSubdomain=fr"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-			<a href="https://m.facebook.com/g7.Solution31/?locale2=fr_FR"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-		</div>
-		<div class="">
-			<p class=" text-center font-weight-bold mb-2">© G7solution - Tous droits réservés</p>
-		</div>
 
 	</div>
 </footer>
+<div class="social green-yellow d-flex justify-content-center">
+	<a class="pt-1 pr-3" href="https://www.linkedin.com/company/g7-solution-toulouse/?originalSubdomain=fr">
+		<i class="fa fa-linkedin" aria-hidden="true"></i></a>
+	<a class="pt-1 " href="https://m.facebook.com/g7.Solution31/?locale2=fr_FR">
+		<i class="fa fa-facebook" aria-hidden="true"></i></a>
+</div>
+<div class="social green-yellow d-flex justify-content-center font-weight-bold m-0">
+	<p>© G7solution - Tous droits réservés </p>
+</div>
