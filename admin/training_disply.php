@@ -9,6 +9,8 @@ $post = new Post();
 //méthode by select 
 $trainings = $post->findBy(['type' => 'training'], 1000, $post::TABLE);
 
+
+
 //remove an element from the array
 if (isset($_GET['id'])) {
 
@@ -59,7 +61,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                     if (empty($page)) {
                         $page = 1;
                     }
-                    $nbr_element_par_page = 5;
+                    $nbr_element_par_page = 10;
                     $nbr_page = ceil($tcount[0]['fa'] / $nbr_element_par_page);
                     $debut = ($page - 1) * $nbr_element_par_page;
 
@@ -96,9 +98,9 @@ $_SESSION['info']['table'] = $post::TABLE;
                     <?php endif ?>
 
                     <!--error store-->
-                    <?php if (isset($_GET['error']) && $_GET['error'] == 'siz') : ?>
-                        <div class="alert alert-danger text-center font-weight-bold" role="alert">
-                            Le fichier est trop volumineux !
+                    <?php if (isset($_GET['size'])) : ?>
+                        <div class="alert alert-danger text-center bold-text" role="alert">
+                            Votre fichier dépasse la taille autorisée !
                         </div>
                     <?php endif ?>
 
@@ -125,6 +127,7 @@ $_SESSION['info']['table'] = $post::TABLE;
                             <tr>
                                 <th scope="col">N°</th>
                                 <th scope="col">Titre de la formation</th>
+                                <th scope="col">Code</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -132,14 +135,15 @@ $_SESSION['info']['table'] = $post::TABLE;
                         <tbody>
                             <!--  loop foreach for display -->
                             <?php
-
+                            $num = 0;
                             foreach ($resultats as $resultat) :
-
+                                $num = $num + 1;
                             ?>
 
                                 <tr>
-                                    <th scope="row"> <?= $resultat['id'] ?> </th>
+                                    <th scope="row"> <?= $num ?> </th>
                                     <td class="bold-text"> <?= $resultat['titel'] ?> </td>
+                                    <td class="bold-text"> <?= $resultat['code'] ?> </td>
                                     <td class="bold-text w-25">
                                         <a href="training_modification.php?id= <?= $resultat['id'] ?>"><button type="button" class="btn btn-success">Modifier</button></a>
                                         <a href="?id= <?= $resultat['id'] ?>"> <button type="button" class="btn btn-danger" onclick="return confirm('Vous êtes sûr de vouloir supprimer cet élément ?');">Supprimer</button>
@@ -152,29 +156,26 @@ $_SESSION['info']['table'] = $post::TABLE;
                         </tbody>
                     </table>
                     <!-- end table -->
-                    <nav aria-label="Page navigation example">
+                    <!-- <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
                                 <a class="page-link" href="#" tabindex="-1">Précédent</a>
                             </li>
 
-                            <?php for ($i = 1; $i <= $nbr_page; $i++) : ?>
-                                <?php if ($page != $i) : ?>
-
+                           
                                     <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
 
-                                <?php else : ?>
+                               
                                     <li class="page-item active"><a class="page-link" href="?page=<?= $i ?>"><?= $i; ?></a></li>
 
-                                <?php endif ?>
+                               
 
-                            <?php endfor ?>
 
                             <li class="page-item">
                                 <a class="page-link" href="#">Suivant</a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> -->
                 </div>
                 <div class="card-footer">
                     <p class="text-center pt-2">CREAT BY LAYECHE TORKI</p>
