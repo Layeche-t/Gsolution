@@ -486,10 +486,10 @@ h1, .h1 {
 
 .registration-form .form-icon{
 	text-align: center;
-    background-color: #5891ff;
+    background-color: #7CBC52;
     border-radius: 50%;
     font-size: 40px;
-    color: white;
+    color: black;
     width: 100px;
     height: 100px;
     margin: auto;
@@ -508,9 +508,9 @@ h1, .h1 {
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #5791ff;
+    background-color: #7CBC52;
     border: none;
-    color: white;
+    color: black;
     margin-top: 20px;
 }
 
@@ -592,7 +592,7 @@ h1, .h1 {
 .icon {
     width: 50px;
     height: 50px;
-    background-color: #eee;
+    background-color: #7CBC52;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -600,13 +600,13 @@ h1, .h1 {
     font-size: 23px
 }
 .badge span {
-    background-color: #fffbec;
+    background-color: #7CBC52;
     width: 60px;
     height: 25px;
     padding-bottom: 3px;
     border-radius: 5px;
     display: flex;
-    color: #fed85d;
+    color: #147144 ;
     justify-content: center;
     align-items: center
 }
@@ -628,8 +628,8 @@ h1, .h1 {
     background-color: red;
 }
 
-.progress75 div{
-    background-color: black;
+.progress75{
+    color: black !important;
 }
 
 
@@ -669,4 +669,5 @@ h1, .h1 {
 }
 .back-color-green3{
     background-color: #147144;
+    
 }
