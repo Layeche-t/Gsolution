@@ -93,7 +93,7 @@ abstract class AbstractDataBase
         $value = array_values($params);
 
         $len = count($field);
-        $sql = "SELECT * FROM " . $table . " WHERE " . $field[0] . " = ?";
+        $sql = "SELECT * FROM " . $table . " WHERE " . $field[0] . " = ? ";
 
 
         for ($i = 1; $i < $len; $i++) {
